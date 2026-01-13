@@ -1,7 +1,7 @@
 {
-	"name": "premiumtopservice",
+	"name": "komfortpremium",
 	"version": "1.0.0",
-	"description": "Premium Top Service website",
+	"description": "Komfort Premium website",
 	"scripts": {
 		"start": "serve -l 3000",
 		"dev": "live-server --port=3000 --open=/"
