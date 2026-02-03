@@ -38,6 +38,28 @@
 			img:is([sizes='auto' i], [sizes^='auto,' i]) {
 				contain-intrinsic-size: 3000px 1500px;
 			}
+			/* Offer section alternating layout */
+			.elementor-element-7944b91 > .e-con-inner,
+			.elementor-element-7944b92 > .e-con-inner,
+			.elementor-element-7944b93 > .e-con-inner,
+			.elementor-element-7944b94 > .e-con-inner {
+				display: flex !important;
+				flex-direction: row !important;
+				align-items: center !important;
+				gap: 40px;
+			}
+			.elementor-element-7944b91 > .e-con-inner > .e-con,
+			.elementor-element-7944b92 > .e-con-inner > .e-con,
+			.elementor-element-7944b93 > .e-con-inner > .e-con,
+			.elementor-element-7944b94 > .e-con-inner > .e-con {
+				flex: 1 1 50% !important;
+				max-width: 50% !important;
+			}
+			/* Rows 2 and 4: image on the right (reverse order) */
+			.elementor-element-7944b92 > .e-con-inner,
+			.elementor-element-7944b94 > .e-con-inner {
+				flex-direction: row-reverse !important;
+			}
 			@media (max-width: 767px) {
 				body, p, h1, h2, h3, h4, h5, h6, span, a, li,
 				.elementor-heading-title,
@@ -55,6 +77,20 @@
 					display: flex;
 					flex-direction: column;
 					align-items: center;
+				}
+				/* Mobile: stack offers vertically */
+				.elementor-element-7944b91 > .e-con-inner,
+				.elementor-element-7944b92 > .e-con-inner,
+				.elementor-element-7944b93 > .e-con-inner,
+				.elementor-element-7944b94 > .e-con-inner {
+					flex-direction: column !important;
+				}
+				.elementor-element-7944b91 > .e-con-inner > .e-con,
+				.elementor-element-7944b92 > .e-con-inner > .e-con,
+				.elementor-element-7944b93 > .e-con-inner > .e-con,
+				.elementor-element-7944b94 > .e-con-inner > .e-con {
+					flex: 1 1 100% !important;
+					max-width: 100% !important;
 				}
 			}
 		</style>
@@ -1419,7 +1455,7 @@
 						id="header1"
 						data-trans="header1"
 						href="https://viptaxipoznan.pl/"
-						title="Przewozy VIP Łódź"
+						title="Przewozy VIP Poznań"
 						rel="home"
 						>Komfort Premium</a
 					>
@@ -2286,7 +2322,7 @@
 									class="elementor-widget-container"
 									data-trans="offer"
 								>
-									<p>Oferta</p>
+									<p>OFERTA</p>
 								</div>
 							</div>
 							<div
@@ -2299,12 +2335,416 @@
 									<h2
 										class="premium-dual-header-first-header"
 									>
-										<span
-											class="premium-dual-header-first-span"
-											data-trans="Transfers-to-and-from-the-airport"
-											>Przewozy z i na lotnisko
-										</span>
-									</h2>
+									<span
+										class="premium-dual-header-first-span"
+										data-trans="Transfers-to-and-from-the-airport"
+										>Przewozy z i 
+									</span>
+									<span 
+										class="premium-dual-header-second-header"
+										data-trans="Transfers-to-and-from-the-airport-bold">
+										na lotnisko
+									</span>
+								</h2>
+								</div>
+							</div>
+							<div
+								class="elementor-element elementor-element-95da7b4 elementor-widget elementor-widget-text-editor"
+								data-id="95da7b4"
+								data-element_type="widget"
+								data-widget_type="text-editor.default"
+							>
+								<div class="elementor-widget-container">
+									<p
+										class=""
+										data-start="1956"
+										data-end="2078"
+										data-trans="Transfers-to-and-from-the-airport-text"
+									>
+										Zapewniamy punktualny i wygodny
+										transport z oraz na lotnisko – zarówno
+										dla klientów indywidualnych, jak i firm.
+										Obsługujemy wszystkie kluczowe lotniska
+										w Polsce i za granicą, m.in.
+										Poznań-Ławica, Warszawa Chopina, Berlin
+										Brandenburg, Gdańsk, Wrocław czy
+										Katowice i inne.
+									</p>
+								</div>
+							</div>
+							<div
+								class="elementor-element elementor-element-95f4c18 elementor-align-left elementor-mobile-align-left elementor-invisible elementor-widget elementor-widget-button"
+								data-id="95f4c18"
+								data-element_type="widget"
+								data-settings='{"_animation":"fadeIn","_animation_delay":400}'
+								data-widget_type="button.default"
+							>
+								<div class="elementor-widget-container">
+									<div class="elementor-button-wrapper">
+										<a
+											class="elementor-button elementor-button-link elementor-size-sm"
+											href="#kontakt"
+										>
+											<span
+												class="elementor-button-content-wrapper"
+											>
+												<span
+													class="elementor-button-text"
+													data-trans="book-a-ride"
+													>Zamów przejazd</span
+												>
+											</span>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+                <div
+					class="elementor-element elementor-element-7944b92 e-flex e-con-boxed e-con e-parent"
+					data-id="7944b92"
+					data-element_type="container"
+				>
+					<div class="e-con-inner" style="flex-direction: row-reverse;">
+						<div
+							class="elementor-element elementor-element-0ce072b e-con-full e-flex e-con e-child"
+							data-id="0ce072b"
+							data-element_type="container"
+						>
+							<div
+								class="elementor-element elementor-element-551b305b elementor-widget elementor-widget-image"
+								data-id="551b305b"
+								data-element_type="widget"
+								data-widget_type="image.default"
+							>
+								<div class="elementor-widget-container">
+									<img
+										loading="lazy"
+										decoding="async"
+										width="800"
+										height="800"
+										src="./assets/0E0E0E-1-1024x1024.png"
+										class="attachment-large size-large wp-image-2490"
+										alt=""
+										srcset="
+											./assets/0E0E0E-1-1024x1024.png 1024w,
+											./assets/0E0E0E-1-300x300.png    300w,
+											./assets/0E0E0E-1-150x150.png    150w,
+											./assets/0E0E0E-1-768x768.png    768w,
+											./assets/0E0E0E-1.png           1400w
+										"
+										sizes="(max-width: 800px) 100vw, 800px"
+									/>
+								</div>
+							</div>
+						</div>
+						<div
+							class="elementor-element elementor-element-61b5c63 e-con-full e-flex e-con e-child"
+							data-id="61b5c63"
+							data-element_type="container"
+						>
+							<div
+								class="elementor-element elementor-element-6af9b94 elementor-widget__width-inherit elementor-invisible elementor-widget elementor-widget-text-editor"
+								data-id="6af9b94"
+								data-element_type="widget"
+								data-settings='{"_animation":"fadeIn"}'
+								data-widget_type="text-editor.default"
+							>
+								<div
+									class="elementor-widget-container"
+									data-trans="offer"
+								>
+									<p>OFERTA</p>
+								</div>
+							</div>
+							<div
+								class="elementor-element elementor-element-1d28cea elementor-widget__width-initial premium-header-inline premium-lq__none premium-box-lq__none elementor-widget elementor-widget-premium-addon-dual-header"
+								data-id="1d28cea"
+								data-element_type="widget"
+								data-widget_type="premium-addon-dual-header.default"
+							>
+								<div class="elementor-widget-container">
+									<h2
+										class="premium-dual-header-first-header"
+									>
+									<span
+										class="premium-dual-header-first-span"
+										data-trans="Transfers-to-and-from-the-airport"
+										>Przewozy z i 
+									</span>
+									<span 
+										class="premium-dual-header-second-header"
+										data-trans="Transfers-to-and-from-the-airport-bold">
+										na lotnisko
+									</span>
+								</h2>
+								</div>
+							</div>
+							<div
+								class="elementor-element elementor-element-95da7b4 elementor-widget elementor-widget-text-editor"
+								data-id="95da7b4"
+								data-element_type="widget"
+								data-widget_type="text-editor.default"
+							>
+								<div class="elementor-widget-container">
+									<p
+										class=""
+										data-start="1956"
+										data-end="2078"
+										data-trans="Transfers-to-and-from-the-airport-text"
+									>
+										Zapewniamy punktualny i wygodny
+										transport z oraz na lotnisko – zarówno
+										dla klientów indywidualnych, jak i firm.
+										Obsługujemy wszystkie kluczowe lotniska
+										w Polsce i za granicą, m.in.
+										Poznań-Ławica, Warszawa Chopina, Berlin
+										Brandenburg, Gdańsk, Wrocław czy
+										Katowice i inne.
+									</p>
+								</div>
+							</div>
+							<div
+								class="elementor-element elementor-element-95f4c18 elementor-align-left elementor-mobile-align-left elementor-invisible elementor-widget elementor-widget-button"
+								data-id="95f4c18"
+								data-element_type="widget"
+								data-settings='{"_animation":"fadeIn","_animation_delay":400}'
+								data-widget_type="button.default"
+							>
+								<div class="elementor-widget-container">
+									<div class="elementor-button-wrapper">
+										<a
+											class="elementor-button elementor-button-link elementor-size-sm"
+											href="#kontakt"
+										>
+											<span
+												class="elementor-button-content-wrapper"
+											>
+												<span
+													class="elementor-button-text"
+													data-trans="book-a-ride"
+													>Zamów przejazd</span
+												>
+											</span>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+                <div
+					class="elementor-element elementor-element-7944b93 e-flex e-con-boxed e-con e-parent"
+					data-id="7944b93"
+					data-element_type="container"
+				>
+					<div class="e-con-inner">
+						<div
+							class="elementor-element elementor-element-0ce072c e-con-full e-flex e-con e-child"
+							data-id="0ce072c"
+							data-element_type="container"
+						>
+							<div
+								class="elementor-element elementor-element-551b305c elementor-widget elementor-widget-image"
+								data-id="551b305c"
+								data-element_type="widget"
+								data-widget_type="image.default"
+							>
+								<div class="elementor-widget-container">
+									<img
+										loading="lazy"
+										decoding="async"
+										width="800"
+										height="800"
+										src="./assets/0E0E0E-1-1024x1024.png"
+										class="attachment-large size-large wp-image-2490"
+										alt=""
+										srcset="
+											./assets/0E0E0E-1-1024x1024.png 1024w,
+											./assets/0E0E0E-1-300x300.png    300w,
+											./assets/0E0E0E-1-150x150.png    150w,
+											./assets/0E0E0E-1-768x768.png    768w,
+											./assets/0E0E0E-1.png           1400w
+										"
+										sizes="(max-width: 800px) 100vw, 800px"
+									/>
+								</div>
+							</div>
+						</div>
+						<div
+							class="elementor-element elementor-element-61b5c64 e-con-full e-flex e-con e-child"
+							data-id="61b5c64"
+							data-element_type="container"
+						>
+							<div
+								class="elementor-element elementor-element-6af9b94 elementor-widget__width-inherit elementor-invisible elementor-widget elementor-widget-text-editor"
+								data-id="6af9b94"
+								data-element_type="widget"
+								data-settings='{"_animation":"fadeIn"}'
+								data-widget_type="text-editor.default"
+							>
+								<div
+									class="elementor-widget-container"
+									data-trans="offer"
+								>
+									<p>OFERTA</p>
+								</div>
+							</div>
+							<div
+								class="elementor-element elementor-element-1d28cea elementor-widget__width-initial premium-header-inline premium-lq__none premium-box-lq__none elementor-widget elementor-widget-premium-addon-dual-header"
+								data-id="1d28cea"
+								data-element_type="widget"
+								data-widget_type="premium-addon-dual-header.default"
+							>
+								<div class="elementor-widget-container">
+									<h2
+										class="premium-dual-header-first-header"
+									>
+									<span
+										class="premium-dual-header-first-span"
+										data-trans="Transfers-to-and-from-the-airport"
+										>Przewozy z i 
+									</span>
+									<span 
+										class="premium-dual-header-second-header"
+										data-trans="Transfers-to-and-from-the-airport-bold">
+										na lotnisko
+									</span>
+								</h2>
+								</div>
+							</div>
+							<div
+								class="elementor-element elementor-element-95da7b4 elementor-widget elementor-widget-text-editor"
+								data-id="95da7b4"
+								data-element_type="widget"
+								data-widget_type="text-editor.default"
+							>
+								<div class="elementor-widget-container">
+									<p
+										class=""
+										data-start="1956"
+										data-end="2078"
+										data-trans="Transfers-to-and-from-the-airport-text"
+									>
+										Zapewniamy punktualny i wygodny
+										transport z oraz na lotnisko – zarówno
+										dla klientów indywidualnych, jak i firm.
+										Obsługujemy wszystkie kluczowe lotniska
+										w Polsce i za granicą, m.in.
+										Poznań-Ławica, Warszawa Chopina, Berlin
+										Brandenburg, Gdańsk, Wrocław czy
+										Katowice i inne.
+									</p>
+								</div>
+							</div>
+							<div
+								class="elementor-element elementor-element-95f4c18 elementor-align-left elementor-mobile-align-left elementor-invisible elementor-widget elementor-widget-button"
+								data-id="95f4c18"
+								data-element_type="widget"
+								data-settings='{"_animation":"fadeIn","_animation_delay":400}'
+								data-widget_type="button.default"
+							>
+								<div class="elementor-widget-container">
+									<div class="elementor-button-wrapper">
+										<a
+											class="elementor-button elementor-button-link elementor-size-sm"
+											href="#kontakt"
+										>
+											<span
+												class="elementor-button-content-wrapper"
+											>
+												<span
+													class="elementor-button-text"
+													data-trans="book-a-ride"
+													>Zamów przejazd</span
+												>
+											</span>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+                <div
+					class="elementor-element elementor-element-7944b94 e-flex e-con-boxed e-con e-parent"
+					data-id="7944b94"
+					data-element_type="container"
+				>
+					<div class="e-con-inner" style="flex-direction: row-reverse;">
+						<div
+							class="elementor-element elementor-element-0ce072d e-con-full e-flex e-con e-child"
+							data-id="0ce072d"
+							data-element_type="container"
+						>
+							<div
+								class="elementor-element elementor-element-551b305d elementor-widget elementor-widget-image"
+								data-id="551b305d"
+								data-element_type="widget"
+								data-widget_type="image.default"
+							>
+								<div class="elementor-widget-container">
+									<img
+										loading="lazy"
+										decoding="async"
+										width="800"
+										height="800"
+										src="./assets/0E0E0E-1-1024x1024.png"
+										class="attachment-large size-large wp-image-2490"
+										alt=""
+										srcset="
+											./assets/0E0E0E-1-1024x1024.png 1024w,
+											./assets/0E0E0E-1-300x300.png    300w,
+											./assets/0E0E0E-1-150x150.png    150w,
+											./assets/0E0E0E-1-768x768.png    768w,
+											./assets/0E0E0E-1.png           1400w
+										"
+										sizes="(max-width: 800px) 100vw, 800px"
+									/>
+								</div>
+							</div>
+						</div>
+						<div
+							class="elementor-element elementor-element-61b5c65 e-con-full e-flex e-con e-child"
+							data-id="61b5c65"
+							data-element_type="container"
+						>
+							<div
+								class="elementor-element elementor-element-6af9b94 elementor-widget__width-inherit elementor-invisible elementor-widget elementor-widget-text-editor"
+								data-id="6af9b94"
+								data-element_type="widget"
+								data-settings='{"_animation":"fadeIn"}'
+								data-widget_type="text-editor.default"
+							>
+								<div
+									class="elementor-widget-container"
+									data-trans="offer"
+								>
+									<p>OFERTA</p>
+								</div>
+							</div>
+							<div
+								class="elementor-element elementor-element-1d28cea elementor-widget__width-initial premium-header-inline premium-lq__none premium-box-lq__none elementor-widget elementor-widget-premium-addon-dual-header"
+								data-id="1d28cea"
+								data-element_type="widget"
+								data-widget_type="premium-addon-dual-header.default"
+							>
+								<div class="elementor-widget-container">
+									<h2
+										class="premium-dual-header-first-header"
+									>
+									<span
+										class="premium-dual-header-first-span"
+										data-trans="Transfers-to-and-from-the-airport"
+										>Przewozy z i 
+									</span>
+									<span 
+										class="premium-dual-header-second-header"
+										data-trans="Transfers-to-and-from-the-airport-bold">
+										na lotnisko
+									</span>
+								</h2>
 								</div>
 							</div>
 							<div
@@ -4170,8 +4610,8 @@
 						en: 'Contact',
 					},
 					offer: {
-						pl: 'Oferta',
-						en: 'Offer',
+						pl: 'OFERTA',
+						en: 'OFFER',
 					},
 					'lodz-and-surroundings': {
 						pl: 'POZNAŃ I OKOLICE',
@@ -4234,8 +4674,12 @@
 						en: 'We provide transportation services with English-language communication. We serve clients from various countries, ensuring a comfortable and safe journey.',
 					},
 					'Transfers-to-and-from-the-airport': {
-						pl: 'Przewozy z i na lotnisko',
-						en: 'Transfers to and from the airport',
+						pl: 'Przewozy z i ',
+						en: 'Transfers to and ',
+					},
+					'Transfers-to-and-from-the-airport-bold': {
+						pl: 'na lotnisko',
+						en: 'from the airport',
 					},
 					'Transfers-to-and-from-the-airport-text': {
 						pl: 'Zapewniamy punktualny i wygodny transport z oraz na lotnisko – zarówno dla klientów indywidualnych, jak i firm. Obsługujemy wszystkie kluczowe lotniska w Polsce i za granicą, m.in. Poznań-Ławica, Warszawa Chopina, Berlin Brandenburg, Gdańsk, Wrocław czy Katowice i inne.',
