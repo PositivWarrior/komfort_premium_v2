@@ -38,6 +38,25 @@
 			img:is([sizes='auto' i], [sizes^='auto,' i]) {
 				contain-intrinsic-size: 3000px 1500px;
 			}
+			@media (max-width: 767px) {
+				body, p, h1, h2, h3, h4, h5, h6, span, a, li,
+				.elementor-heading-title,
+				.elementor-image-box-title,
+				.elementor-image-box-description,
+				.elementor-icon-box-title,
+				.elementor-icon-box-description,
+				.premium-dual-header-first-header,
+				.elementor-widget-text-editor {
+					text-align: center !important;
+				}
+				.elementor-image-box-wrapper,
+				.elementor-icon-box-wrapper,
+				.elementor-button-wrapper {
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+				}
+			}
 		</style>
 		<link rel="dns-prefetch" href="https://www.googletagmanager.com/" />
 		<link rel="dns-prefetch" href="https://maxcdn.bootstrapcdn.com/" />
@@ -1870,6 +1889,65 @@
 					data-id="6acdb42"
 					data-element_type="container"
 				>
+				<div class="e-con-inner">
+						<div
+							class="elementor-element elementor-element-887d07e elementor-widget__width-inherit elementor-invisible elementor-widget elementor-widget-text-editor"
+							data-id="887d07e"
+							data-element_type="widget"
+							data-settings='{"_animation":"fadeIn"}'
+							data-widget_type="text-editor.default"
+						>
+							<div
+								class="elementor-widget-container"
+								data-trans="lodz-and-surroundings"
+							>
+								<p>POZNAŃ I OKOLICE</p>
+							</div>
+						</div>
+						<div
+							class="elementor-element elementor-element-d603e27 elementor-widget__width-initial premium-header-inline premium-lq__none premium-box-lq__none elementor-widget elementor-widget-premium-addon-dual-header"
+							data-id="d603e27"
+							data-element_type="widget"
+							id="oferta"
+							data-widget_type="premium-addon-dual-header.default"
+						>
+							<div class="elementor-widget-container">
+								<h2 class="premium-dual-header-first-header">
+									<span
+										class="premium-dual-header-first-span"
+										data-trans="why-clients-choose-us"
+										>Dlaczego klienci wybierają nas, a nie 
+									</span>
+										<span 
+											class="premium-dual-header-second-header"
+											data-trans="why-clients-choose-us-text">
+											zwykłe taksówki czy aplikacje przewozowe?
+										</span>
+								</h2>
+							</div>
+						</div>
+						<div
+							class="elementor-element elementor-element-925380c elementor-widget-divider--view-line elementor-widget elementor-widget-divider"
+							data-id="925380c"
+							data-element_type="widget"
+							data-widget_type="divider.default"
+						>
+							<div class="elementor-widget-container">
+								<div class="elementor-divider">
+									<span class="elementor-divider-separator">
+									</span>
+								</div>
+							</div>
+						</div>
+						<div class="elementor-widget-container">
+								<p style="color: #fff; font-weight: 300; font-size: 16px; line-height: 1.6; margin-top: 20px; text-align: center;">
+									<span
+										data-trans="our-vehicles"		
+										>Nasze pojazdy to wyłącznie auta klasy premium – czyste, komfortowe i gotowe, by robić wrażenie. Zamiast prowizorycznego przejazdu otrzymujesz usługę na najwyższym poziomie – taką, jakiej oczekują Twoi klienci, partnerzy biznesowi i Ty sam. Współpraca z nami to pewność, że wszystko będzie dopięte na ostatni guzik – bez nerwów, opóźnień i kompromisów.
+									</span>
+								</p>
+							</div>
+					</div>
 					<div class="e-con-inner">
 						<div
 							class="elementor-element elementor-element-887d07e elementor-widget__width-inherit elementor-invisible elementor-widget elementor-widget-text-editor"
@@ -1897,7 +1975,12 @@
 									<span
 										class="premium-dual-header-first-span"
 										data-trans="who-do-we-serve"
-										>Kogo obsługujemy?
+										>Kogo 
+									</span>
+									<span 
+										class="premium-dual-header-second-header"
+										data-trans="who-do-we-serve-text">
+										obsługujemy?
 									</span>
 								</h2>
 							</div>
@@ -4075,8 +4158,8 @@
 						en: 'About us',
 					},
 					header1: {
-						pl: 'Premium - komfortowa i bezpieczna obsługa',
-						en: 'Premium - comfortable and safe service',
+						pl: 'Komfort, klasa i bezpieczeństwo',
+						en: 'Comfort, class and safety',
 					},
 					desc1: {
 						pl: 'Działamy punktualnie, dyskretnie i profesjonalnie. Nasi kierowcy są doświadczeni, ubrani stosownie do sytuacji i potrafią odnaleźć się w każdej formalnej i nieformalnej sytuacji.',
@@ -4091,16 +4174,32 @@
 						en: 'Offer',
 					},
 					'lodz-and-surroundings': {
-						pl: 'ŁÓDŹ I OKOLICE',
-						en: 'ŁÓDŹ AND SURROUNDINGS',
+						pl: 'POZNAŃ I OKOLICE',
+						en: 'POZNAŃ AND SURROUNDINGS',
 					},
 					'book-a-ride': {
 						pl: 'Zamów przejazd',
 						en: 'Book a ride',
 					},
 					'who-do-we-serve': {
-						pl: 'Kogo obsługujemy?',
-						en: 'Who do we serve?',
+						pl: 'Kogo ',
+						en: 'Who do we ',
+					},
+					'who-do-we-serve-text': {
+						pl: 'obsługujemy?',
+						en: 'cater to?',
+					},
+					'why-clients-choose-us': {
+						pl: 'Dlaczego klienci wybierają nas, a nie ',
+						en: 'Why do clients choose us, and not ',
+					},
+					'why-clients-choose-us-text': {
+						pl: 'zwykłe taksówki czy aplikacje przewozowe?',
+						en: 'regular taxis or ride-sharing apps?',
+					},
+					'our-vehicles': {
+						pl: 'Nasze pojazdy to wyłącznie auta klasy premium – czyste, komfortowe i gotowe, by robić wrażenie. Zamiast prowizorycznego przejazdu otrzymujesz usługę na najwyższym poziomie – taką, jakiej oczekują Twoi klienci, partnerzy biznesowi i Ty sam. Współpraca z nami to pewność, że wszystko będzie dopięte na ostatni guzik – bez nerwów, opóźnień i kompromisów.',
+						en: 'Our vehicles are exclusively premium class cars – clean, comfortable, and ready to impress. Instead of a makeshift ride, you receive a top-level service – the kind your clients, business partners, and you yourself expect. Cooperating with us ensures everything will be perfectly arranged – without stress, delays, or compromises.',
 					},
 					'companies-and-corporations': {
 						pl: 'Firmy i korporacje',
