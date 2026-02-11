@@ -3,202 +3,361 @@
 import { useState } from "react";
 import { useLanguage } from "../context/LanguageContext";
 
+const GBFlag = () => (
+  <svg width="24" height="16" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg">
+    <rect width="60" height="40" fill="#012169"/>
+    <path d="M0,0 L60,40 M60,0 L0,40" stroke="#fff" strokeWidth="8"/>
+    <path d="M0,0 L60,40 M60,0 L0,40" stroke="#C8102E" strokeWidth="4"/>
+    <path d="M30,0 V40 M0,20 H60" stroke="#fff" strokeWidth="12"/>
+    <path d="M30,0 V40 M0,20 H60" stroke="#C8102E" strokeWidth="6"/>
+  </svg>
+);
+
+const PLFlag = () => (
+  <svg width="24" height="16" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg">
+    <rect width="60" height="20" fill="#fff"/>
+    <rect y="20" width="60" height="20" fill="#DC143C"/>
+  </svg>
+);
+
 export default function Header() {
   const { t, lang, toggleLanguage } = useLanguage();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // Helper to construct image paths
   const assets = (path) => `/assets/${path}`;
+
+  const FlagIcon = lang === "pl" ? GBFlag : PLFlag;
 
   return (
     <header
       id="masthead"
       itemScope="itemscope"
       itemType="https://schema.org/WPHeader"
-      style={{ background: "rgba(0, 0, 0, 0.6)" }}
+      style={{
+        background: "rgba(0, 0, 0, 0.6)",
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100%",
+        zIndex: 9999,
+        borderBottom: "none",
+      }}
     >
-      <p class="main-title bhf-hidden" itemProp="headline">
-        <a
-          id="header1"
-          href="https://viptaxipoznan.pl/"
-          title="Przewozy VIP Poznań"
-          rel="home"
-        >
-          {t('header1')}
-        </a>
-      </p>
       <div
-        data-elementor-type="wp-post"
-        data-elementor-id="2685"
-        className="elementor elementor-2685"
+        className="ast-builder-grid-row ast-builder-grid-row-has-sides ast-builder-grid-row-no-center"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          maxWidth: "1140px",
+          margin: "0 auto",
+          padding: "15px 20px",
+        }}
       >
-        <div
-          className="elementor-element elementor-element-21524674 e-flex e-con-boxed e-con e-parent e-lazyloaded"
-          data-id="21524674"
-          data-element_type="container"
-          data-settings='{"background_background":"classic"}'
-        >
-          <div className="e-con-inner" style={{ flexWrap: "nowrap" }}>
-            {/* Logo Section */}
-            <div
-              className="elementor-element elementor-element-5e45c7d6 e-con-full e-flex e-con e-child"
-              data-id="5e45c7d6"
-              data-element_type="container"
-            >
-              <div
-                className="elementor-element elementor-element-6153a548 elementor-widget elementor-widget-image"
-                data-id="6153a548"
-                data-element_type="widget"
-                data-widget_type="image.default"
-              >
-                <div className="elementor-widget-container">
-                  <a href="/">
+        {/* LEFT - Logo */}
+        <div className="site-header-primary-section-left site-header-section ast-flex site-header-section-left">
+          <div
+            className="ast-builder-layout-element ast-flex site-header-focus-item"
+            data-section="title_tagline"
+          >
+            <div className="site-branding">
+              <div className="ast-site-identity" itemScope="itemscope" itemType="https://schema.org/Organization">
+                <span className="site-logo-img">
+                  <a href="/" className="custom-logo-link" rel="home">
                     <img
-                      fetchPriority="high"
-                      width="540"
-                      height="230"
+                      width="250"
                       src={assets("logo-komofrt.png")}
-                      className="attachment-large size-large wp-image-2759"
-                      alt=""
+                      className="custom-logo"
+                      alt="Komfort Premium"
+                      decoding="async"
+                      style={{ maxWidth: "200px", height: "auto" }}
                     />
                   </a>
-                </div>
-              </div>
-            </div>
-
-            {/* Navigation Section */}
-            <div
-              className="elementor-element elementor-element-521441ce e-con-full e-flex e-con e-child"
-              data-id="521441ce"
-              data-element_type="container"
-            >
-              <div
-                className="elementor-element elementor-element-76ac228 hfe-nav-menu__align-center hfe-submenu-icon-arrow hfe-submenu-animation-none hfe-link-redirect-child hfe-nav-menu__breakpoint-tablet elementor-widget elementor-widget-navigation-menu"
-                data-id="76ac228"
-                data-element_type="widget"
-                data-widget_type="navigation-menu.default"
-              >
-                <div className="elementor-widget-container">
-                  <div
-                    className="hfe-nav-menu hfe-layout-horizontal hfe-nav-menu-layout horizontal hfe-pointer__none"
-                    data-layout="horizontal"
-                  >
-                    {/* Menu Toggle for Mobile */}
-                    <div
-                      role="button"
-                      className={`hfe-nav-menu__toggle elementor-clickable ${isMenuOpen ? "hfe-active-menu" : ""}`}
-                      tabIndex="0"
-                      aria-label="Menu Toggle"
-                      aria-haspopup="true"
-                      aria-expanded={isMenuOpen}
-                      onClick={() => setIsMenuOpen(!isMenuOpen)}
-                    >
-                      <span className="screen-reader-text">Menu</span>
-                      <div className="hfe-nav-menu-icon">
-                        {isMenuOpen ? (
-                             <i className="fas fa-times"></i>
-                        ) : (
-                             <svg
-                                aria-hidden="true"
-                                className="e-font-icon-svg e-fas-align-justify"
-                                viewBox="0 0 448 512"
-                                xmlns="http://www.w3.org/2000/svg"
-                                >
-                                <path d="M432 416H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-128H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-128H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-128H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z"></path>
-                            </svg>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* Menu Links */}
-                    <nav
-                      className={`hfe-nav-menu__layout-horizontal hfe-nav-menu__submenu-arrow ${isMenuOpen ? "sub-menu-open" : ""}`} // Add class to show menu if open, though original CSS might rely on JS slideToggle.
-                      data-full-width="yes"
-                      style={{ display: isMenuOpen ? "block" : "" }} /* Simple React inline toggle */
-                    >
-                      <ul id="menu-1-76ac228" className="hfe-nav-menu">
-                        <li className="menu-item menu-item-type-custom menu-item-object-custom current_page_item menu-item-home parent hfe-creative-menu">
-                          <a href="#o-nas" className="hfe-menu-item">
-                            {t('header-o-nas')}
-                          </a>
-                        </li>
-                        <li className="menu-item menu-item-type-custom menu-item-object-custom parent hfe-creative-menu">
-                          <a href="#oferta" className="hfe-menu-item">
-                            {t('offer')}
-                          </a>
-                        </li>
-                        <li className="menu-item menu-item-type-custom menu-item-object-custom parent hfe-creative-menu">
-                          <a href="#flota" className="hfe-menu-item">
-                            {t('Nasza-flota')}
-                          </a>
-                        </li>
-                        <li className="menu-item menu-item-type-custom menu-item-object-custom current_page_item menu-item-home parent hfe-creative-menu">
-                          <a href="#kontakt" className="hfe-menu-item">
-                            {t('header-kontakt')}
-                          </a>
-                        </li>
-                      </ul>
-                    </nav>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Language Switcher and CTA */}
-            <div
-              className="elementor-element elementor-element-5915f682 e-con-full e-flex e-con e-child"
-              style={{ width: "29%" }}
-              data-id="5915f682"
-              data-element_type="container"
-            >
-              <a
-                className="lang-flag"
-                href="#"
-                onClick={(e) => {
-                  e.preventDefault();
-                  toggleLanguage();
-                }}
-              >
-                <img
-                  id="flag-img"
-                  src={lang === 'pl' ? "https://flagcdn.com/gb.svg" : "https://flagcdn.com/pl.svg"}
-                  alt={lang === 'pl' ? "English" : "Polski"}
-                  style={{
-                    width: "40px",
-                    height: "28px",
-                    verticalAlign: "middle",
-                    borderRadius: "2px",
-                    marginRight: "60px",
-                  }}
-                />
-              </a>
-
-              <div
-                className="elementor-element elementor-hidden-tablet elementor-hidden-mobile elementor-element-8b98709 elementor-align-center elementor-mobile-align-left elementor-widget elementor-widget-button animated fadeIn"
-                data-id="8b98709"
-                data-element_type="widget"
-                data-settings='{"_animation":"fadeIn","_animation_delay":400}'
-                data-widget_type="button.default"
-              >
-                <div className="elementor-widget-container">
-                  <div className="elementor-button-wrapper">
-                    <a
-                      className="elementor-button elementor-button-link elementor-size-sm"
-                      href="tel:+48533515202"
-                    >
-                      <span className="elementor-button-content-wrapper">
-                        <span className="elementor-button-text">
-                           {t('book-a-ride')}
-                        </span>
-                      </span>
-                    </a>
-                  </div>
-                </div>
+                </span>
               </div>
             </div>
           </div>
         </div>
+
+        {/* RIGHT - Navigation */}
+        <div className="site-header-primary-section-right site-header-section ast-flex ast-flex-align-right site-header-section-right">
+
+          {/* Desktop Nav */}
+          <nav
+            className="main-header-menu desktop-nav"
+            style={{
+              display: isMenuOpen ? "flex" : undefined,
+            }}
+          >
+            <ul
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                listStyle: "none",
+                padding: 0,
+                margin: 0,
+                alignItems: "center",
+                gap: "25px",
+              }}
+            >
+              <li>
+                <a
+                  href="#o-nas"
+                  style={{
+                    color: "#FFFFFF",
+                    textDecoration: "none",
+                    fontFamily: "var(--font-primary)",
+                    fontSize: "16px",
+                    fontWeight: 400,
+                    letterSpacing: "0.3px",
+                    transition: "color 0.3s ease",
+                  }}
+                  onMouseEnter={(e) => (e.target.style.color = "rgb(197, 163, 92)")}
+                  onMouseLeave={(e) => (e.target.style.color = "#FFFFFF")}
+                >
+                  {t("header-o-nas")}
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#oferta"
+                  style={{
+                    color: "#FFFFFF",
+                    textDecoration: "none",
+                    fontFamily: "var(--font-primary)",
+                    fontSize: "16px",
+                    fontWeight: 400,
+                    letterSpacing: "0.3px",
+                    transition: "color 0.3s ease",
+                  }}
+                  onMouseEnter={(e) => (e.target.style.color = "rgb(197, 163, 92)")}
+                  onMouseLeave={(e) => (e.target.style.color = "#FFFFFF")}
+                >
+                  {t("offer")}
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#flota"
+                  style={{
+                    color: "#FFFFFF",
+                    textDecoration: "none",
+                    fontFamily: "var(--font-primary)",
+                    fontSize: "16px",
+                    fontWeight: 400,
+                    letterSpacing: "0.3px",
+                    transition: "color 0.3s ease",
+                  }}
+                  onMouseEnter={(e) => (e.target.style.color = "rgb(197, 163, 92)")}
+                  onMouseLeave={(e) => (e.target.style.color = "#FFFFFF")}
+                >
+                  {t("Nasza-flota")}
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#kontakt"
+                  style={{
+                    color: "#FFFFFF",
+                    textDecoration: "none",
+                    fontFamily: "var(--font-primary)",
+                    fontSize: "16px",
+                    fontWeight: 400,
+                    letterSpacing: "0.3px",
+                    transition: "color 0.3s ease",
+                  }}
+                  onMouseEnter={(e) => (e.target.style.color = "rgb(197, 163, 92)")}
+                  onMouseLeave={(e) => (e.target.style.color = "#FFFFFF")}
+                >
+                  {t("header-kontakt")}
+                </a>
+              </li>
+              <li>
+                <button
+                  onClick={toggleLanguage}
+                  aria-label="Toggle language"
+                  style={{
+                    background: "transparent",
+                    border: "none",
+                    cursor: "pointer",
+                    padding: "5px",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
+                  <FlagIcon />
+                </button>
+              </li>
+              <li>
+                <a
+                  href="https://www.facebook.com/profile.php?id=61577157325909&locale=pl_PL"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                  style={{
+                    color: "#FFFFFF",
+                    fontSize: "18px",
+                    display: "flex",
+                    alignItems: "center",
+                    transition: "color 0.3s ease",
+                  }}
+                  onMouseEnter={(e) => (e.target.style.color = "rgb(197, 163, 92)")}
+                  onMouseLeave={(e) => (e.target.style.color = "#FFFFFF")}
+                >
+                  <i className="fab fa-facebook-f" />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#kontakt"
+                  className="btn-gold"
+                  style={{
+                    padding: "12px 30px",
+                    fontSize: "14px",
+                    letterSpacing: "0.9px",
+                    marginLeft: "10px",
+                  }}
+                >
+                  {t("book-a-ride")}
+                </a>
+              </li>
+            </ul>
+          </nav>
+
+          {/* Mobile Hamburger */}
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="mobile-toggle"
+            aria-label="Menu"
+            style={{
+              display: "none",
+              background: "none",
+              border: "none",
+              color: "white",
+              fontSize: "28px",
+              cursor: "pointer",
+            }}
+          >
+            <i className={isMenuOpen ? "fas fa-times" : "fas fa-bars"} />
+          </button>
+        </div>
       </div>
+
+      {/* Mobile Menu Overlay */}
+      {isMenuOpen && (
+        <nav
+          className="mobile-menu"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            backgroundColor: "rgba(0,0,0,0.95)",
+            padding: "20px 0",
+          }}
+        >
+          <ul
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              listStyle: "none",
+              padding: 0,
+              gap: "20px",
+              textAlign: "center",
+            }}
+          >
+            <li>
+              <a
+                href="#o-nas"
+                onClick={() => setIsMenuOpen(false)}
+                style={{ color: "white", textDecoration: "none", fontSize: "18px" }}
+              >
+                {t("header-o-nas")}
+              </a>
+            </li>
+            <li>
+              <a
+                href="#oferta"
+                onClick={() => setIsMenuOpen(false)}
+                style={{ color: "white", textDecoration: "none", fontSize: "18px" }}
+              >
+                {t("offer")}
+              </a>
+            </li>
+            <li>
+              <a
+                href="#flota"
+                onClick={() => setIsMenuOpen(false)}
+                style={{ color: "white", textDecoration: "none", fontSize: "18px" }}
+              >
+                {t("Nasza-flota")}
+              </a>
+            </li>
+            <li>
+              <a
+                href="#kontakt"
+                onClick={() => setIsMenuOpen(false)}
+                style={{ color: "white", textDecoration: "none", fontSize: "18px" }}
+              >
+                {t("header-kontakt")}
+              </a>
+            </li>
+            <li style={{ display: "flex", justifyContent: "center" }}>
+              <button
+                onClick={() => { toggleLanguage(); setIsMenuOpen(false); }}
+                aria-label="Toggle language"
+                style={{
+                  background: "transparent",
+                  border: "none",
+                  cursor: "pointer",
+                  padding: "5px",
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
+                <FlagIcon />
+              </button>
+            </li>
+            <li style={{ display: "flex", justifyContent: "center" }}>
+              <a
+                href="https://www.facebook.com/profile.php?id=61577157325909&locale=pl_PL"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                onClick={() => setIsMenuOpen(false)}
+                style={{ color: "white", fontSize: "20px" }}
+              >
+                <i className="fab fa-facebook-f" />
+              </a>
+            </li>
+            <li>
+              <a
+                href="#kontakt"
+                className="btn-gold"
+                style={{ padding: "12px 30px", fontSize: "14px" }}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {t("book-a-ride")}
+              </a>
+            </li>
+          </ul>
+        </nav>
+      )}
+
+      <style jsx>{`
+        @media (max-width: 768px) {
+          .desktop-nav {
+            display: none !important;
+          }
+          .mobile-toggle {
+            display: block !important;
+          }
+        }
+        @media (min-width: 769px) {
+          .mobile-menu {
+            display: none !important;
+          }
+        }
+      `}</style>
     </header>
   );
 }

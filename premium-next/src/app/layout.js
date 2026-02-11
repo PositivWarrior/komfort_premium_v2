@@ -1,15 +1,11 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter_Tight } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const interTight = Inter_Tight({
+  variable: "--font-inter-tight",
+  subsets: ["latin", "latin-ext"],
+  weight: ["100", "300", "400", "500", "600", "700"],
 });
 
 export const metadata = {
@@ -80,7 +76,7 @@ export default function RootLayout({ children }) {
         <link rel="stylesheet" href="/assets/themify.css" />
         <link rel="stylesheet" href="/assets/linearicons.css" />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={interTight.variable}>
         {/* GTM NoScript */}
         <noscript>
             <iframe
