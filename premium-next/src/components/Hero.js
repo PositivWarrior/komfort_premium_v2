@@ -29,7 +29,7 @@ export default function Hero() {
       className="elementor elementor-899"
     >
       <div
-        className="elementor-element elementor-element-44fb991 e-flex e-con-boxed e-con e-parent e-lazyloaded"
+        className="elementor-element elementor-element-44fb991 e-flex e-con-boxed e-con e-parent e-lazyloaded hero-container"
         data-id="44fb991"
         data-element_type="container"
         style={{
@@ -89,8 +89,8 @@ export default function Hero() {
             data-element_type="widget"
           >
             <div
-              className="elementor-widget-container"
-              style={{ textAlign: "center", padding: "0 10em", marginTop: "20px" }}
+              className="elementor-widget-container hero-description"
+              style={{ textAlign: "center", padding: "0 10%", marginTop: "20px" }}
             >
               <p
                 style={{

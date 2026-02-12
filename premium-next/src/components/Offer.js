@@ -30,7 +30,7 @@ export default function Offer() {
 
       {/* Text Column */}
       <div
-        className="offer-col"
+        className="offer-col offer-text-col"
         style={{
           flex: "1 1 50%",
           minWidth: "300px",

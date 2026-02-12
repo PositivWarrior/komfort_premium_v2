@@ -70,6 +70,7 @@ export default function Fleet() {
           {marqueeImages.map((img, idx) => (
             <div
               key={idx}
+              className="fleet-marquee-item"
               style={{
                 display: "inline-block",
                 width: "350px",

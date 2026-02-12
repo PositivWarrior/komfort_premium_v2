@@ -67,6 +67,7 @@ export default function About() {
 
         {/* 4 Cards Grid - 2x2 */}
         <div
+          className="about-grid"
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(2, 1fr)",
@@ -77,7 +78,7 @@ export default function About() {
           }}
         >
           {/* Box 1: Firmy i korporacje */}
-          <div style={{ padding: "35px" }}>
+          <div className="about-card-wrap" style={{ padding: "35px" }}>
             <div className="card-bg" style={{ textAlign: "center", height: "100%" }}>
               <figure style={{ marginBottom: "15px" }}>
                 <img
@@ -95,7 +96,7 @@ export default function About() {
           </div>
 
           {/* Box 2: Osoby indywidualne */}
-          <div style={{ padding: "35px" }}>
+          <div className="about-card-wrap" style={{ padding: "35px" }}>
             <div className="card-bg" style={{ textAlign: "center", height: "100%" }}>
               <figure style={{ marginBottom: "15px" }}>
                 <img
@@ -113,7 +114,7 @@ export default function About() {
           </div>
 
           {/* Box 3: Agencje eventowe */}
-          <div style={{ padding: "35px" }}>
+          <div className="about-card-wrap" style={{ padding: "35px" }}>
             <div className="card-bg" style={{ textAlign: "center", height: "100%" }}>
               <figure style={{ marginBottom: "15px" }}>
                 <img
@@ -131,7 +132,7 @@ export default function About() {
           </div>
 
           {/* Box 4: Goście zagraniczni */}
-          <div style={{ padding: "35px" }}>
+          <div className="about-card-wrap" style={{ padding: "35px" }}>
             <div className="card-bg" style={{ textAlign: "center", height: "100%" }}>
               <figure style={{ marginBottom: "15px" }}>
                 <img

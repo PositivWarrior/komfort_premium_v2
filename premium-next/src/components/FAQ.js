@@ -44,6 +44,7 @@ export default function FAQ() {
     >
       <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 20px" }}>
         <div
+          className="faq-layout"
           style={{
             display: "flex",
             flexWrap: "wrap",
@@ -52,6 +53,7 @@ export default function FAQ() {
         >
           {/* Left Column - Image */}
           <div
+            className="faq-image-col"
             style={{
               flex: "1 1 50%",
               minWidth: "300px",
@@ -69,6 +71,7 @@ export default function FAQ() {
 
           {/* Right Column - FAQ Content */}
           <div
+            className="faq-content-col"
             style={{
               flex: "1 1 50%",
               minWidth: "300px",

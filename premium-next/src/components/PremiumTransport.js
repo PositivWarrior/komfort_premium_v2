@@ -36,6 +36,7 @@ export default function PremiumTransport() {
         overflow: "hidden",
         marginTop: "100px",
       }}
+      className="premium-transport-section"
     >
       {/* Background Slideshow with Fade Effect - Full Width */}
       <div className="hero-slideshow">
@@ -76,7 +77,7 @@ export default function PremiumTransport() {
 
         {/* Title */}
         <h2
-          className="section-title"
+          className="section-title premium-transport-title"
           style={{
             fontSize: "50px",
             textAlign: "center",
@@ -92,6 +93,7 @@ export default function PremiumTransport() {
 
         {/* Description */}
         <p
+          className="premium-transport-desc"
           style={{
             fontFamily: "var(--font-primary)",
             fontSize: "20px",
@@ -99,7 +101,7 @@ export default function PremiumTransport() {
             lineHeight: 1.6,
             color: "#FFFFFF",
             marginTop: "15px",
-            padding: "0 10em",
+            padding: "0 10%",
           }}
         >
           {t("Skontaktuj-się-z-nami-text")}

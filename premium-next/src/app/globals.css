@@ -125,6 +125,7 @@ body {
     .footer-row-container {
         flex-direction: column !important;
         text-align: center !important;
+        align-items: center !important;
     }
     .footer-right {
         text-align: center !important;
@@ -132,6 +133,13 @@ body {
     }
     .footer-right ul {
         align-items: center !important;
+    }
+    .footer-content {
+        flex-direction: column !important;
+        gap: 40px !important;
+    }
+    .footer-left, .footer-right {
+        flex: 1 1 100% !important;
     }
 }
 
@@ -222,26 +230,164 @@ a {
   animation-play-state: paused;
 }
 
-/* ===== Offer Section Mobile ===== */
+/* ===== Header Desktop/Mobile Toggle ===== */
+/* Desktop default: hamburger hidden, nav visible */
+.mobile-toggle {
+  display: none !important;
+}
+.desktop-nav {
+  display: flex !important;
+}
+
+/* ================================================================
+   COMPREHENSIVE MOBILE RESPONSIVE STYLES
+   ================================================================ */
 @media (max-width: 767px) {
+
+  /* ===== Header: Show hamburger, hide desktop nav ===== */
+  .mobile-toggle {
+    display: block !important;
+  }
+  .desktop-nav {
+    display: none !important;
+  }
+
+  /* ===== Hero Section ===== */
+  .hero-title-span {
+    font-size: 32px !important;
+  }
+  .hero-description {
+    padding: 0 15px !important;
+  }
+  .hero-container {
+    min-height: 500px !important;
+  }
+
+  /* ===== Section Titles & Text ===== */
+  .section-title {
+    font-size: 26px !important;
+  }
+  .section-label {
+    font-size: 12px;
+  }
+  .body-text {
+    font-size: 14px;
+  }
+  .btn-gold {
+    font-size: 13px;
+    padding: 12px 35px;
+  }
+
+  /* ===== Offer Section ===== */
   .offer-row {
     flex-direction: column !important;
   }
   .offer-row-reverse {
-    flex-direction: column-reverse !important;
+    flex-direction: column !important;
   }
   .offer-col {
     width: 100% !important;
-    flex: none !important;
+    flex: 1 1 100% !important;
+    min-width: 0 !important;
   }
+  .offer-text-col {
+    padding: 25px 20px !important;
+  }
+
+  /* ===== About Section Cards Grid ===== */
+  .about-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .about-card-wrap {
+    padding: 15px !important;
+  }
+
+  /* ===== FAQ Section ===== */
+  .faq-layout {
+    flex-direction: column !important;
+  }
+  .faq-image-col,
+  .faq-content-col {
+    flex: 1 1 100% !important;
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+  .faq-content-col {
+    padding: 25px 0 0 0 !important;
+  }
+
+  /* ===== Contact Section ===== */
+  .contact-layout {
+    flex-direction: column !important;
+  }
+  .contact-image-col,
+  .contact-info-col {
+    flex: 1 1 100% !important;
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+  .contact-image-col img {
+    width: 100% !important;
+  }
+
+  /* ===== PremiumTransport Section ===== */
+  .premium-transport-title {
+    font-size: 28px !important;
+  }
+  .premium-transport-desc {
+    padding: 0 15px !important;
+    font-size: 16px !important;
+  }
+  .premium-transport-section {
+    min-height: 450px !important;
+    margin-top: 60px !important;
+  }
+
+  /* ===== Reviews Section ===== */
+  .reviews-outer {
+    padding: 0 15px !important;
+  }
+  .reviews-grid {
+    grid-template-columns: 1fr !important;
+    gap: 15px !important;
+  }
+
+  /* ===== Fleet Section ===== */
+  .fleet-marquee-item {
+    width: 250px !important;
+    height: 175px !important;
+  }
+
+  /* ===== Footer ===== */
+  .footer-content {
+    flex-direction: column !important;
+    gap: 30px !important;
+    text-align: center;
+  }
+  .footer-left {
+    flex: 1 1 100% !important;
+  }
+  .footer-right {
+    flex: 1 1 100% !important;
+  }
+}
+
+/* Tablet tweaks */
+@media (max-width: 1024px) and (min-width: 768px) {
   .hero-title-span {
-    font-size: 40px !important;
+    font-size: 54px !important;
   }
   .section-title {
-    font-size: 30px;
+    font-size: 34px !important;
   }
-  .btn-gold {
-    font-size: 13px;
-    padding: 12px 40px;
+  .about-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* Desktop: hide mobile menu */
+@media (min-width: 768px) {
+  .mobile-menu {
+    display: none !important;
   }
 }
