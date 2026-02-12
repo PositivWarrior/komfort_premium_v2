@@ -70,7 +70,7 @@ export default function PremiumTransport() {
         }}
       >
         {/* Section Label */}
-        <div className="section-label" style={{ color: "#ffffff", marginBottom: "-15px" }}>
+        <div className="section-label" style={{ color: "#ffffff", marginBottom: "5px" }}>
           MASZ PYTANIA?
         </div>
 

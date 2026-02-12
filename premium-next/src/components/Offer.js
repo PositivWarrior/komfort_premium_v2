@@ -41,12 +41,12 @@ export default function Offer() {
         }}
       >
         {/* Section Label */}
-        <div className="section-label" style={{ marginBottom: "-15px" }}>
+        <div className="section-label" style={{ marginBottom: "5px" }}>
           {t(labelKey || "offer")}
         </div>
 
         {/* Title */}
-        <h2 className="section-title" style={{ textAlign: "left", marginTop: "20px" }}>
+        <h2 className="section-title" style={{ textAlign: "left", marginTop: "10px" }}>
           {titlePlain && t(titlePlain)}
           <strong>{titleBold && t(titleBold)}</strong>
         </h2>
@@ -79,26 +79,26 @@ export default function Offer() {
         />
         <OfferBlock
           reverse={true}
-          image="0E0E0E-1-1024x1024.png"
-          titlePlain="Transfers-to-and-from-the-airport"
-          titleBold="Transfers-to-and-from-the-airport-bold"
-          text="Transfers-to-and-from-the-airport-text"
+          image="0E0E0E-2-1024x1024.png"
+          titlePlain="offer-intercity"
+          titleBold="offer-intercity-bold"
+          text="offer-intercity-text"
           labelKey="offer"
         />
         <OfferBlock
           reverse={false}
-          image="0E0E0E-1-1024x1024.png"
-          titlePlain="Transfers-to-and-from-the-airport"
-          titleBold="Transfers-to-and-from-the-airport-bold"
-          text="Transfers-to-and-from-the-airport-text"
+          image="0E0E0E-3-1024x1024.png"
+          titlePlain="offer-where"
+          titleBold="offer-where-bold"
+          text="offer-where-text"
           labelKey="offer"
         />
         <OfferBlock
           reverse={true}
-          image="0E0E0E-1-1024x1024.png"
-          titlePlain="Transfers-to-and-from-the-airport"
-          titleBold="Transfers-to-and-from-the-airport-bold"
-          text="Transfers-to-and-from-the-airport-text"
+          image="0E0E0E-4-1024x1024.png"
+          titlePlain="offer-international"
+          titleBold="offer-international-bold"
+          text="offer-international-text"
           labelKey="offer"
         />
       </div>

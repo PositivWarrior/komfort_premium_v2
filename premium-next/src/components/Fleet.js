@@ -31,7 +31,7 @@ export default function Fleet() {
       {/* Header Section */}
       <div style={{ maxWidth: "795px", margin: "0 auto", textAlign: "center", padding: "0 25px" }}>
         {/* Section Label */}
-        <div className="section-label" style={{ marginBottom: "-15px" }}>
+        <div className="section-label" style={{ marginBottom: "5px" }}>
           {t("lodz-and-surroundings")}
         </div>
 

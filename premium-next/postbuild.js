@@ -14,47 +14,73 @@ if (cssFiles.length === 0) {
   process.exit(1);
 }
 
-// Read the CSS content
 let cssContent = fs.readFileSync(path.join(chunksDir, cssFiles[0]), 'utf8');
 console.log(`Found CSS: ${cssFiles[0]} (${cssContent.length} chars)`);
 
-// 2. Copy font files to /fonts/ (simple top-level folder)
-const mediaDir = path.join(outDir, '_next', 'static', 'media');
-const fontsDir = path.join(outDir, 'fonts');
-if (!fs.existsSync(fontsDir)) fs.mkdirSync(fontsDir, { recursive: true });
-
-if (fs.existsSync(mediaDir)) {
-  const fontFiles = fs.readdirSync(mediaDir).filter(f => 
-    f.endsWith('.woff2') || f.endsWith('.woff') || f.endsWith('.ttf')
-  );
-  fontFiles.forEach(file => {
-    fs.copyFileSync(path.join(mediaDir, file), path.join(fontsDir, file));
-    console.log(`  Copied font: ${file}`);
-  });
-}
-
-// Fix ALL font path patterns in CSS to be /fonts/
-cssContent = cssContent.replace(/\/_next\/static\/media\//g, '/fonts/');
-cssContent = cssContent.replace(/\.\.\/(media|static\/media)\//g, '/fonts/');
-cssContent = cssContent.replace(/url\((['"]?)(?:\.\.\/)*media\//g, 'url($1/fonts/');
-
-// 3. Copy JS files to /js/ (simple top-level folder)
-const jsDir = path.join(outDir, 'js');
-if (!fs.existsSync(jsDir)) fs.mkdirSync(jsDir, { recursive: true });
-
-const jsFiles = fs.readdirSync(chunksDir).filter(f => f.endsWith('.js'));
-jsFiles.forEach(file => {
-  fs.copyFileSync(path.join(chunksDir, file), path.join(jsDir, file));
-  console.log(`  Copied JS: ${file}`);
-});
-
-// Copy build manifests
+// 2. Determine build directory names (needed for path rewriting)
 const staticDir = path.join(outDir, '_next', 'static');
 const buildDirs = fs.readdirSync(staticDir).filter(d => {
   const full = path.join(staticDir, d);
   return fs.statSync(full).isDirectory() && d !== 'chunks' && d !== 'media';
 });
 
+const nextDir = path.join(outDir, '_next');
+const nextTopDirs = fs.readdirSync(nextDir).filter(d => {
+  const full = path.join(nextDir, d);
+  return fs.statSync(full).isDirectory() && d !== 'static';
+});
+
+console.log(`Build dirs: ${buildDirs.join(', ')}`);
+console.log(`Next top dirs: ${nextTopDirs.join(', ')}`);
+
+// Helper: rewrite all _next paths in content
+function rewritePaths(content) {
+  content = content.replace(/\/_next\/static\/chunks\//g, '/js/');
+  content = content.replace(/\/_next\/static\/media\//g, '/fonts/');
+  buildDirs.forEach(dir => {
+    content = content.replace(new RegExp(`/_next/static/${dir}/`, 'g'), `/js/${dir}/`);
+  });
+  nextTopDirs.forEach(dir => {
+    content = content.replace(new RegExp(`/_next/${dir}/`, 'g'), `/js/${dir}/`);
+  });
+  // Catch-all: replace any remaining /_next/ with /js/ (Turbopack runtime uses this as prefix)
+  content = content.replace(/\/_next\//g, '/js/');
+  return content;
+}
+
+// 3. Copy fonts to /fonts/
+const mediaDir = path.join(outDir, '_next', 'static', 'media');
+const fontsDir = path.join(outDir, 'fonts');
+if (!fs.existsSync(fontsDir)) fs.mkdirSync(fontsDir, { recursive: true });
+
+if (fs.existsSync(mediaDir)) {
+  fs.readdirSync(mediaDir)
+    .filter(f => f.endsWith('.woff2') || f.endsWith('.woff') || f.endsWith('.ttf'))
+    .forEach(file => {
+      fs.copyFileSync(path.join(mediaDir, file), path.join(fontsDir, file));
+      console.log(`  Copied font: ${file}`);
+    });
+}
+
+// Fix font paths in CSS
+cssContent = cssContent.replace(/\/_next\/static\/media\//g, '/fonts/');
+cssContent = cssContent.replace(/\.\.\/media\//g, '/fonts/');
+cssContent = cssContent.replace(/url\((['"]?)(?:\.\.\/)*media\//g, 'url($1/fonts/');
+
+// 4. Copy & fix JS files to /js/
+const jsDir = path.join(outDir, 'js');
+if (!fs.existsSync(jsDir)) fs.mkdirSync(jsDir, { recursive: true });
+
+fs.readdirSync(chunksDir)
+  .filter(f => f.endsWith('.js'))
+  .forEach(file => {
+    let content = fs.readFileSync(path.join(chunksDir, file), 'utf8');
+    content = rewritePaths(content);
+    fs.writeFileSync(path.join(jsDir, file), content);
+    console.log(`  Fixed JS: ${file}`);
+  });
+
+// 5. Copy & fix build manifests
 buildDirs.forEach(dir => {
   const srcDir = path.join(staticDir, dir);
   const destDir = path.join(jsDir, dir);
@@ -62,19 +88,19 @@ buildDirs.forEach(dir => {
   fs.readdirSync(srcDir).forEach(file => {
     const srcFile = path.join(srcDir, file);
     if (fs.statSync(srcFile).isFile()) {
-      fs.copyFileSync(srcFile, path.join(destDir, file));
-      console.log(`  Copied manifest: ${dir}/${file}`);
+      if (file.endsWith('.js') || file.endsWith('.json')) {
+        let content = fs.readFileSync(srcFile, 'utf8');
+        content = rewritePaths(content);
+        fs.writeFileSync(path.join(destDir, file), content);
+      } else {
+        fs.copyFileSync(srcFile, path.join(destDir, file));
+      }
+      console.log(`  Manifest: ${dir}/${file}`);
     }
   });
 });
 
-// Copy _next top-level dirs (build ID dirs)
-const nextDir = path.join(outDir, '_next');
-const nextTopDirs = fs.readdirSync(nextDir).filter(d => {
-  const full = path.join(nextDir, d);
-  return fs.statSync(full).isDirectory() && d !== 'static';
-});
-
+// Copy _next top-level dirs
 nextTopDirs.forEach(dir => {
   const srcDir = path.join(nextDir, dir);
   const destDir = path.join(jsDir, dir);
@@ -82,71 +108,45 @@ nextTopDirs.forEach(dir => {
   fs.readdirSync(srcDir).forEach(file => {
     const srcFile = path.join(srcDir, file);
     if (fs.statSync(srcFile).isFile()) {
-      fs.copyFileSync(srcFile, path.join(destDir, file));
+      if (file.endsWith('.js') || file.endsWith('.json')) {
+        let content = fs.readFileSync(srcFile, 'utf8');
+        content = rewritePaths(content);
+        fs.writeFileSync(path.join(destDir, file), content);
+      } else {
+        fs.copyFileSync(srcFile, path.join(destDir, file));
+      }
     }
   });
 });
 
-// 4. Process all HTML files - INLINE the CSS and fix JS paths
+// 6. Process HTML files - inline CSS + fix paths
 function processHtml(filePath) {
   let html = fs.readFileSync(filePath, 'utf8');
   
-  // Replace the external CSS <link> with an inline <style> tag
-  // Match: <link rel="stylesheet" href="/_next/static/chunks/XXXX.css" .../>
-  const cssLinkRegex = /<link[^>]*href="[^"]*\/_next\/static\/chunks\/[^"]*\.css"[^>]*\/?>/g;
-  html = html.replace(cssLinkRegex, `<style>${cssContent}</style>`);
+  // Inline CSS
+  html = html.replace(/<link[^>]*href="[^"]*\.css"[^>]*\/?>/g, `<style>${cssContent}</style>`);
   
-  // Also handle already-processed /styles/ paths from previous runs
-  const stylesLinkRegex = /<link[^>]*href="[^"]*\/styles\/[^"]*\.css"[^>]*\/?>/g;
-  html = html.replace(stylesLinkRegex, `<style>${cssContent}</style>`);
-
-  // Fix JS paths: /_next/static/chunks/ -> /js/
-  html = html.replace(/\/_next\/static\/chunks\//g, '/js/');
-  
-  // Fix font preload paths: /_next/static/media/ -> /fonts/
-  html = html.replace(/\/_next\/static\/media\//g, '/fonts/');
-  
-  // Fix build manifest paths
-  buildDirs.forEach(dir => {
-    const regex = new RegExp(`\\/_next\\/static\\/${dir.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\/`, 'g');
-    html = html.replace(regex, `/js/${dir}/`);
-  });
-  nextTopDirs.forEach(dir => {
-    const regex = new RegExp(`\\/_next\\/${dir.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\/`, 'g');
-    html = html.replace(regex, `/js/${dir}/`);
-  });
+  // Fix all _next paths
+  html = rewritePaths(html);
 
   fs.writeFileSync(filePath, html);
-  console.log(`  Updated HTML: ${path.basename(filePath)}`);
+  console.log(`  HTML: ${path.basename(filePath)}`);
 }
 
-// 5. Process all text (RSC payload) files
+// 7. Process TXT files (RSC payloads)
 function processTxt(filePath) {
   let content = fs.readFileSync(filePath, 'utf8');
   const original = content;
-  
-  content = content.replace(/\/_next\/static\/chunks\//g, '/js/');
-  content = content.replace(/\/_next\/static\/media\//g, '/fonts/');
-  
-  buildDirs.forEach(dir => {
-    const regex = new RegExp(`\\/_next\\/static\\/${dir.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\/`, 'g');
-    content = content.replace(regex, `/js/${dir}/`);
-  });
-  nextTopDirs.forEach(dir => {
-    const regex = new RegExp(`\\/_next\\/${dir.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\/`, 'g');
-    content = content.replace(regex, `/js/${dir}/`);
-  });
-  
+  content = rewritePaths(content);
   if (content !== original) {
     fs.writeFileSync(filePath, content);
-    console.log(`  Updated TXT: ${path.basename(filePath)}`);
+    console.log(`  TXT: ${path.basename(filePath)}`);
   }
 }
 
-// Walk and process
+// Walk directories
 function walk(dir) {
-  const entries = fs.readdirSync(dir, { withFileTypes: true });
-  entries.forEach(entry => {
+  fs.readdirSync(dir, { withFileTypes: true }).forEach(entry => {
     const fullPath = path.join(dir, entry.name);
     if (entry.isDirectory() && !['_next', 'fonts', 'js', 'node_modules'].includes(entry.name)) {
       walk(fullPath);
@@ -160,20 +160,34 @@ function walk(dir) {
 console.log('\nProcessing files...');
 walk(outDir);
 
-// 6. Remove _next directory entirely - it's no longer needed
+// 8. Remove _next directory
 fs.rmSync(path.join(outDir, '_next'), { recursive: true, force: true });
-console.log('\nRemoved _next/ directory');
+console.log('\nRemoved _next/');
 
-// 7. Clean up unnecessary files
-['file.svg', 'globe.svg', 'next.svg', 'vercel.svg', 'window.svg'].forEach(f => {
-  const p = path.join(outDir, f);
-  if (fs.existsSync(p)) { fs.unlinkSync(p); }
-});
+// 9. Verify no _next references remain in output
+let issues = 0;
+function verify(dir) {
+  fs.readdirSync(dir, { withFileTypes: true }).forEach(entry => {
+    const fullPath = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      verify(fullPath);
+    } else if (entry.isFile() && (entry.name.endsWith('.html') || entry.name.endsWith('.js'))) {
+      const content = fs.readFileSync(fullPath, 'utf8');
+      const matches = content.match(/\/_next\//g);
+      if (matches) {
+        console.log(`  ⚠️  ${entry.name}: ${matches.length} remaining _next references`);
+        issues++;
+      }
+    }
+  });
+}
+verify(outDir);
+
+if (issues === 0) {
+  console.log('\n✅ All _next references eliminated!');
+} else {
+  console.log(`\n⚠️  ${issues} files still have _next references`);
+}
 
 console.log('\n✅ Post-build complete!');
-console.log('Output structure:');
-console.log('  out/');
-console.log('  ├── index.html     (CSS inlined, JS paths fixed)');
-console.log('  ├── assets/        (images)');
-console.log('  ├── fonts/         (woff2 font files)');
-console.log('  └── js/            (JavaScript files)');
+console.log('Output: out/ → index.html, assets/, fonts/, js/');

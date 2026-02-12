@@ -80,7 +80,7 @@ export default function FAQ() {
           >
             {/* Section Label + Title */}
             <div style={{ marginBottom: "30px" }}>
-              <div className="section-label" style={{ marginBottom: "-15px" }}>FAQ</div>
+              <div className="section-label" style={{ marginBottom: "5px" }}>FAQ</div>
               <h2 className="section-title" style={{ textAlign: "left", marginTop: "20px" }}>
                 {t("Najczęstsze-pytania").split(" ")[0]}{" "}
                 <strong>{t("Najczęstsze-pytania").split(" ").slice(1).join(" ")}</strong>

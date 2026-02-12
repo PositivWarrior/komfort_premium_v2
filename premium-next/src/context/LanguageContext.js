@@ -95,6 +95,42 @@ const translations = {
     pl: 'Zapewniamy punktualny i wygodny transport z oraz na lotnisko – zarówno dla klientów indywidualnych, jak i firm. Obsługujemy wszystkie kluczowe lotniska w Polsce i za granicą, m.in. Poznań-Ławica, Warszawa Chopina, Berlin Brandenburg, Gdańsk, Wrocław czy Katowice i inne.',
     en: 'We provide punctual and comfortable transport to and from the airport – for both individual clients and companies. We serve all key airports in Poland and abroad, including Poznań-Ławica, Warsaw Chopin, Berlin Brandenburg, Gdańsk, Wrocław, Katowice, and others.',
   },
+  'offer-intercity': {
+    pl: 'Transfery ',
+    en: 'Inter-city ',
+  },
+  'offer-intercity-bold': {
+    pl: 'między miastami',
+    en: 'transfers',
+  },
+  'offer-intercity-text': {
+    pl: 'Oferujemy ekskluzywne przewozy między miastami na terenie całego kraju. Poznań – Warszawa? Wrocław – Kraków? A może inne połączenie? Nie musisz męczyć się w pociągu, stać w kolejkach czy martwić się przesiadkami. Odbierzemy Cię spod drzwi i zawieziemy dokładnie tam, gdzie trzeba. Idealna opcja dla przedsiębiorców, menedżerów, osób podróżujących w celach służbowych i prywatnych.',
+    en: 'We offer exclusive inter-city transfers throughout the country. Poznań – Warsaw? Wrocław – Kraków? Or maybe another connection? No need to struggle on a train, stand in queues, or worry about transfers. We will pick you up from your door and take you exactly where you need to be. The perfect option for entrepreneurs, managers, and travelers on business or personal trips.',
+  },
+  'offer-where': {
+    pl: 'Gdzie ',
+    en: 'Where do we ',
+  },
+  'offer-where-bold': {
+    pl: 'działamy?',
+    en: 'operate?',
+  },
+  'offer-where-text': {
+    pl: 'Nasza firma ma siedzibę w Poznaniu, ale obsługujemy klientów z całej Polski – niezależnie od miejsca rozpoczęcia lub zakończenia przejazdu. Oferujemy komfortowe przewozy VIP zarówno na trasach lokalnych, jak i krajowych czy międzynarodowych. Jeśli potrzebujesz dojazdu na lotnisko, do hotelu, na spotkanie biznesowe, konferencję czy prywatne wydarzenie – dowieziemy Cię dokładnie tam, gdzie potrzebujesz, punktualnie i w klasie premium.',
+    en: 'Our company is headquartered in Poznań, but we serve clients from all over Poland – regardless of the start or end point. We offer comfortable VIP transportation on local, national, and international routes. Whether you need a ride to the airport, hotel, business meeting, conference, or private event – we will take you exactly where you need to be, on time and in premium class.',
+  },
+  'offer-international': {
+    pl: 'Obsługa tras ',
+    en: 'International ',
+  },
+  'offer-international-bold': {
+    pl: 'międzynarodowych',
+    en: 'route services',
+  },
+  'offer-international-text': {
+    pl: 'Realizujemy komfortowe przewozy zagraniczne dla osób, które oczekują dyskretnej, wygodnej i pewnej podróży. Najczęściej obsługujemy trasy do Niemiec, Belgii, Holandii, Czech, Austrii, ale jesteśmy otwarci na inne kierunki. Dla klientów indywidualnych i firm. Często wybierana opcja przy wyjazdach służbowych, relokacjach, czy dla osób, które po prostu chcą podróżować wygodniej niż samolotem lub autokarem.',
+    en: 'We provide comfortable international transport for those who expect a discreet, comfortable, and reliable journey. We most frequently serve routes to Germany, Belgium, the Netherlands, Czech Republic, and Austria, but we are open to other destinations. For individual clients and companies. A frequently chosen option for business trips, relocations, or for those who simply want to travel more comfortably than by plane or coach.',
+  },
   'Potrzebujesz-transportu-premium': {
     pl: 'Potrzebujesz transportu premium?',
     en: 'Do you need premium transport?',

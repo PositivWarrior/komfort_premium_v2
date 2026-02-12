@@ -116,7 +116,7 @@ export default function Reviews() {
       <div style={{ maxWidth: "1400px", margin: "0 auto", padding: "0 60px" }}>
         {/* Header */}
         <div style={{ maxWidth: "795px", margin: "0 auto", textAlign: "center", marginBottom: "50px" }}>
-          <div className="section-label" style={{ marginBottom: "-15px" }}>
+          <div className="section-label" style={{ marginBottom: "5px" }}>
             OPINIE
           </div>
           <h2 className="section-title" style={{ textAlign: "center", marginTop: "20px" }}>

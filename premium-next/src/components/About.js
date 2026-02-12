@@ -18,7 +18,7 @@ export default function About() {
       >
         <div style={{ maxWidth: "795px", margin: "0 auto", padding: "0 25px", textAlign: "center" }}>
           {/* Section Label */}
-          <div className="section-label" style={{ marginBottom: "-15px" }}>
+          <div className="section-label" style={{ marginBottom: "5px" }}>
             {t("lodz-and-surroundings")}
           </div>
 
@@ -51,7 +51,7 @@ export default function About() {
       >
         <div style={{ maxWidth: "795px", margin: "0 auto", padding: "0 25px", textAlign: "center" }}>
           {/* Section Label */}
-          <div className="section-label" style={{ marginBottom: "-15px" }}>
+          <div className="section-label" style={{ marginBottom: "5px" }}>
             {t("lodz-and-surroundings")}
           </div>
 
