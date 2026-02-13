@@ -129,6 +129,7 @@ export default function Reviews() {
         <div style={{ position: "relative" }}>
           {/* Left Arrow */}
           <button
+            type="button"
             onClick={prevSlide}
             style={{
               position: "absolute",
@@ -269,6 +270,7 @@ export default function Reviews() {
 
           {/* Right Arrow */}
           <button
+            type="button"
             onClick={nextSlide}
             style={{
               position: "absolute",

@@ -1,4 +1,7 @@
-@import "./inline-styles.css";
+/* ================================================================
+   GLOBALS.CSS — Single source of truth for all site styles
+   (inline-styles.css WordPress junk removed — not needed)
+   ================================================================ */
 
 * {
   box-sizing: border-box;
@@ -15,7 +18,7 @@ body {
   color: #ffffff;
 }
 
-/* ===== Global Design Tokens (matching viptaxipoznan.pl) ===== */
+/* ===== Global Design Tokens ===== */
 :root {
   --color-bg: #0e0e0e;
   --color-bg-section: #0c0c0c;
@@ -30,6 +33,12 @@ body {
   --color-border-subtle: rgba(255, 255, 255, 0.15);
   --color-border-dark: #222222;
   --font-primary: var(--font-inter-tight), "Inter Tight", sans-serif;
+}
+
+/* ===== Reset links (replaces old WP underline rule) ===== */
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
 /* ===== Section Headers ===== */
@@ -67,7 +76,7 @@ body {
   margin-left: 0;
 }
 
-/* ===== Buttons (matching reference) ===== */
+/* ===== Buttons ===== */
 .btn-gold {
   display: inline-block;
   font-family: var(--font-primary);
@@ -100,13 +109,12 @@ body {
   line-height: 1.6;
 }
 
-/* ===== Card/Box Backgrounds (subtle white overlay) ===== */
+/* ===== Cards ===== */
 .card-bg {
   background-color: var(--color-card-bg);
   padding: 35px;
 }
 
-/* ===== Image Box Titles ===== */
 .card-title {
   font-family: var(--font-primary);
   font-size: 25px;
@@ -118,34 +126,6 @@ body {
   font-family: var(--font-primary);
   font-weight: 400;
   color: var(--color-white);
-}
-
-/* ===== Responsive Footer ===== */
-@media (max-width: 768px) {
-    .footer-row-container {
-        flex-direction: column !important;
-        text-align: center !important;
-        align-items: center !important;
-    }
-    .footer-right {
-        text-align: center !important;
-        align-items: center !important;
-    }
-    .footer-right ul {
-        align-items: center !important;
-    }
-    .footer-content {
-        flex-direction: column !important;
-        gap: 40px !important;
-    }
-    .footer-left, .footer-right {
-        flex: 1 1 100% !important;
-    }
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
 }
 
 /* ===== Hero Slideshow ===== */
@@ -202,15 +182,10 @@ a {
   overflow: hidden;
 }
 
-/* ===== Reviews Responsive ===== */
+/* ===== Reviews Grid ===== */
 @media (max-width: 1024px) {
   .reviews-grid {
     grid-template-columns: repeat(2, 1fr) !important;
-  }
-}
-@media (max-width: 768px) {
-  .reviews-grid {
-    grid-template-columns: 1fr !important;
   }
 }
 
@@ -230,21 +205,23 @@ a {
   animation-play-state: paused;
 }
 
-/* ===== Header Desktop/Mobile Toggle ===== */
-/* Desktop default: hamburger hidden, nav visible */
+/* ================================================================
+   HEADER — Desktop/Mobile Toggle
+   ================================================================ */
 .mobile-toggle {
   display: none !important;
 }
+
 .desktop-nav {
   display: flex !important;
 }
 
 /* ================================================================
-   COMPREHENSIVE MOBILE RESPONSIVE STYLES
+   RESPONSIVE — Mobile (<768px)
    ================================================================ */
 @media (max-width: 767px) {
 
-  /* ===== Header: Show hamburger, hide desktop nav ===== */
+  /* Header: show hamburger, hide desktop nav */
   .mobile-toggle {
     display: block !important;
   }
@@ -252,7 +229,7 @@ a {
     display: none !important;
   }
 
-  /* ===== Hero Section ===== */
+  /* Hero */
   .hero-title-span {
     font-size: 32px !important;
   }
@@ -263,7 +240,7 @@ a {
     min-height: 500px !important;
   }
 
-  /* ===== Section Titles & Text ===== */
+  /* Section Titles & Text */
   .section-title {
     font-size: 26px !important;
   }
@@ -278,7 +255,7 @@ a {
     padding: 12px 35px;
   }
 
-  /* ===== Offer Section ===== */
+  /* Offer Section */
   .offer-row {
     flex-direction: column !important;
   }
@@ -294,7 +271,7 @@ a {
     padding: 25px 20px !important;
   }
 
-  /* ===== About Section Cards Grid ===== */
+  /* About Cards Grid */
   .about-grid {
     grid-template-columns: 1fr !important;
   }
@@ -302,7 +279,7 @@ a {
     padding: 15px !important;
   }
 
-  /* ===== FAQ Section ===== */
+  /* FAQ Section */
   .faq-layout {
     flex-direction: column !important;
   }
@@ -316,7 +293,7 @@ a {
     padding: 25px 0 0 0 !important;
   }
 
-  /* ===== Contact Section ===== */
+  /* Contact Section */
   .contact-layout {
     flex-direction: column !important;
   }
@@ -330,7 +307,7 @@ a {
     width: 100% !important;
   }
 
-  /* ===== PremiumTransport Section ===== */
+  /* PremiumTransport Section */
   .premium-transport-title {
     font-size: 28px !important;
   }
@@ -343,7 +320,7 @@ a {
     margin-top: 60px !important;
   }
 
-  /* ===== Reviews Section ===== */
+  /* Reviews */
   .reviews-outer {
     padding: 0 15px !important;
   }
@@ -352,13 +329,13 @@ a {
     gap: 15px !important;
   }
 
-  /* ===== Fleet Section ===== */
+  /* Fleet Marquee */
   .fleet-marquee-item {
     width: 250px !important;
     height: 175px !important;
   }
 
-  /* ===== Footer ===== */
+  /* Footer */
   .footer-content {
     flex-direction: column !important;
     gap: 30px !important;
@@ -370,9 +347,16 @@ a {
   .footer-right {
     flex: 1 1 100% !important;
   }
+  .footer-row-container {
+    flex-direction: column !important;
+    text-align: center !important;
+    align-items: center !important;
+  }
 }
 
-/* Tablet tweaks */
+/* ================================================================
+   RESPONSIVE — Tablet (768px–1024px)
+   ================================================================ */
 @media (max-width: 1024px) and (min-width: 768px) {
   .hero-title-span {
     font-size: 54px !important;

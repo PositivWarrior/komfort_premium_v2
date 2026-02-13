@@ -102,6 +102,7 @@ export default function FAQ() {
                     }}
                   >
                     <button
+                      type="button"
                       onClick={() => toggleFAQ(index)}
                       style={{
                         background: "none",

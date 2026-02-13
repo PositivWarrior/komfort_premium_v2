@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLanguage } from "../context/LanguageContext";
 
 const GBFlag = () => (
@@ -23,10 +23,21 @@ const PLFlag = () => (
 export default function Header() {
   const { t, lang, toggleLanguage } = useLanguage();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   const assets = (path) => `/assets/${path}`;
 
   const FlagIcon = lang === "pl" ? GBFlag : PLFlag;
+
+  // Scroll listener — switch from fully transparent to semi-transparent
+  useEffect(() => {
+    const onScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll(); // check on mount
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <header
@@ -34,61 +45,47 @@ export default function Header() {
       itemScope="itemscope"
       itemType="https://schema.org/WPHeader"
       style={{
-        background: "rgba(0, 0, 0, 0.6)",
+        background: scrolled ? "rgba(0, 0, 0, 0.85)" : "transparent",
+        backdropFilter: scrolled ? "blur(10px)" : "none",
+        WebkitBackdropFilter: scrolled ? "blur(10px)" : "none",
         position: "fixed",
         top: 0,
         left: 0,
         width: "100%",
         zIndex: 9999,
-        borderBottom: "none",
+        borderBottom: scrolled ? "1px solid rgba(255,255,255,0.08)" : "none",
+        transition: "background 0.3s ease, backdrop-filter 0.3s ease, border-bottom 0.3s ease",
       }}
     >
       <div
-        className="ast-builder-grid-row ast-builder-grid-row-has-sides ast-builder-grid-row-no-center"
         style={{
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
           maxWidth: "1140px",
           margin: "0 auto",
-          padding: "15px 20px",
+          padding: "8px 20px",
         }}
       >
         {/* LEFT - Logo */}
-        <div className="site-header-primary-section-left site-header-section ast-flex site-header-section-left">
-          <div
-            className="ast-builder-layout-element ast-flex site-header-focus-item"
-            data-section="title_tagline"
-          >
-            <div className="site-branding">
-              <div className="ast-site-identity" itemScope="itemscope" itemType="https://schema.org/Organization">
-                <span className="site-logo-img">
-                  <a href="/" className="custom-logo-link" rel="home">
-                    <img
-                      width="250"
-                      src={assets("logo-komofrt.png")}
-                      className="custom-logo"
-                      alt="Komfort Premium"
-                      decoding="async"
-                      style={{ maxWidth: "200px", height: "auto" }}
-                    />
-                  </a>
-                </span>
-              </div>
-            </div>
-          </div>
+        <div>
+          <a href="/" rel="home">
+            <img
+              width="250"
+              src={assets("logo-komofrt.png")}
+              className="custom-logo"
+              alt="Komfort Premium"
+              decoding="async"
+              style={{ maxWidth: "160px", height: "auto" }}
+            />
+          </a>
         </div>
 
         {/* RIGHT - Navigation */}
-        <div className="site-header-primary-section-right site-header-section ast-flex ast-flex-align-right site-header-section-right">
+        <div style={{ display: "flex", alignItems: "center" }}>
 
           {/* Desktop Nav */}
-          <nav
-            className="main-header-menu desktop-nav"
-            style={{
-              display: isMenuOpen ? "flex" : undefined,
-            }}
-          >
+          <nav className="desktop-nav">
             <ul
               style={{
                 display: "flex",
@@ -107,7 +104,7 @@ export default function Header() {
                     color: "#FFFFFF",
                     textDecoration: "none",
                     fontFamily: "var(--font-primary)",
-                    fontSize: "16px",
+                    fontSize: "15px",
                     fontWeight: 400,
                     letterSpacing: "0.3px",
                     transition: "color 0.3s ease",
@@ -125,7 +122,7 @@ export default function Header() {
                     color: "#FFFFFF",
                     textDecoration: "none",
                     fontFamily: "var(--font-primary)",
-                    fontSize: "16px",
+                    fontSize: "15px",
                     fontWeight: 400,
                     letterSpacing: "0.3px",
                     transition: "color 0.3s ease",
@@ -143,7 +140,7 @@ export default function Header() {
                     color: "#FFFFFF",
                     textDecoration: "none",
                     fontFamily: "var(--font-primary)",
-                    fontSize: "16px",
+                    fontSize: "15px",
                     fontWeight: 400,
                     letterSpacing: "0.3px",
                     transition: "color 0.3s ease",
@@ -161,7 +158,7 @@ export default function Header() {
                     color: "#FFFFFF",
                     textDecoration: "none",
                     fontFamily: "var(--font-primary)",
-                    fontSize: "16px",
+                    fontSize: "15px",
                     fontWeight: 400,
                     letterSpacing: "0.3px",
                     transition: "color 0.3s ease",
@@ -174,18 +171,29 @@ export default function Header() {
               </li>
               <li>
                 <button
-                  onClick={toggleLanguage}
+                  type="button"
+                  onClick={() => {
+                    console.log("Language toggle clicked, current:", lang);
+                    toggleLanguage();
+                  }}
                   aria-label="Toggle language"
                   style={{
                     background: "transparent",
-                    border: "none",
+                    border: "1px solid rgba(255,255,255,0.25)",
+                    borderRadius: "4px",
                     cursor: "pointer",
-                    padding: "5px",
+                    padding: "4px 8px",
                     display: "flex",
                     alignItems: "center",
+                    gap: "6px",
+                    color: "#fff",
+                    fontSize: "12px",
+                    fontFamily: "var(--font-primary)",
+                    transition: "border-color 0.3s ease",
                   }}
                 >
                   <FlagIcon />
+                  <span>{lang === "pl" ? "EN" : "PL"}</span>
                 </button>
               </li>
               <li>
@@ -212,10 +220,10 @@ export default function Header() {
                   href="#kontakt"
                   className="btn-gold"
                   style={{
-                    padding: "12px 30px",
-                    fontSize: "14px",
+                    padding: "10px 28px",
+                    fontSize: "13px",
                     letterSpacing: "0.9px",
-                    marginLeft: "10px",
+                    marginLeft: "5px",
                   }}
                 >
                   {t("book-a-ride")}
@@ -226,6 +234,7 @@ export default function Header() {
 
           {/* Mobile Hamburger */}
           <button
+            type="button"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="mobile-toggle"
             aria-label="Menu"
@@ -306,18 +315,25 @@ export default function Header() {
             </li>
             <li style={{ display: "flex", justifyContent: "center" }}>
               <button
+                type="button"
                 onClick={() => { toggleLanguage(); setIsMenuOpen(false); }}
                 aria-label="Toggle language"
                 style={{
                   background: "transparent",
-                  border: "none",
+                  border: "1px solid rgba(255,255,255,0.25)",
+                  borderRadius: "4px",
                   cursor: "pointer",
-                  padding: "5px",
+                  padding: "6px 12px",
                   display: "flex",
                   alignItems: "center",
+                  gap: "6px",
+                  color: "#fff",
+                  fontSize: "14px",
+                  fontFamily: "var(--font-primary)",
                 }}
               >
                 <FlagIcon />
+                <span>{lang === "pl" ? "EN" : "PL"}</span>
               </button>
             </li>
             <li style={{ display: "flex", justifyContent: "center" }}>
@@ -345,8 +361,6 @@ export default function Header() {
           </ul>
         </nav>
       )}
-
-      {/* Media queries moved to globals.css for reliability */}
     </header>
   );
 }
