@@ -1,0 +1,69 @@
+{
+  "fetchedAt": "2026-03-17T12:31:17.351Z",
+  "placeId": "ChIJG2ww4MCTMkcRvgaBdLz1z9A",
+  "placeName": "Komfort Taxi",
+  "overallRating": 5,
+  "totalReviews": 55,
+  "reviews": [
+    {
+      "name": "Maciej B.",
+      "time": "3 tygodnie temu",
+      "publishTimestamp": 1771416434,
+      "text": "Ocena nie może być inna niż 5/5. Kontakt wzorowy, duża elastyczność i nastawienie na rozwiązanie problemu Klienta. Samochody w świetnym stanie i bardzo czyste. Szczerze polecam!",
+      "reply": "",
+      "initial": "M",
+      "color": "#8e44ad",
+      "rating": 5,
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocKk1Nj8LUf-RsdQfsOC7agIKTbOcSR0gceSksOdsiee4y8N1g=s128-c0x00000000-cc-rp-mo",
+      "source": "google"
+    },
+    {
+      "name": "Shaun G.",
+      "time": "3 miesiące temu",
+      "publishTimestamp": 1765858537,
+      "text": "",
+      "reply": "",
+      "initial": "S",
+      "color": "#c0392b",
+      "rating": 5,
+      "profilePhoto": "https://lh3.googleusercontent.com/a-/ALV-UjVjaUuOfcKyNESMCsjxQ9ogfYlPujCjkZhh2ewPKGUqiIk8Cnam8w=s128-c0x00000000-cc-rp-mo",
+      "source": "google"
+    },
+    {
+      "name": "Wojciech P.",
+      "time": "3 miesiące temu",
+      "publishTimestamp": 1764880267,
+      "text": "Świetny kontakt i profesjonalnie zrealizowana usługa. Tak trzymać! 💪",
+      "reply": "",
+      "initial": "W",
+      "color": "#27ae60",
+      "rating": 5,
+      "profilePhoto": "https://lh3.googleusercontent.com/a-/ALV-UjWm8xNVhECKEff6ynM5uyEp40OXcOobqefFBAxNYLVxzxxHSXCp=s128-c0x00000000-cc-rp-mo",
+      "source": "google"
+    },
+    {
+      "name": "Linda",
+      "time": "5 miesięcy temu",
+      "publishTimestamp": 1760547785,
+      "text": "Was able to book a taxi by email, which was helpful as I don't speak Polish  I got a prompt reply with price & options how to pay. When I agreed, I got a confirmation.\nOur taxi was booked for 4am & the driver was outside 20mins beforehand & texted me to let me know. He put our cases in the boot for us. Lovely car & very nice driver.\nWould highly recommend.",
+      "reply": "",
+      "initial": "L",
+      "color": "#16a085",
+      "rating": 5,
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocJUoTSitK3FEM39uUFEItRM_yZ4h-AX8hv8zZ0D8MJPaB4Haw=s128-c0x00000000-cc-rp-mo",
+      "source": "google"
+    },
+    {
+      "name": "eliza b.",
+      "time": "5 miesięcy temu",
+      "publishTimestamp": 1760544243,
+      "text": "Bardzo miły pan kierowca, samochód bardzo zadbany ,doskonała organizacja przejazdu, serdecznie polecam!",
+      "reply": "",
+      "initial": "E",
+      "color": "#2980b9",
+      "rating": 5,
+      "profilePhoto": "https://lh3.googleusercontent.com/a-/ALV-UjVvQz7LM70QOU6bVYzWuAPD2G5oNR2fsS0enJeL8G1132Axfm8=s128-c0x00000000-cc-rp-mo",
+      "source": "google"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+name: Update Google Reviews
+
+# Runs every day at 6:00 AM UTC (7:00 AM CET / 8:00 AM CEST)
+on:
+  schedule:
+    - cron: '0 6 * * *'
+  workflow_dispatch: # Allow manual trigger from GitHub UI
+
+jobs:
+  fetch-reviews:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: premium-next
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Fetch Google Reviews
+        env:
+          GOOGLE_PLACES_API_KEY: ${{ secrets.GOOGLE_PLACES_API_KEY }}
+          GOOGLE_PLACE_ID: ${{ secrets.GOOGLE_PLACE_ID }}
+        run: node scripts/fetch-google-reviews.js
+
+      - name: Check for changes
+        id: changes
+        run: |
+          git diff --quiet src/data/google-reviews.json || echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: Commit and push updated reviews
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/data/google-reviews.json
+          git commit -m "chore: update Google reviews [automated]"
+          git push

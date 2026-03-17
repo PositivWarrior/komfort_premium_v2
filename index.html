@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <!-- saved from url=(0025)https://viptaxipoznan.pl/ -->
 <html lang="pl-PL">
 	<head>
@@ -32,7 +32,10 @@
 		<link rel="profile" href="http://gmpg.org/xfn/11" />
 		<link rel="pingback" href="https://viptaxipoznan.pl/xmlrpc.php" />
 		<title>Komfort Premium</title>
-		<meta name="description" content="Komfort Premium - Przewozy VIP Poznań. Luksusowy transport osobowy, wynajem limuzyn z kierowcą. Punktualność, dyskrecja i bezpieczeństwo." />
+		<meta
+			name="description"
+			content="Komfort Premium - Przewozy VIP Poznań. Luksusowy transport osobowy, wynajem limuzyn z kierowcą. Punktualność, dyskrecja i bezpieczeństwo."
+		/>
 		<meta name="robots" content="max-image-preview:large" />
 		<style>
 			img:is([sizes='auto' i], [sizes^='auto,' i]) {
@@ -61,7 +64,17 @@
 				flex-direction: row-reverse !important;
 			}
 			@media (max-width: 767px) {
-				body, p, h1, h2, h3, h4, h5, h6, span, a, li,
+				body,
+				p,
+				h1,
+				h2,
+				h3,
+				h4,
+				h5,
+				h6,
+				span,
+				a,
+				li,
 				.elementor-heading-title,
 				.elementor-image-box-title,
 				.elementor-image-box-description,
@@ -133,8 +146,8 @@
 					} catch (e) {}
 				}
 				function p(e, t, n) {
-					e.clearRect(0, 0, e.canvas.width, e.canvas.height),
-						e.fillText(t, 0, 0);
+					(e.clearRect(0, 0, e.canvas.width, e.canvas.height),
+						e.fillText(t, 0, 0));
 					var t = new Uint32Array(
 							e.getImageData(
 								0,
@@ -159,8 +172,8 @@
 					});
 				}
 				function u(e, t) {
-					e.clearRect(0, 0, e.canvas.width, e.canvas.height),
-						e.fillText(t, 0, 0);
+					(e.clearRect(0, 0, e.canvas.width, e.canvas.height),
+						e.fillText(t, 0, 0));
 					for (
 						var n = e.getImageData(16, 16, 1, 1), a = 0;
 						a < n.data.length;
@@ -182,7 +195,7 @@
 										e,
 										'\ud83c\udde8\ud83c\uddf6',
 										'\ud83c\udde8\u200b\ud83c\uddf6',
-								  ) &&
+									) &&
 										!n(
 											e,
 											'\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f',
@@ -213,7 +226,7 @@
 				}
 				function t(e) {
 					var t = s.createElement('script');
-					(t.src = e), (t.defer = !0), s.head.appendChild(t);
+					((t.src = e), (t.defer = !0), s.head.appendChild(t));
 				}
 				'undefined' != typeof Promise &&
 					((o = 'wpEmojiSettingsSupports'),
@@ -264,7 +277,7 @@
 											name: 'wpTestEmojiSupports',
 										});
 									return void (r.onmessage = function (e) {
-										c((n = e.data)), r.terminate(), t(n);
+										(c((n = e.data)), r.terminate(), t(n));
 									});
 								} catch (e) {}
 							c((n = g(i, f, p, u)));
@@ -273,20 +286,20 @@
 					})
 						.then(function (e) {
 							for (var t in e)
-								(n.supports[t] = e[t]),
+								((n.supports[t] = e[t]),
 									(n.supports.everything =
 										n.supports.everything && n.supports[t]),
 									'flag' !== t &&
 										(n.supports.everythingExceptFlag =
 											n.supports.everythingExceptFlag &&
-											n.supports[t]);
-							(n.supports.everythingExceptFlag =
+											n.supports[t]));
+							((n.supports.everythingExceptFlag =
 								n.supports.everythingExceptFlag &&
 								!n.supports.flag),
 								(n.DOMReady = !1),
 								(n.readyCallback = function () {
 									n.DOMReady = !0;
-								});
+								}));
 						})
 						.then(function () {
 							return e;
@@ -298,8 +311,8 @@
 								(e = n.source || {}).concatemoji
 									? t(e.concatemoji)
 									: e.wpemoji &&
-									  e.twemoji &&
-									  (t(e.twemoji), t(e.wpemoji)));
+										e.twemoji &&
+										(t(e.twemoji), t(e.wpemoji)));
 						}));
 			})((window, document), window._wpemojiSettings);
 		</script>
@@ -437,7 +450,8 @@
 				--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);
 				--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);
 				--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);
-				--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1),
+				--wp--preset--shadow--outlined:
+					6px 6px 0px -3px rgba(255, 255, 255, 1),
 					6px 6px rgba(0, 0, 0, 1);
 				--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);
 			}
@@ -1114,7 +1128,7 @@
 			!(function ($) {
 				'use strict';
 				$(document).ready(function () {
-					$(this).scrollTop() > 100 &&
+					($(this).scrollTop() > 100 &&
 						$('.hfe-scroll-to-top-wrap').removeClass(
 							'hfe-scroll-to-top-hide',
 						),
@@ -1126,7 +1140,7 @@
 						$('.hfe-scroll-to-top-wrap').on('click', function () {
 							$('html, body').animate({ scrollTop: 0 }, 300);
 							return !1;
-						});
+						}));
 				});
 			})(jQuery);
 			!(function ($) {
@@ -1307,7 +1321,9 @@
 			}
 
 			.globe {
-				transition: text-decoration-color 0.3s, color 0.3s;
+				transition:
+					text-decoration-color 0.3s,
+					color 0.3s;
 			}
 			.globe:hover {
 				text-decoration: underline;
@@ -1426,8 +1442,13 @@
 			src="./assets/wp-emoji-release.min.js.pobrane"
 			defer=""
 		></script>
-	<link rel='stylesheet' id='grw-public-main-css-css' href='https://viptaxipoznan.pl/wp-content/plugins/widget-google-reviews/assets/css/public-main.css?ver=6.5' media='all' />
-</head>
+		<link
+			rel="stylesheet"
+			id="grw-public-main-css-css"
+			href="https://viptaxipoznan.pl/wp-content/plugins/widget-google-reviews/assets/css/public-main.css?ver=6.5"
+			media="all"
+		/>
+	</head>
 
 	<body
 		class="home wp-singular page-template page-template-elementor_header_footer page page-id-899 wp-custom-logo wp-embed-responsive wp-theme-hello-elementor ehf-header ehf-footer ehf-template-hello-elementor ehf-stylesheet-hello-elementor elementor-default elementor-template-full-width elementor-kit-5 elementor-page elementor-page-899 e--ua-isTouchDevice e--ua-blink e--ua-chrome e--ua-webkit"
@@ -1638,21 +1659,21 @@
 								</style>
 								<style>
 									.globe {
-									  color: rgb(197, 163, 92);
-									  font-size: 30px;
-									  margin-left: 10px;
-									  margin-right: -26px;
-									  padding: 8px;
-									  text-decoration: none;
+										color: rgb(197, 163, 92);
+										font-size: 30px;
+										margin-left: 10px;
+										margin-right: -26px;
+										padding: 8px;
+										text-decoration: none;
 									}
 									.globe:hover {
-									  color: rgb(141, 117, 66);
-									  transition: color 0.9s ease;
+										color: rgb(141, 117, 66);
+										transition: color 0.9s ease;
 									}
 									#lang-label {
-									  color: rgb(197, 163, 92);
-									  font-size: 24px;
-									  margin-right: 50px;
+										color: rgb(197, 163, 92);
+										font-size: 24px;
+										margin-right: 50px;
 									}
 								</style>
 								<div
@@ -1925,7 +1946,7 @@
 					data-id="6acdb42"
 					data-element_type="container"
 				>
-				<div class="e-con-inner">
+					<div class="e-con-inner">
 						<div
 							class="elementor-element elementor-element-887d07e elementor-widget__width-inherit elementor-invisible elementor-widget elementor-widget-text-editor"
 							data-id="887d07e"
@@ -1952,13 +1973,15 @@
 									<span
 										class="premium-dual-header-first-span"
 										data-trans="why-clients-choose-us"
-										>Dlaczego klienci wybierają nas, a nie 
+										>Dlaczego klienci wybierają nas,
 									</span>
-										<span 
-											class="premium-dual-header-second-header"
-											data-trans="why-clients-choose-us-text">
-											zwykłe taksówki czy aplikacje przewozowe?
-										</span>
+									<span
+										class="premium-dual-header-second-header"
+										data-trans="why-clients-choose-us-text"
+									>
+										a nie zwykłe taksówki czy aplikacje
+										przewozowe?
+									</span>
 								</h2>
 							</div>
 						</div>
@@ -1976,13 +1999,29 @@
 							</div>
 						</div>
 						<div class="elementor-widget-container">
-								<p style="color: #fff; font-weight: 300; font-size: 16px; line-height: 1.6; margin-top: 20px; text-align: center;">
-									<span
-										data-trans="our-vehicles"		
-										>Nasze pojazdy to wyłącznie auta klasy premium – czyste, komfortowe i gotowe, by robić wrażenie. Zamiast prowizorycznego przejazdu otrzymujesz usługę na najwyższym poziomie – taką, jakiej oczekują Twoi klienci, partnerzy biznesowi i Ty sam. Współpraca z nami to pewność, że wszystko będzie dopięte na ostatni guzik – bez nerwów, opóźnień i kompromisów.
-									</span>
-								</p>
-							</div>
+							<p
+								style="
+									color: #fff;
+									font-weight: 300;
+									font-size: 16px;
+									line-height: 1.6;
+									margin-top: 20px;
+									text-align: center;
+								"
+							>
+								<span data-trans="our-vehicles"
+									>Nasze pojazdy to wyłącznie auta klasy
+									premium – czyste, komfortowe i gotowe, by
+									robić wrażenie. Zamiast prowizorycznego
+									przejazdu otrzymujesz usługę na najwyższym
+									poziomie – taką, jakiej oczekują Twoi
+									klienci, partnerzy biznesowi i Ty sam.
+									Współpraca z nami to pewność, że wszystko
+									będzie dopięte na ostatni guzik – bez
+									nerwów, opóźnień i kompromisów.
+								</span>
+							</p>
+						</div>
 					</div>
 					<div class="e-con-inner">
 						<div
@@ -2011,11 +2050,12 @@
 									<span
 										class="premium-dual-header-first-span"
 										data-trans="who-do-we-serve"
-										>Kogo 
+										>Kogo
 									</span>
-									<span 
+									<span
 										class="premium-dual-header-second-header"
-										data-trans="who-do-we-serve-text">
+										data-trans="who-do-we-serve-text"
+									>
 										obsługujemy?
 									</span>
 								</h2>
@@ -2335,17 +2375,18 @@
 									<h2
 										class="premium-dual-header-first-header"
 									>
-									<span
-										class="premium-dual-header-first-span"
-										data-trans="Transfers-to-and-from-the-airport"
-										>Przewozy z i 
-									</span>
-									<span 
-										class="premium-dual-header-second-header"
-										data-trans="Transfers-to-and-from-the-airport-bold">
-										na lotnisko
-									</span>
-								</h2>
+										<span
+											class="premium-dual-header-first-span"
+											data-trans="Transfers-to-and-from-the-airport"
+											>Przewozy z i
+										</span>
+										<span
+											class="premium-dual-header-second-header"
+											data-trans="Transfers-to-and-from-the-airport-bold"
+										>
+											na lotnisko
+										</span>
+									</h2>
 								</div>
 							</div>
 							<div
@@ -2401,12 +2442,15 @@
 						</div>
 					</div>
 				</div>
-                <div
+				<div
 					class="elementor-element elementor-element-7944b92 e-flex e-con-boxed e-con e-parent"
 					data-id="7944b92"
 					data-element_type="container"
 				>
-					<div class="e-con-inner" style="flex-direction: row-reverse;">
+					<div
+						class="e-con-inner"
+						style="flex-direction: row-reverse"
+					>
 						<div
 							class="elementor-element elementor-element-0ce072b e-con-full e-flex e-con e-child"
 							data-id="0ce072b"
@@ -2468,17 +2512,18 @@
 									<h2
 										class="premium-dual-header-first-header"
 									>
-									<span
-										class="premium-dual-header-first-span"
-										data-trans="Transfers-to-and-from-the-airport"
-										>Przewozy z i 
-									</span>
-									<span 
-										class="premium-dual-header-second-header"
-										data-trans="Transfers-to-and-from-the-airport-bold">
-										na lotnisko
-									</span>
-								</h2>
+										<span
+											class="premium-dual-header-first-span"
+											data-trans="Transfers-to-and-from-the-airport"
+											>Przewozy z i
+										</span>
+										<span
+											class="premium-dual-header-second-header"
+											data-trans="Transfers-to-and-from-the-airport-bold"
+										>
+											na lotnisko
+										</span>
+									</h2>
 								</div>
 							</div>
 							<div
@@ -2534,7 +2579,7 @@
 						</div>
 					</div>
 				</div>
-                <div
+				<div
 					class="elementor-element elementor-element-7944b93 e-flex e-con-boxed e-con e-parent"
 					data-id="7944b93"
 					data-element_type="container"
@@ -2601,17 +2646,18 @@
 									<h2
 										class="premium-dual-header-first-header"
 									>
-									<span
-										class="premium-dual-header-first-span"
-										data-trans="Transfers-to-and-from-the-airport"
-										>Przewozy z i 
-									</span>
-									<span 
-										class="premium-dual-header-second-header"
-										data-trans="Transfers-to-and-from-the-airport-bold">
-										na lotnisko
-									</span>
-								</h2>
+										<span
+											class="premium-dual-header-first-span"
+											data-trans="Transfers-to-and-from-the-airport"
+											>Przewozy z i
+										</span>
+										<span
+											class="premium-dual-header-second-header"
+											data-trans="Transfers-to-and-from-the-airport-bold"
+										>
+											na lotnisko
+										</span>
+									</h2>
 								</div>
 							</div>
 							<div
@@ -2667,12 +2713,15 @@
 						</div>
 					</div>
 				</div>
-                <div
+				<div
 					class="elementor-element elementor-element-7944b94 e-flex e-con-boxed e-con e-parent"
 					data-id="7944b94"
 					data-element_type="container"
 				>
-					<div class="e-con-inner" style="flex-direction: row-reverse;">
+					<div
+						class="e-con-inner"
+						style="flex-direction: row-reverse"
+					>
 						<div
 							class="elementor-element elementor-element-0ce072d e-con-full e-flex e-con e-child"
 							data-id="0ce072d"
@@ -2734,17 +2783,18 @@
 									<h2
 										class="premium-dual-header-first-header"
 									>
-									<span
-										class="premium-dual-header-first-span"
-										data-trans="Transfers-to-and-from-the-airport"
-										>Przewozy z i 
-									</span>
-									<span 
-										class="premium-dual-header-second-header"
-										data-trans="Transfers-to-and-from-the-airport-bold">
-										na lotnisko
-									</span>
-								</h2>
+										<span
+											class="premium-dual-header-first-span"
+											data-trans="Transfers-to-and-from-the-airport"
+											>Przewozy z i
+										</span>
+										<span
+											class="premium-dual-header-second-header"
+											data-trans="Transfers-to-and-from-the-airport-bold"
+										>
+											na lotnisko
+										</span>
+									</h2>
 								</div>
 							</div>
 							<div
@@ -3899,7 +3949,1979 @@
 								data-widget_type="shortcode.default"
 							>
 								<div class="elementor-widget-container">
-<div class="elementor-shortcode">        <div class="wp-gr wpac" style="--rev-color: #232323;--text-color: #ffffff;--name-color: #ffffff;--btn-color: #532cff;--head-name-color: #ffffff;" data-id="2806" data-layout="slider" data-exec="false" data-options='{"text_size":"","trans":{"read more":"czytaj wi\u0119cej"}}'><svg xmlns="http://www.w3.org/2000/svg" style="display:none"><symbol id="grw-star" viewBox="0 0 1792 1792"><path d="M1728 647q0 22-26 48l-363 354 86 500q1 7 1 20 0 21-10.5 35.5t-30.5 14.5q-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z"></path></symbol><symbol id="grw-star-h" viewBox="0 0 1792 1792"><path d="M1250 957l257-250-356-52-66-10-30-60-159-322v963l59 31 318 168-60-355-12-66zm452-262l-363 354 86 500q5 33-6 51.5t-34 18.5q-17 0-40-12l-449-236-449 236q-23 12-40 12-23 0-34-18.5t-6-51.5l86-500-364-354q-32-32-23-59.5t54-34.5l502-73 225-455q20-41 49-41 28 0 49 41l225 455 502 73q45 7 54 34.5t-24 59.5z"></path></symbol><symbol id="grw-star-o" viewBox="0 0 1792 1792"><path d="M1201 1004l306-297-422-62-189-382-189 382-422 62 306 297-73 421 378-199 377 199zm527-357q0 22-26 48l-363 354 86 500q1 7 1 20 0 50-41 50-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z" fill="#ccc"></path></symbol><symbol id="grw-tripadvisor" viewBox="0 0 713.496 713.496"><g><circle fill="#34E0A1" cx="356.749" cy="356.748" r="356.748"/><path d="M577.095,287.152l43.049-46.836h-95.465c-47.792-32.646-105.51-51.659-167.931-51.659   c-62.342,0-119.899,19.054-167.612,51.659H93.432l43.049,46.836c-26.387,24.075-42.929,58.754-42.929,97.259   c0,72.665,58.914,131.578,131.579,131.578c34.519,0,65.968-13.313,89.446-35.077l42.172,45.919l42.172-45.879   c23.478,21.764,54.887,35.037,89.406,35.037c72.665,0,131.658-58.913,131.658-131.578   C620.024,345.866,603.483,311.188,577.095,287.152z M225.17,473.458c-49.188,0-89.047-39.859-89.047-89.047   s39.86-89.048,89.047-89.048c49.187,0,89.047,39.86,89.047,89.048S274.357,473.458,225.17,473.458z M356.788,381.82   c0-58.595-42.61-108.898-98.853-130.383c30.413-12.716,63.776-19.771,98.813-19.771s68.439,7.055,98.853,19.771   C399.399,272.962,356.788,323.226,356.788,381.82z M488.367,473.458c-49.188,0-89.048-39.859-89.048-89.047   s39.86-89.048,89.048-89.048s89.047,39.86,89.047,89.048S537.554,473.458,488.367,473.458z M488.367,337.694   c-25.79,0-46.677,20.887-46.677,46.677c0,25.789,20.887,46.676,46.677,46.676c25.789,0,46.676-20.887,46.676-46.676   C535.042,358.621,514.156,337.694,488.367,337.694z M271.846,384.411c0,25.789-20.887,46.676-46.676,46.676   s-46.676-20.887-46.676-46.676c0-25.79,20.887-46.677,46.676-46.677C250.959,337.694,271.846,358.621,271.846,384.411z"/></g></symbol><symbol id="grw-google" viewBox="0 0 512 512"><g fill="none" fill-rule="evenodd"><path d="M482.56 261.36c0-16.73-1.5-32.83-4.29-48.27H256v91.29h127.01c-5.47 29.5-22.1 54.49-47.09 71.23v59.21h76.27c44.63-41.09 70.37-101.59 70.37-173.46z" fill="#4285f4"/><path d="M256 492c63.72 0 117.14-21.13 156.19-57.18l-76.27-59.21c-21.13 14.16-48.17 22.53-79.92 22.53-61.47 0-113.49-41.51-132.05-97.3H45.1v61.15c38.83 77.13 118.64 130.01 210.9 130.01z" fill="#34a853"/><path d="M123.95 300.84c-4.72-14.16-7.4-29.29-7.4-44.84s2.68-30.68 7.4-44.84V150.01H45.1C29.12 181.87 20 217.92 20 256c0 38.08 9.12 74.13 25.1 105.99l78.85-61.15z" fill="#fbbc05"/><path d="M256 113.86c34.65 0 65.76 11.91 90.22 35.29l67.69-67.69C373.03 43.39 319.61 20 256 20c-92.25 0-172.07 52.89-210.9 130.01l78.85 61.15c18.56-55.78 70.59-97.3 132.05-97.3z" fill="#ea4335"/><path d="M20 20h472v472H20V20z"/></g></symbol></svg><div class="grw-row grw-row-m" data-options='{"speed":3,"autoplay":"1","mousestop":"1","breakpoints":""}'><div class="grw-content"><div class="grw-content-inner"><div class="grw-btns grw-prev" tabindex="0"><svg viewBox="0 0 24 24" role="none"><path d="M14.6,18.4L8.3,12l6.4-6.4l0.7,0.7L9.7,12l5.6,5.6L14.6,18.4z"></path></svg></div><div class="grw-reviews" data-count="10" data-offset="10"><div class="grw-review"><div class="grw-review-inner grw-backgnd"><div class="wp-google-left"><img loading="lazy" decoding="async" src="https://viptaxipoznan.pl/wp-content/uploads/2025/10/ChIJG2ww4MB5M2wRvgaBdLz1z9A_a531ba7460282cb389feb0d4eaef06f4.jpg" loading="lazy" class="grw-review-avatar" alt="" width="50" height="50" onerror="if(this.src!='https://viptaxipoznan.pl/wp-content/plugins/widget-google-reviews/assets/img/guest.png')this.src='https://viptaxipoznan.pl/wp-content/plugins/widget-google-reviews/assets/img/guest.png';" ><a href="https://www.google.com/maps/contrib/105908460479193523502/reviews" class="wp-google-name" target="_blank" rel="nofollow noopener">Dominika B.</a><div class="wp-google-time" data-time="1758883365">10:42 26 Sep 25</div></div><div class="wp-google-stars"><span class="wp-stars"><span class="wp-star"><svg height="18" width="18" role="none"><use href="#grw-star"/></svg></span><span class="wp-star"><svg height="18" width="18" role="none"><use href="#grw-star"/></svg></span><span class="wp-star"><svg height="18" width="18" role="none"><use href="#grw-star"/></svg></span><span class="wp-star"><svg height="18" width="18" role="none"><use href="#grw-star"/></svg></span><span class="wp-star"><svg height="18" width="18" role="none"><use href="#grw-star"/></svg></span></span></div><div class="wp-google-wrap"><div class="wp-google-feedback grw-scroll" ><span class="wp-google-text">Świetna obsługa, szybki kontakt. Wszystko na czas i bezproblemowo. Gorąco polecam!</span></div></div><div class="wp-google-reply grw-scroll"><div><span class="grw-b">Odpowiedź od właściciela</span><span class="wp-google-time" data-time="1758883619">                            10:46 26 Sep 25                        </span></div>                    Pani Dominiko bardzo dziękuję za miłe słowa i polecamy się na przyszłość 😉😎🚖                </div><svg height="18" width="18" role="none"><use href="#grw-google"/></svg></div></div><div class="grw-review"><div class="grw-review-inner grw-backgnd"><div class="wp-google-left"><img loading="lazy" decoding="async" src="https://viptaxipoznan.pl/wp-content/uploads/2025/10/ChIJG2ww4MB5M2wRvgaBdLz1z9A_72c1dc0529fb73520479c64ccfea749e.jpg" loading="lazy" class="grw-review-avatar" alt="" width="50" height="50" onerror="if(this.src!='https://viptaxipoznan.pl/wp-content/plugins/widget-google-reviews/assets/img/guest.png')this.src='https://viptaxipoznan.pl/wp-content/plugins/widget-google-reviews/assets/img/guest.png';" ><a href="https://www.google.com/maps/contrib/111254855225376034126/reviews" class="wp-google-name" target="_blank" rel="nofollow noopener">Tomek P.</a><div class="wp-google-time" data-time="1753382444">18:40 24 Jul 25</div></div><div class="wp-google-stars"><span class="wp-stars"><span class="wp-star"><svg height="18" width="18" role="none"><use href="#grw-star"/></svg></span><span class="wp-star"><svg height="18" width="18" role="none"><use href="#grw-star"/></svg></span><span class="wp-star"><svg height="18" width="18" role="none"><use href="#grw-star"/></svg></span><span class="wp-star"><svg height="18" width="18" role="none"><use href="#grw-star"/></svg></span><span class="wp-star"><svg height="18" width="18" role="none"><use href="#grw-star"/></svg></span></span></div><div class="wp-google-wrap"><div class="wp-google-feedback grw-scroll" ><span class="wp-google-text">Wszystko super, bardzo dobry kontakt, transport na lotnisko jak i odbiór świetnie dograny!</span></div></div><div class="wp-google-reply grw-scroll"><div><span class="grw-b">Odpowiedź od właściciela</span><span class="wp-google-time" data-time="1753420139">                            05:08 25 Jul 25                        </span></div>                    Panie Tomku wielkie dzięki! 😎💪🚖                </div><svg height="18" width="18" role="none"><use href="#grw-google"/></svg></div></div><div class="grw-review"><div class="grw-review-inner grw-backgnd"><div class="wp-google-left"><img loading="lazy" decoding="async" src="https://viptaxipoznan.pl/wp-content/uploads/2025/10/ChIJG2ww4MB5M2wRvgaBdLz1z9A_f0504d73c7265e8a20bedb6098b839df.jpg" loading="lazy" class="grw-review-avatar" alt="" width="50" height="50" onerror="if(this.src!='https://viptaxipoznan.pl/wp-content/plugins/widget-google-reviews/assets/img/guest.png')this.src='https://viptaxipoznan.pl/wp-content/plugins/widget-google-reviews/assets/img/guest.png';" ><a href="https://www.google.com/maps/contrib/114708743203762945322/reviews" class="wp-google-name" target="_blank" rel="nofollow noopener">Kuba K.</a><div class="wp-google-time" data-time="1753162454">05:34 22 Jul 25</div></div><div class="wp-google-stars"><span class="wp-stars"><span class="wp-star"><svg height="18" width="18" role="none"><use href="#grw-star"/></svg></span><span class="wp-star"><svg height="18" width="18" role="none"><use href="#grw-star"/></svg></span><span class="wp-star"><svg height="18" width="18" role="none"><use href="#grw-star"/></svg></span><span class="wp-star"><svg height="18" width="18" role="none"><use href="#grw-star"/></svg></span><span class="wp-star"><svg height="18" width="18" role="none"><use href="#grw-star"/></svg></span></span></div><div class="wp-google-wrap"><div class="wp-google-feedback grw-scroll" ><span class="wp-google-text">Pełen profesjonalizm.  Super człowiek z humorem . Nigdy nie zostałem tak dobrze obsłużony.  Perfekto</span></div></div><div class="wp-google-reply grw-scroll"><div><span class="grw-b">Odpowiedź od właściciela</span><span class="wp-google-time" data-time="1753171339">                            08:02 22 Jul 25                        </span></div>                    Panie Jakubie wielkie dzięki. Staramy się dalej 😉😎🚖                </div><svg height="18" width="18" role="none"><use href="#grw-google"/></svg></div></div><div class="grw-review"><div class="grw-review-inner grw-backgnd"><div class="wp-google-left"><img loading="lazy" decoding="async" src="https://viptaxipoznan.pl/wp-content/uploads/2025/10/ChIJG2ww4MB5M2wRvgaBdLz1z9A_aa0b9fad7a295414865276519203e731.jpg" loading="lazy" class="grw-review-avatar" alt="" width="50" height="50" onerror="if(this.src!='https://viptaxipoznan.pl/wp-content/plugins/widget-google-reviews/assets/img/guest.png')this.src='https://viptaxipoznan.pl/wp-content/plugins/widget-google-reviews/assets/img/guest.png';" ><a href="https://www.google.com/maps/contrib/101826914560049165053/reviews" class="wp-google-name" target="_blank" rel="nofollow noopener">Michał Tomasz G.</a><div class="wp-google-time" data-time="1751184633">08:10 29 Jun 25</div></div><div class="wp-google-stars"><span class="wp-stars"><span class="wp-star"><svg height="18" width="18" role="none"><use href="#grw-star"/></svg></span><span class="wp-star"><svg height="18" width="18" role="none"><use href="#grw-star"/></svg></span><span class="wp-star"><svg height="18" width="18" role="none"><use href="#grw-star"/></svg></span><span class="wp-star"><svg height="18" width="18" role="none"><use href="#grw-star"/></svg></span><span class="wp-star"><svg height="18" width="18" role="none"><use href="#grw-star"/></svg></span></span></div><div class="wp-google-wrap"><div class="wp-google-feedback grw-scroll" ><span class="wp-google-text">Nowa, czysta, bardzo wygodna i sprawna limuzyna z pojemnym bagażnikiem. Właściciel, pan Jakub, jest uprzejmy i kulturalny, a przy tym wyrozumiały i elastyczny, bardzo miło się z nim podróżowało. Dodatkowo bardzo konkretny przy umawianou ceny, która zresztą, biorąc pod uwagę powyższe warunki jazdy, byla więcej niż bardzo korzystna. Serdecznie polecam.</span></div></div><div class="wp-google-reply grw-scroll"><div><span class="grw-b">Odpowiedź od właściciela</span><span class="wp-google-time" data-time="1751186223">                            08:37 29 Jun 25                        </span></div>                    Panie Michale bardzo dziękuję za miłe słowa. To mobilizuje i daje energię do tego żeby dalej trzymać fason 😄😎🚖💪                </div><svg height="18" width="18" role="none"><use href="#grw-google"/></svg></div></div><div class="grw-review"><div class="grw-review-inner grw-backgnd"><div class="wp-google-left"><img loading="lazy" decoding="async" src="https://viptaxipoznan.pl/wp-content/uploads/2025/10/ChIJG2ww4MB5M2wRvgaBdLz1z9A_e7b5925b26f287701e6b69e721840d96.jpg" loading="lazy" class="grw-review-avatar" alt="" width="50" height="50" onerror="if(this.src!='https://viptaxipoznan.pl/wp-content/plugins/widget-google-reviews/assets/img/guest.png')this.src='https://viptaxipoznan.pl/wp-content/plugins/widget-google-reviews/assets/img/guest.png';" ><a href="https://www.google.com/maps/contrib/105208169166924277788/reviews" class="wp-google-name" target="_blank" rel="nofollow noopener">Коля Б.</a><div class="wp-google-time" data-time="1750512172">13:22 21 Jun 25</div></div><div class="wp-google-stars"><span class="wp-stars"><span class="wp-star"><svg height="18" width="18" role="none"><use href="#grw-star"/></svg></span><span class="wp-star"><svg height="18" width="18" role="none"><use href="#grw-star"/></svg></span><span class="wp-star"><svg height="18" width="18" role="none"><use href="#grw-star"/></svg></span><span class="wp-star"><svg height="18" width="18" role="none"><use href="#grw-star"/></svg></span><span class="wp-star"><svg height="18" width="18" role="none"><use href="#grw-star"/></svg></span></span></div><div class="wp-google-wrap"><div class="wp-google-feedback grw-scroll" ></div></div><div class="wp-google-reply grw-scroll"><div><span class="grw-b">Odpowiedź od właściciela</span><span class="wp-google-time" data-time="1750512866">                            13:34 21 Jun 25                        </span></div>                    Dziękujemy 🤝                </div><svg height="18" width="18" role="none"><use href="#grw-google"/></svg></div></div><div class="grw-review"><div class="grw-review-inner grw-backgnd"><div class="wp-google-left"><img loading="lazy" decoding="async" src="https://viptaxipoznan.pl/wp-content/uploads/2025/10/ChIJG2ww4MB5M2wRvgaBdLz1z9A_2e3f92b180f17c49b22a2bf9958cd209.jpg" loading="lazy" class="grw-review-avatar" alt="" width="50" height="50" onerror="if(this.src!='https://viptaxipoznan.pl/wp-content/plugins/widget-google-reviews/assets/img/guest.png')this.src='https://viptaxipoznan.pl/wp-content/plugins/widget-google-reviews/assets/img/guest.png';" ><a href="https://www.google.com/maps/contrib/109418867187483601983/reviews" class="wp-google-name" target="_blank" rel="nofollow noopener">Justyna D.</a><div class="wp-google-time" data-time="1747437959">23:25 16 May 25</div></div><div class="wp-google-stars"><span class="wp-stars"><span class="wp-star"><svg height="18" width="18" role="none"><use href="#grw-star"/></svg></span><span class="wp-star"><svg height="18" width="18" role="none"><use href="#grw-star"/></svg></span><span class="wp-star"><svg height="18" width="18" role="none"><use href="#grw-star"/></svg></span><span class="wp-star"><svg height="18" width="18" role="none"><use href="#grw-star"/></svg></span><span class="wp-star"><svg height="18" width="18" role="none"><use href="#grw-star"/></svg></span></span></div><div class="wp-google-wrap"><div class="wp-google-feedback grw-scroll" ><span class="wp-google-text">Bardzo bardzo polecam! Grupa zaopiekowana zdalnie z imprezy firmowej, bylam pod telefonem i spodziewalam sie komplikacji zupelnie niepotrzebnie bo wszystko zadzialo sie profesjonalnie. Dziekuje bardzo!</span></div></div><div class="wp-google-reply grw-scroll"><div><span class="grw-b">Odpowiedź od właściciela</span><span class="wp-google-time" data-time="1747466533">                            07:22 17 May 25                        </span></div>                    Pani Justyno dziękujemy za miłe słowo 👍😎🚕                </div><svg height="18" width="18" role="none"><use href="#grw-google"/></svg></div></div><div class="grw-review"><div class="grw-review-inner grw-backgnd"><div class="wp-google-left"><img loading="lazy" decoding="async" src="https://viptaxipoznan.pl/wp-content/uploads/2025/10/ChIJG2ww4MB5M2wRvgaBdLz1z9A_62006c140fbb21c98b93a5da55082087.jpg" loading="lazy" class="grw-review-avatar" alt="" width="50" height="50" onerror="if(this.src!='https://viptaxipoznan.pl/wp-content/plugins/widget-google-reviews/assets/img/guest.png')this.src='https://viptaxipoznan.pl/wp-content/plugins/widget-google-reviews/assets/img/guest.png';" ><a href="https://www.google.com/maps/contrib/109762069677259596063/reviews" class="wp-google-name" target="_blank" rel="nofollow noopener">Adam K.</a><div class="wp-google-time" data-time="1737745635">19:07 24 Jan 25</div></div><div class="wp-google-stars"><span class="wp-stars"><span class="wp-star"><svg height="18" width="18" role="none"><use href="#grw-star"/></svg></span><span class="wp-star"><svg height="18" width="18" role="none"><use href="#grw-star"/></svg></span><span class="wp-star"><svg height="18" width="18" role="none"><use href="#grw-star"/></svg></span><span class="wp-star"><svg height="18" width="18" role="none"><use href="#grw-star"/></svg></span><span class="wp-star"><svg height="18" width="18" role="none"><use href="#grw-star"/></svg></span></span></div><div class="wp-google-wrap"><div class="wp-google-feedback grw-scroll" ><span class="wp-google-text">Miałem  wyznaczone   badanie  tomograficzne        zadzwoniłem    dzień  prędzej   po  taxi        wszystko  umówione  przez  sms..     wielkie  zdziwienie    kierowca  czekał  już    pred-ej      przed  czasem       to  1  plus       wszedłem  i    ogarnol  mnie  respekt   jak  p.  Celinską  w  scenie      film  …pieniadze  to nie wszystko     ..[ ,jak  w  kosciele..,,    ]..  majestatyczne   wnętrze  samochodu..      świeżo  i  czysto     pierwsza  klasa    i  dodatkowo   kierowca  mily     z  wielkim  podejściem  przychologi          kilka  zdań  i  miałem  załatwioną    podróż  powrotną      na  umówiona   orientacyjnie  godzinne..<br />W powrotnej  podróży        nawet    kierowca  myślę  że  wyczuł    że    po  badaniu   nie bardzo     miałem  co    rozmawiać  więc         znów  przychologia        delikatnie  w  tle      auta   muzyka  reakcujaca    ...   kierowca   na  wielki  plus     widać  że  lubi    i  robi  swoją  pracę      z  gracja  i  z pasją  ..    super  dzięki..</span></div></div><div class="wp-google-reply grw-scroll"><div><span class="grw-b">Odpowiedź od właściciela</span><span class="wp-google-time" data-time="1737746575">                            19:22 24 Jan 25                        </span></div>                    Panie Adamie ogromnie dziękuję za niezwykle barwną i miłą opinię 😉🙏💪                 </div><svg height="18" width="18" role="none"><use href="#grw-google"/></svg></div></div><div class="grw-review"><div class="grw-review-inner grw-backgnd"><div class="wp-google-left"><img loading="lazy" decoding="async" src="https://viptaxipoznan.pl/wp-content/uploads/2025/10/ChIJG2ww4MB5M2wRvgaBdLz1z9A_61a782577aa899255bd15dbfc365a544.jpg" loading="lazy" class="grw-review-avatar" alt="" width="50" height="50" onerror="if(this.src!='https://viptaxipoznan.pl/wp-content/plugins/widget-google-reviews/assets/img/guest.png')this.src='https://viptaxipoznan.pl/wp-content/plugins/widget-google-reviews/assets/img/guest.png';" ><a href="https://www.google.com/maps/contrib/112987651603802708772/reviews" class="wp-google-name" target="_blank" rel="nofollow noopener">Przemyslaw S.</a><div class="wp-google-time" data-time="1735711861">06:11 01 Jan 25</div></div><div class="wp-google-stars"><span class="wp-stars"><span class="wp-star"><svg height="18" width="18" role="none"><use href="#grw-star"/></svg></span><span class="wp-star"><svg height="18" width="18" role="none"><use href="#grw-star"/></svg></span><span class="wp-star"><svg height="18" width="18" role="none"><use href="#grw-star"/></svg></span><span class="wp-star"><svg height="18" width="18" role="none"><use href="#grw-star"/></svg></span><span class="wp-star"><svg height="18" width="18" role="none"><use href="#grw-star"/></svg></span></span></div><div class="wp-google-wrap"><div class="wp-google-feedback grw-scroll" ><span class="wp-google-text">Rewelacja, gorąco polecam. Taxi czekało już na nas 15min przed czasem. Cena taka jak ustalono przy zamawianiu. Bardzo kulturalny i miły kierowca.</span></div></div><div class="wp-google-reply grw-scroll"><div><span class="grw-b">Odpowiedź od właściciela</span><span class="wp-google-time" data-time="1735712568">                            06:22 01 Jan 25                        </span></div>                    Bardzo dziękuję Panie Przemku za miłe słowa. Polecamy się na przyszłość 😉                </div><svg height="18" width="18" role="none"><use href="#grw-google"/></svg></div></div><div class="grw-review"><div class="grw-review-inner grw-backgnd"><div class="wp-google-left"><img loading="lazy" decoding="async" src="https://viptaxipoznan.pl/wp-content/uploads/2025/10/ChIJG2ww4MB5M2wRvgaBdLz1z9A_716a1696453957c5f3337b121178f174.jpg" loading="lazy" class="grw-review-avatar" alt="" width="50" height="50" onerror="if(this.src!='https://viptaxipoznan.pl/wp-content/plugins/widget-google-reviews/assets/img/guest.png')this.src='https://viptaxipoznan.pl/wp-content/plugins/widget-google-reviews/assets/img/guest.png';" ><a href="https://www.google.com/maps/contrib/110738724457990188797/reviews" class="wp-google-name" target="_blank" rel="nofollow noopener">Daria K.</a><div class="wp-google-time" data-time="1729068832">08:53 16 Oct 24</div></div><div class="wp-google-stars"><span class="wp-stars"><span class="wp-star"><svg height="18" width="18" role="none"><use href="#grw-star"/></svg></span><span class="wp-star"><svg height="18" width="18" role="none"><use href="#grw-star"/></svg></span><span class="wp-star"><svg height="18" width="18" role="none"><use href="#grw-star"/></svg></span><span class="wp-star"><svg height="18" width="18" role="none"><use href="#grw-star"/></svg></span><span class="wp-star"><svg height="18" width="18" role="none"><use href="#grw-star"/></svg></span></span></div><div class="wp-google-wrap"><div class="wp-google-feedback grw-scroll" ><span class="wp-google-text">Serdecznie polecam współpracę z Panem Jakubem. Realizowaliśmy kilkanaście transferów dla ważnych gości z zagranicy i współpraca przebiegła bezbłędnie. Bezproblemowy kontakt, elastyczność i atrakcyjna cena usług. Na pewno będziemy dalej współpracować 🙂</span></div></div><div class="wp-google-reply grw-scroll"><div><span class="grw-b">Odpowiedź od właściciela</span><span class="wp-google-time" data-time="1729069606">                            09:06 16 Oct 24                        </span></div>                    Pani Dario bardzo dziękuję za miłe słowa i okazane zaufanie 👍💪                </div><svg height="18" width="18" role="none"><use href="#grw-google"/></svg></div></div><div class="grw-review"><div class="grw-review-inner grw-backgnd"><div class="wp-google-left"><img loading="lazy" decoding="async" src="https://viptaxipoznan.pl/wp-content/uploads/2025/10/ChIJG2ww4MB5M2wRvgaBdLz1z9A_d51e72c6858f45226f005ddcd2ee8b9c.jpg" loading="lazy" class="grw-review-avatar" alt="" width="50" height="50" onerror="if(this.src!='https://viptaxipoznan.pl/wp-content/plugins/widget-google-reviews/assets/img/guest.png')this.src='https://viptaxipoznan.pl/wp-content/plugins/widget-google-reviews/assets/img/guest.png';" ><a href="https://www.google.com/maps/contrib/108682105177934426419/reviews" class="wp-google-name" target="_blank" rel="nofollow noopener">Magdalena C.</a><div class="wp-google-time" data-time="1727179593">12:06 24 Sep 24</div></div><div class="wp-google-stars"><span class="wp-stars"><span class="wp-star"><svg height="18" width="18" role="none"><use href="#grw-star"/></svg></span><span class="wp-star"><svg height="18" width="18" role="none"><use href="#grw-star"/></svg></span><span class="wp-star"><svg height="18" width="18" role="none"><use href="#grw-star"/></svg></span><span class="wp-star"><svg height="18" width="18" role="none"><use href="#grw-star"/></svg></span><span class="wp-star"><svg height="18" width="18" role="none"><use href="#grw-star"/></svg></span></span></div><div class="wp-google-wrap"><div class="wp-google-feedback grw-scroll" ><span class="wp-google-text">Pełen profesjonalizm, elastyczne i życzliwe podejście, polecamy!</span></div></div><div class="wp-google-reply grw-scroll"><div><span class="grw-b">Odpowiedź od właściciela</span><span class="wp-google-time" data-time="1727181599">                            12:39 24 Sep 24                        </span></div>                    Wielkie dzięki za miłe słowo 💪🚕                </div><svg height="18" width="18" role="none"><use href="#grw-google"/></svg></div></div></div><div class="grw-btns grw-next" tabindex="0"><svg viewBox="0 0 24 24" role="none"><path d="M9.4,18.4l-0.7-0.7l5.6-5.6L8.6,6.4l0.7-0.7l6.4,6.4L9.4,18.4z"></path></svg></div><div class="rpi-dots-wrap"><div class="rpi-dots"></div></div></div></div></div><img loading="lazy" decoding="async" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" onload="(function(el, data) {var f = function() { window.grw_init ? grw_init(el, data) : setTimeout(f, 400) }; f() })(this, 'slider');" width="1" height="1" style="display:none"></div>        </div>
+									<div class="elementor-shortcode">
+										<div
+											class="wp-gr wpac"
+											style="
+												--rev-color: #232323;
+												--text-color: #ffffff;
+												--name-color: #ffffff;
+												--btn-color: #532cff;
+												--head-name-color: #ffffff;
+											"
+											data-id="2806"
+											data-layout="slider"
+											data-exec="false"
+											data-options='{"text_size":"","trans":{"read more":"czytaj wi\u0119cej"}}'
+										>
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												style="display: none"
+											>
+												<symbol
+													id="grw-star"
+													viewBox="0 0 1792 1792"
+												>
+													<path
+														d="M1728 647q0 22-26 48l-363 354 86 500q1 7 1 20 0 21-10.5 35.5t-30.5 14.5q-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z"
+													></path>
+												</symbol>
+												<symbol
+													id="grw-star-h"
+													viewBox="0 0 1792 1792"
+												>
+													<path
+														d="M1250 957l257-250-356-52-66-10-30-60-159-322v963l59 31 318 168-60-355-12-66zm452-262l-363 354 86 500q5 33-6 51.5t-34 18.5q-17 0-40-12l-449-236-449 236q-23 12-40 12-23 0-34-18.5t-6-51.5l86-500-364-354q-32-32-23-59.5t54-34.5l502-73 225-455q20-41 49-41 28 0 49 41l225 455 502 73q45 7 54 34.5t-24 59.5z"
+													></path>
+												</symbol>
+												<symbol
+													id="grw-star-o"
+													viewBox="0 0 1792 1792"
+												>
+													<path
+														d="M1201 1004l306-297-422-62-189-382-189 382-422 62 306 297-73 421 378-199 377 199zm527-357q0 22-26 48l-363 354 86 500q1 7 1 20 0 50-41 50-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z"
+														fill="#ccc"
+													></path>
+												</symbol>
+												<symbol
+													id="grw-tripadvisor"
+													viewBox="0 0 713.496 713.496"
+												>
+													<g>
+														<circle
+															fill="#34E0A1"
+															cx="356.749"
+															cy="356.748"
+															r="356.748"
+														/>
+														<path
+															d="M577.095,287.152l43.049-46.836h-95.465c-47.792-32.646-105.51-51.659-167.931-51.659   c-62.342,0-119.899,19.054-167.612,51.659H93.432l43.049,46.836c-26.387,24.075-42.929,58.754-42.929,97.259   c0,72.665,58.914,131.578,131.579,131.578c34.519,0,65.968-13.313,89.446-35.077l42.172,45.919l42.172-45.879   c23.478,21.764,54.887,35.037,89.406,35.037c72.665,0,131.658-58.913,131.658-131.578   C620.024,345.866,603.483,311.188,577.095,287.152z M225.17,473.458c-49.188,0-89.047-39.859-89.047-89.047   s39.86-89.048,89.047-89.048c49.187,0,89.047,39.86,89.047,89.048S274.357,473.458,225.17,473.458z M356.788,381.82   c0-58.595-42.61-108.898-98.853-130.383c30.413-12.716,63.776-19.771,98.813-19.771s68.439,7.055,98.853,19.771   C399.399,272.962,356.788,323.226,356.788,381.82z M488.367,473.458c-49.188,0-89.048-39.859-89.048-89.047   s39.86-89.048,89.048-89.048s89.047,39.86,89.047,89.048S537.554,473.458,488.367,473.458z M488.367,337.694   c-25.79,0-46.677,20.887-46.677,46.677c0,25.789,20.887,46.676,46.677,46.676c25.789,0,46.676-20.887,46.676-46.676   C535.042,358.621,514.156,337.694,488.367,337.694z M271.846,384.411c0,25.789-20.887,46.676-46.676,46.676   s-46.676-20.887-46.676-46.676c0-25.79,20.887-46.677,46.676-46.677C250.959,337.694,271.846,358.621,271.846,384.411z"
+														/>
+													</g>
+												</symbol>
+												<symbol
+													id="grw-google"
+													viewBox="0 0 512 512"
+												>
+													<g
+														fill="none"
+														fill-rule="evenodd"
+													>
+														<path
+															d="M482.56 261.36c0-16.73-1.5-32.83-4.29-48.27H256v91.29h127.01c-5.47 29.5-22.1 54.49-47.09 71.23v59.21h76.27c44.63-41.09 70.37-101.59 70.37-173.46z"
+															fill="#4285f4"
+														/>
+														<path
+															d="M256 492c63.72 0 117.14-21.13 156.19-57.18l-76.27-59.21c-21.13 14.16-48.17 22.53-79.92 22.53-61.47 0-113.49-41.51-132.05-97.3H45.1v61.15c38.83 77.13 118.64 130.01 210.9 130.01z"
+															fill="#34a853"
+														/>
+														<path
+															d="M123.95 300.84c-4.72-14.16-7.4-29.29-7.4-44.84s2.68-30.68 7.4-44.84V150.01H45.1C29.12 181.87 20 217.92 20 256c0 38.08 9.12 74.13 25.1 105.99l78.85-61.15z"
+															fill="#fbbc05"
+														/>
+														<path
+															d="M256 113.86c34.65 0 65.76 11.91 90.22 35.29l67.69-67.69C373.03 43.39 319.61 20 256 20c-92.25 0-172.07 52.89-210.9 130.01l78.85 61.15c18.56-55.78 70.59-97.3 132.05-97.3z"
+															fill="#ea4335"
+														/>
+														<path
+															d="M20 20h472v472H20V20z"
+														/>
+													</g>
+												</symbol>
+											</svg>
+											<div
+												class="grw-row grw-row-m"
+												data-options='{"speed":3,"autoplay":"1","mousestop":"1","breakpoints":""}'
+											>
+												<div class="grw-content">
+													<div
+														class="grw-content-inner"
+													>
+														<div
+															class="grw-btns grw-prev"
+															tabindex="0"
+														>
+															<svg
+																viewBox="0 0 24 24"
+																role="none"
+															>
+																<path
+																	d="M14.6,18.4L8.3,12l6.4-6.4l0.7,0.7L9.7,12l5.6,5.6L14.6,18.4z"
+																></path>
+															</svg>
+														</div>
+														<div
+															class="grw-reviews"
+															data-count="10"
+															data-offset="10"
+														>
+															<div
+																class="grw-review"
+															>
+																<div
+																	class="grw-review-inner grw-backgnd"
+																>
+																	<div
+																		class="wp-google-left"
+																	>
+																		<img
+																			loading="lazy"
+																			decoding="async"
+																			src="https://viptaxipoznan.pl/wp-content/uploads/2025/10/ChIJG2ww4MB5M2wRvgaBdLz1z9A_a531ba7460282cb389feb0d4eaef06f4.jpg"
+																			loading="lazy"
+																			class="grw-review-avatar"
+																			alt=""
+																			width="50"
+																			height="50"
+																			onerror="
+																				if (
+																					this
+																						.src !=
+																					'https://viptaxipoznan.pl/wp-content/plugins/widget-google-reviews/assets/img/guest.png'
+																				)
+																					this.src =
+																						'https://viptaxipoznan.pl/wp-content/plugins/widget-google-reviews/assets/img/guest.png';
+																			"
+																		/><a
+																			href="https://www.google.com/maps/contrib/105908460479193523502/reviews"
+																			class="wp-google-name"
+																			target="_blank"
+																			rel="nofollow noopener"
+																			>Dominika
+																			B.</a
+																		>
+																		<div
+																			class="wp-google-time"
+																			data-time="1758883365"
+																		>
+																			10:42
+																			26
+																			Sep
+																			25
+																		</div>
+																	</div>
+																	<div
+																		class="wp-google-stars"
+																	>
+																		<span
+																			class="wp-stars"
+																			><span
+																				class="wp-star"
+																				><svg
+																					height="18"
+																					width="18"
+																					role="none"
+																				>
+																					<use
+																						href="#grw-star"
+																					/></svg></span
+																			><span
+																				class="wp-star"
+																				><svg
+																					height="18"
+																					width="18"
+																					role="none"
+																				>
+																					<use
+																						href="#grw-star"
+																					/></svg></span
+																			><span
+																				class="wp-star"
+																				><svg
+																					height="18"
+																					width="18"
+																					role="none"
+																				>
+																					<use
+																						href="#grw-star"
+																					/></svg></span
+																			><span
+																				class="wp-star"
+																				><svg
+																					height="18"
+																					width="18"
+																					role="none"
+																				>
+																					<use
+																						href="#grw-star"
+																					/></svg></span
+																			><span
+																				class="wp-star"
+																				><svg
+																					height="18"
+																					width="18"
+																					role="none"
+																				>
+																					<use
+																						href="#grw-star"
+																					/></svg></span
+																		></span>
+																	</div>
+																	<div
+																		class="wp-google-wrap"
+																	>
+																		<div
+																			class="wp-google-feedback grw-scroll"
+																		>
+																			<span
+																				class="wp-google-text"
+																				>Świetna
+																				obsługa,
+																				szybki
+																				kontakt.
+																				Wszystko
+																				na
+																				czas
+																				i
+																				bezproblemowo.
+																				Gorąco
+																				polecam!</span
+																			>
+																		</div>
+																	</div>
+																	<div
+																		class="wp-google-reply grw-scroll"
+																	>
+																		<div>
+																			<span
+																				class="grw-b"
+																				>Odpowiedź
+																				od
+																				właściciela</span
+																			><span
+																				class="wp-google-time"
+																				data-time="1758883619"
+																			>
+																				10:46
+																				26
+																				Sep
+																				25
+																			</span>
+																		</div>
+																		Pani
+																		Dominiko
+																		bardzo
+																		dziękuję
+																		za miłe
+																		słowa i
+																		polecamy
+																		się na
+																		przyszłość
+																		😉😎🚖
+																	</div>
+																	<svg
+																		height="18"
+																		width="18"
+																		role="none"
+																	>
+																		<use
+																			href="#grw-google"
+																		/>
+																	</svg>
+																</div>
+															</div>
+															<div
+																class="grw-review"
+															>
+																<div
+																	class="grw-review-inner grw-backgnd"
+																>
+																	<div
+																		class="wp-google-left"
+																	>
+																		<img
+																			loading="lazy"
+																			decoding="async"
+																			src="https://viptaxipoznan.pl/wp-content/uploads/2025/10/ChIJG2ww4MB5M2wRvgaBdLz1z9A_72c1dc0529fb73520479c64ccfea749e.jpg"
+																			loading="lazy"
+																			class="grw-review-avatar"
+																			alt=""
+																			width="50"
+																			height="50"
+																			onerror="
+																				if (
+																					this
+																						.src !=
+																					'https://viptaxipoznan.pl/wp-content/plugins/widget-google-reviews/assets/img/guest.png'
+																				)
+																					this.src =
+																						'https://viptaxipoznan.pl/wp-content/plugins/widget-google-reviews/assets/img/guest.png';
+																			"
+																		/><a
+																			href="https://www.google.com/maps/contrib/111254855225376034126/reviews"
+																			class="wp-google-name"
+																			target="_blank"
+																			rel="nofollow noopener"
+																			>Tomek
+																			P.</a
+																		>
+																		<div
+																			class="wp-google-time"
+																			data-time="1753382444"
+																		>
+																			18:40
+																			24
+																			Jul
+																			25
+																		</div>
+																	</div>
+																	<div
+																		class="wp-google-stars"
+																	>
+																		<span
+																			class="wp-stars"
+																			><span
+																				class="wp-star"
+																				><svg
+																					height="18"
+																					width="18"
+																					role="none"
+																				>
+																					<use
+																						href="#grw-star"
+																					/></svg></span
+																			><span
+																				class="wp-star"
+																				><svg
+																					height="18"
+																					width="18"
+																					role="none"
+																				>
+																					<use
+																						href="#grw-star"
+																					/></svg></span
+																			><span
+																				class="wp-star"
+																				><svg
+																					height="18"
+																					width="18"
+																					role="none"
+																				>
+																					<use
+																						href="#grw-star"
+																					/></svg></span
+																			><span
+																				class="wp-star"
+																				><svg
+																					height="18"
+																					width="18"
+																					role="none"
+																				>
+																					<use
+																						href="#grw-star"
+																					/></svg></span
+																			><span
+																				class="wp-star"
+																				><svg
+																					height="18"
+																					width="18"
+																					role="none"
+																				>
+																					<use
+																						href="#grw-star"
+																					/></svg></span
+																		></span>
+																	</div>
+																	<div
+																		class="wp-google-wrap"
+																	>
+																		<div
+																			class="wp-google-feedback grw-scroll"
+																		>
+																			<span
+																				class="wp-google-text"
+																				>Wszystko
+																				super,
+																				bardzo
+																				dobry
+																				kontakt,
+																				transport
+																				na
+																				lotnisko
+																				jak
+																				i
+																				odbiór
+																				świetnie
+																				dograny!</span
+																			>
+																		</div>
+																	</div>
+																	<div
+																		class="wp-google-reply grw-scroll"
+																	>
+																		<div>
+																			<span
+																				class="grw-b"
+																				>Odpowiedź
+																				od
+																				właściciela</span
+																			><span
+																				class="wp-google-time"
+																				data-time="1753420139"
+																			>
+																				05:08
+																				25
+																				Jul
+																				25
+																			</span>
+																		</div>
+																		Panie
+																		Tomku
+																		wielkie
+																		dzięki!
+																		😎💪🚖
+																	</div>
+																	<svg
+																		height="18"
+																		width="18"
+																		role="none"
+																	>
+																		<use
+																			href="#grw-google"
+																		/>
+																	</svg>
+																</div>
+															</div>
+															<div
+																class="grw-review"
+															>
+																<div
+																	class="grw-review-inner grw-backgnd"
+																>
+																	<div
+																		class="wp-google-left"
+																	>
+																		<img
+																			loading="lazy"
+																			decoding="async"
+																			src="https://viptaxipoznan.pl/wp-content/uploads/2025/10/ChIJG2ww4MB5M2wRvgaBdLz1z9A_f0504d73c7265e8a20bedb6098b839df.jpg"
+																			loading="lazy"
+																			class="grw-review-avatar"
+																			alt=""
+																			width="50"
+																			height="50"
+																			onerror="
+																				if (
+																					this
+																						.src !=
+																					'https://viptaxipoznan.pl/wp-content/plugins/widget-google-reviews/assets/img/guest.png'
+																				)
+																					this.src =
+																						'https://viptaxipoznan.pl/wp-content/plugins/widget-google-reviews/assets/img/guest.png';
+																			"
+																		/><a
+																			href="https://www.google.com/maps/contrib/114708743203762945322/reviews"
+																			class="wp-google-name"
+																			target="_blank"
+																			rel="nofollow noopener"
+																			>Kuba
+																			K.</a
+																		>
+																		<div
+																			class="wp-google-time"
+																			data-time="1753162454"
+																		>
+																			05:34
+																			22
+																			Jul
+																			25
+																		</div>
+																	</div>
+																	<div
+																		class="wp-google-stars"
+																	>
+																		<span
+																			class="wp-stars"
+																			><span
+																				class="wp-star"
+																				><svg
+																					height="18"
+																					width="18"
+																					role="none"
+																				>
+																					<use
+																						href="#grw-star"
+																					/></svg></span
+																			><span
+																				class="wp-star"
+																				><svg
+																					height="18"
+																					width="18"
+																					role="none"
+																				>
+																					<use
+																						href="#grw-star"
+																					/></svg></span
+																			><span
+																				class="wp-star"
+																				><svg
+																					height="18"
+																					width="18"
+																					role="none"
+																				>
+																					<use
+																						href="#grw-star"
+																					/></svg></span
+																			><span
+																				class="wp-star"
+																				><svg
+																					height="18"
+																					width="18"
+																					role="none"
+																				>
+																					<use
+																						href="#grw-star"
+																					/></svg></span
+																			><span
+																				class="wp-star"
+																				><svg
+																					height="18"
+																					width="18"
+																					role="none"
+																				>
+																					<use
+																						href="#grw-star"
+																					/></svg></span
+																		></span>
+																	</div>
+																	<div
+																		class="wp-google-wrap"
+																	>
+																		<div
+																			class="wp-google-feedback grw-scroll"
+																		>
+																			<span
+																				class="wp-google-text"
+																				>Pełen
+																				profesjonalizm.
+																				Super
+																				człowiek
+																				z
+																				humorem
+																				.
+																				Nigdy
+																				nie
+																				zostałem
+																				tak
+																				dobrze
+																				obsłużony.
+																				Perfekto</span
+																			>
+																		</div>
+																	</div>
+																	<div
+																		class="wp-google-reply grw-scroll"
+																	>
+																		<div>
+																			<span
+																				class="grw-b"
+																				>Odpowiedź
+																				od
+																				właściciela</span
+																			><span
+																				class="wp-google-time"
+																				data-time="1753171339"
+																			>
+																				08:02
+																				22
+																				Jul
+																				25
+																			</span>
+																		</div>
+																		Panie
+																		Jakubie
+																		wielkie
+																		dzięki.
+																		Staramy
+																		się
+																		dalej
+																		😉😎🚖
+																	</div>
+																	<svg
+																		height="18"
+																		width="18"
+																		role="none"
+																	>
+																		<use
+																			href="#grw-google"
+																		/>
+																	</svg>
+																</div>
+															</div>
+															<div
+																class="grw-review"
+															>
+																<div
+																	class="grw-review-inner grw-backgnd"
+																>
+																	<div
+																		class="wp-google-left"
+																	>
+																		<img
+																			loading="lazy"
+																			decoding="async"
+																			src="https://viptaxipoznan.pl/wp-content/uploads/2025/10/ChIJG2ww4MB5M2wRvgaBdLz1z9A_aa0b9fad7a295414865276519203e731.jpg"
+																			loading="lazy"
+																			class="grw-review-avatar"
+																			alt=""
+																			width="50"
+																			height="50"
+																			onerror="
+																				if (
+																					this
+																						.src !=
+																					'https://viptaxipoznan.pl/wp-content/plugins/widget-google-reviews/assets/img/guest.png'
+																				)
+																					this.src =
+																						'https://viptaxipoznan.pl/wp-content/plugins/widget-google-reviews/assets/img/guest.png';
+																			"
+																		/><a
+																			href="https://www.google.com/maps/contrib/101826914560049165053/reviews"
+																			class="wp-google-name"
+																			target="_blank"
+																			rel="nofollow noopener"
+																			>Michał
+																			Tomasz
+																			G.</a
+																		>
+																		<div
+																			class="wp-google-time"
+																			data-time="1751184633"
+																		>
+																			08:10
+																			29
+																			Jun
+																			25
+																		</div>
+																	</div>
+																	<div
+																		class="wp-google-stars"
+																	>
+																		<span
+																			class="wp-stars"
+																			><span
+																				class="wp-star"
+																				><svg
+																					height="18"
+																					width="18"
+																					role="none"
+																				>
+																					<use
+																						href="#grw-star"
+																					/></svg></span
+																			><span
+																				class="wp-star"
+																				><svg
+																					height="18"
+																					width="18"
+																					role="none"
+																				>
+																					<use
+																						href="#grw-star"
+																					/></svg></span
+																			><span
+																				class="wp-star"
+																				><svg
+																					height="18"
+																					width="18"
+																					role="none"
+																				>
+																					<use
+																						href="#grw-star"
+																					/></svg></span
+																			><span
+																				class="wp-star"
+																				><svg
+																					height="18"
+																					width="18"
+																					role="none"
+																				>
+																					<use
+																						href="#grw-star"
+																					/></svg></span
+																			><span
+																				class="wp-star"
+																				><svg
+																					height="18"
+																					width="18"
+																					role="none"
+																				>
+																					<use
+																						href="#grw-star"
+																					/></svg></span
+																		></span>
+																	</div>
+																	<div
+																		class="wp-google-wrap"
+																	>
+																		<div
+																			class="wp-google-feedback grw-scroll"
+																		>
+																			<span
+																				class="wp-google-text"
+																				>Nowa,
+																				czysta,
+																				bardzo
+																				wygodna
+																				i
+																				sprawna
+																				limuzyna
+																				z
+																				pojemnym
+																				bagażnikiem.
+																				Właściciel,
+																				pan
+																				Jakub,
+																				jest
+																				uprzejmy
+																				i
+																				kulturalny,
+																				a
+																				przy
+																				tym
+																				wyrozumiały
+																				i
+																				elastyczny,
+																				bardzo
+																				miło
+																				się
+																				z
+																				nim
+																				podróżowało.
+																				Dodatkowo
+																				bardzo
+																				konkretny
+																				przy
+																				umawianou
+																				ceny,
+																				która
+																				zresztą,
+																				biorąc
+																				pod
+																				uwagę
+																				powyższe
+																				warunki
+																				jazdy,
+																				byla
+																				więcej
+																				niż
+																				bardzo
+																				korzystna.
+																				Serdecznie
+																				polecam.</span
+																			>
+																		</div>
+																	</div>
+																	<div
+																		class="wp-google-reply grw-scroll"
+																	>
+																		<div>
+																			<span
+																				class="grw-b"
+																				>Odpowiedź
+																				od
+																				właściciela</span
+																			><span
+																				class="wp-google-time"
+																				data-time="1751186223"
+																			>
+																				08:37
+																				29
+																				Jun
+																				25
+																			</span>
+																		</div>
+																		Panie
+																		Michale
+																		bardzo
+																		dziękuję
+																		za miłe
+																		słowa.
+																		To
+																		mobilizuje
+																		i daje
+																		energię
+																		do tego
+																		żeby
+																		dalej
+																		trzymać
+																		fason
+																		😄😎🚖💪
+																	</div>
+																	<svg
+																		height="18"
+																		width="18"
+																		role="none"
+																	>
+																		<use
+																			href="#grw-google"
+																		/>
+																	</svg>
+																</div>
+															</div>
+															<div
+																class="grw-review"
+															>
+																<div
+																	class="grw-review-inner grw-backgnd"
+																>
+																	<div
+																		class="wp-google-left"
+																	>
+																		<img
+																			loading="lazy"
+																			decoding="async"
+																			src="https://viptaxipoznan.pl/wp-content/uploads/2025/10/ChIJG2ww4MB5M2wRvgaBdLz1z9A_e7b5925b26f287701e6b69e721840d96.jpg"
+																			loading="lazy"
+																			class="grw-review-avatar"
+																			alt=""
+																			width="50"
+																			height="50"
+																			onerror="
+																				if (
+																					this
+																						.src !=
+																					'https://viptaxipoznan.pl/wp-content/plugins/widget-google-reviews/assets/img/guest.png'
+																				)
+																					this.src =
+																						'https://viptaxipoznan.pl/wp-content/plugins/widget-google-reviews/assets/img/guest.png';
+																			"
+																		/><a
+																			href="https://www.google.com/maps/contrib/105208169166924277788/reviews"
+																			class="wp-google-name"
+																			target="_blank"
+																			rel="nofollow noopener"
+																			>Коля
+																			Б.</a
+																		>
+																		<div
+																			class="wp-google-time"
+																			data-time="1750512172"
+																		>
+																			13:22
+																			21
+																			Jun
+																			25
+																		</div>
+																	</div>
+																	<div
+																		class="wp-google-stars"
+																	>
+																		<span
+																			class="wp-stars"
+																			><span
+																				class="wp-star"
+																				><svg
+																					height="18"
+																					width="18"
+																					role="none"
+																				>
+																					<use
+																						href="#grw-star"
+																					/></svg></span
+																			><span
+																				class="wp-star"
+																				><svg
+																					height="18"
+																					width="18"
+																					role="none"
+																				>
+																					<use
+																						href="#grw-star"
+																					/></svg></span
+																			><span
+																				class="wp-star"
+																				><svg
+																					height="18"
+																					width="18"
+																					role="none"
+																				>
+																					<use
+																						href="#grw-star"
+																					/></svg></span
+																			><span
+																				class="wp-star"
+																				><svg
+																					height="18"
+																					width="18"
+																					role="none"
+																				>
+																					<use
+																						href="#grw-star"
+																					/></svg></span
+																			><span
+																				class="wp-star"
+																				><svg
+																					height="18"
+																					width="18"
+																					role="none"
+																				>
+																					<use
+																						href="#grw-star"
+																					/></svg></span
+																		></span>
+																	</div>
+																	<div
+																		class="wp-google-wrap"
+																	>
+																		<div
+																			class="wp-google-feedback grw-scroll"
+																		></div>
+																	</div>
+																	<div
+																		class="wp-google-reply grw-scroll"
+																	>
+																		<div>
+																			<span
+																				class="grw-b"
+																				>Odpowiedź
+																				od
+																				właściciela</span
+																			><span
+																				class="wp-google-time"
+																				data-time="1750512866"
+																			>
+																				13:34
+																				21
+																				Jun
+																				25
+																			</span>
+																		</div>
+																		Dziękujemy
+																		🤝
+																	</div>
+																	<svg
+																		height="18"
+																		width="18"
+																		role="none"
+																	>
+																		<use
+																			href="#grw-google"
+																		/>
+																	</svg>
+																</div>
+															</div>
+															<div
+																class="grw-review"
+															>
+																<div
+																	class="grw-review-inner grw-backgnd"
+																>
+																	<div
+																		class="wp-google-left"
+																	>
+																		<img
+																			loading="lazy"
+																			decoding="async"
+																			src="https://viptaxipoznan.pl/wp-content/uploads/2025/10/ChIJG2ww4MB5M2wRvgaBdLz1z9A_2e3f92b180f17c49b22a2bf9958cd209.jpg"
+																			loading="lazy"
+																			class="grw-review-avatar"
+																			alt=""
+																			width="50"
+																			height="50"
+																			onerror="
+																				if (
+																					this
+																						.src !=
+																					'https://viptaxipoznan.pl/wp-content/plugins/widget-google-reviews/assets/img/guest.png'
+																				)
+																					this.src =
+																						'https://viptaxipoznan.pl/wp-content/plugins/widget-google-reviews/assets/img/guest.png';
+																			"
+																		/><a
+																			href="https://www.google.com/maps/contrib/109418867187483601983/reviews"
+																			class="wp-google-name"
+																			target="_blank"
+																			rel="nofollow noopener"
+																			>Justyna
+																			D.</a
+																		>
+																		<div
+																			class="wp-google-time"
+																			data-time="1747437959"
+																		>
+																			23:25
+																			16
+																			May
+																			25
+																		</div>
+																	</div>
+																	<div
+																		class="wp-google-stars"
+																	>
+																		<span
+																			class="wp-stars"
+																			><span
+																				class="wp-star"
+																				><svg
+																					height="18"
+																					width="18"
+																					role="none"
+																				>
+																					<use
+																						href="#grw-star"
+																					/></svg></span
+																			><span
+																				class="wp-star"
+																				><svg
+																					height="18"
+																					width="18"
+																					role="none"
+																				>
+																					<use
+																						href="#grw-star"
+																					/></svg></span
+																			><span
+																				class="wp-star"
+																				><svg
+																					height="18"
+																					width="18"
+																					role="none"
+																				>
+																					<use
+																						href="#grw-star"
+																					/></svg></span
+																			><span
+																				class="wp-star"
+																				><svg
+																					height="18"
+																					width="18"
+																					role="none"
+																				>
+																					<use
+																						href="#grw-star"
+																					/></svg></span
+																			><span
+																				class="wp-star"
+																				><svg
+																					height="18"
+																					width="18"
+																					role="none"
+																				>
+																					<use
+																						href="#grw-star"
+																					/></svg></span
+																		></span>
+																	</div>
+																	<div
+																		class="wp-google-wrap"
+																	>
+																		<div
+																			class="wp-google-feedback grw-scroll"
+																		>
+																			<span
+																				class="wp-google-text"
+																				>Bardzo
+																				bardzo
+																				polecam!
+																				Grupa
+																				zaopiekowana
+																				zdalnie
+																				z
+																				imprezy
+																				firmowej,
+																				bylam
+																				pod
+																				telefonem
+																				i
+																				spodziewalam
+																				sie
+																				komplikacji
+																				zupelnie
+																				niepotrzebnie
+																				bo
+																				wszystko
+																				zadzialo
+																				sie
+																				profesjonalnie.
+																				Dziekuje
+																				bardzo!</span
+																			>
+																		</div>
+																	</div>
+																	<div
+																		class="wp-google-reply grw-scroll"
+																	>
+																		<div>
+																			<span
+																				class="grw-b"
+																				>Odpowiedź
+																				od
+																				właściciela</span
+																			><span
+																				class="wp-google-time"
+																				data-time="1747466533"
+																			>
+																				07:22
+																				17
+																				May
+																				25
+																			</span>
+																		</div>
+																		Pani
+																		Justyno
+																		dziękujemy
+																		za miłe
+																		słowo
+																		👍😎🚕
+																	</div>
+																	<svg
+																		height="18"
+																		width="18"
+																		role="none"
+																	>
+																		<use
+																			href="#grw-google"
+																		/>
+																	</svg>
+																</div>
+															</div>
+															<div
+																class="grw-review"
+															>
+																<div
+																	class="grw-review-inner grw-backgnd"
+																>
+																	<div
+																		class="wp-google-left"
+																	>
+																		<img
+																			loading="lazy"
+																			decoding="async"
+																			src="https://viptaxipoznan.pl/wp-content/uploads/2025/10/ChIJG2ww4MB5M2wRvgaBdLz1z9A_62006c140fbb21c98b93a5da55082087.jpg"
+																			loading="lazy"
+																			class="grw-review-avatar"
+																			alt=""
+																			width="50"
+																			height="50"
+																			onerror="
+																				if (
+																					this
+																						.src !=
+																					'https://viptaxipoznan.pl/wp-content/plugins/widget-google-reviews/assets/img/guest.png'
+																				)
+																					this.src =
+																						'https://viptaxipoznan.pl/wp-content/plugins/widget-google-reviews/assets/img/guest.png';
+																			"
+																		/><a
+																			href="https://www.google.com/maps/contrib/109762069677259596063/reviews"
+																			class="wp-google-name"
+																			target="_blank"
+																			rel="nofollow noopener"
+																			>Adam
+																			K.</a
+																		>
+																		<div
+																			class="wp-google-time"
+																			data-time="1737745635"
+																		>
+																			19:07
+																			24
+																			Jan
+																			25
+																		</div>
+																	</div>
+																	<div
+																		class="wp-google-stars"
+																	>
+																		<span
+																			class="wp-stars"
+																			><span
+																				class="wp-star"
+																				><svg
+																					height="18"
+																					width="18"
+																					role="none"
+																				>
+																					<use
+																						href="#grw-star"
+																					/></svg></span
+																			><span
+																				class="wp-star"
+																				><svg
+																					height="18"
+																					width="18"
+																					role="none"
+																				>
+																					<use
+																						href="#grw-star"
+																					/></svg></span
+																			><span
+																				class="wp-star"
+																				><svg
+																					height="18"
+																					width="18"
+																					role="none"
+																				>
+																					<use
+																						href="#grw-star"
+																					/></svg></span
+																			><span
+																				class="wp-star"
+																				><svg
+																					height="18"
+																					width="18"
+																					role="none"
+																				>
+																					<use
+																						href="#grw-star"
+																					/></svg></span
+																			><span
+																				class="wp-star"
+																				><svg
+																					height="18"
+																					width="18"
+																					role="none"
+																				>
+																					<use
+																						href="#grw-star"
+																					/></svg></span
+																		></span>
+																	</div>
+																	<div
+																		class="wp-google-wrap"
+																	>
+																		<div
+																			class="wp-google-feedback grw-scroll"
+																		>
+																			<span
+																				class="wp-google-text"
+																				>Miałem
+																				wyznaczone
+																				badanie
+																				tomograficzne
+																				zadzwoniłem
+																				dzień
+																				prędzej
+																				po
+																				taxi
+																				wszystko
+																				umówione
+																				przez
+																				sms..
+																				wielkie
+																				zdziwienie
+																				kierowca
+																				czekał
+																				już
+																				pred-ej
+																				przed
+																				czasem
+																				to
+																				1
+																				plus
+																				wszedłem
+																				i
+																				ogarnol
+																				mnie
+																				respekt
+																				jak
+																				p.
+																				Celinską
+																				w
+																				scenie
+																				film
+																				…pieniadze
+																				to
+																				nie
+																				wszystko
+																				..[
+																				,jak
+																				w
+																				kosciele..,,
+																				]..
+																				majestatyczne
+																				wnętrze
+																				samochodu..
+																				świeżo
+																				i
+																				czysto
+																				pierwsza
+																				klasa
+																				i
+																				dodatkowo
+																				kierowca
+																				mily
+																				z
+																				wielkim
+																				podejściem
+																				przychologi
+																				kilka
+																				zdań
+																				i
+																				miałem
+																				załatwioną
+																				podróż
+																				powrotną
+																				na
+																				umówiona
+																				orientacyjnie
+																				godzinne..<br />W
+																				powrotnej
+																				podróży
+																				nawet
+																				kierowca
+																				myślę
+																				że
+																				wyczuł
+																				że
+																				po
+																				badaniu
+																				nie
+																				bardzo
+																				miałem
+																				co
+																				rozmawiać
+																				więc
+																				znów
+																				przychologia
+																				delikatnie
+																				w
+																				tle
+																				auta
+																				muzyka
+																				reakcujaca
+																				...
+																				kierowca
+																				na
+																				wielki
+																				plus
+																				widać
+																				że
+																				lubi
+																				i
+																				robi
+																				swoją
+																				pracę
+																				z
+																				gracja
+																				i
+																				z
+																				pasją
+																				..
+																				super
+																				dzięki..</span
+																			>
+																		</div>
+																	</div>
+																	<div
+																		class="wp-google-reply grw-scroll"
+																	>
+																		<div>
+																			<span
+																				class="grw-b"
+																				>Odpowiedź
+																				od
+																				właściciela</span
+																			><span
+																				class="wp-google-time"
+																				data-time="1737746575"
+																			>
+																				19:22
+																				24
+																				Jan
+																				25
+																			</span>
+																		</div>
+																		Panie
+																		Adamie
+																		ogromnie
+																		dziękuję
+																		za
+																		niezwykle
+																		barwną i
+																		miłą
+																		opinię
+																		😉🙏💪
+																	</div>
+																	<svg
+																		height="18"
+																		width="18"
+																		role="none"
+																	>
+																		<use
+																			href="#grw-google"
+																		/>
+																	</svg>
+																</div>
+															</div>
+															<div
+																class="grw-review"
+															>
+																<div
+																	class="grw-review-inner grw-backgnd"
+																>
+																	<div
+																		class="wp-google-left"
+																	>
+																		<img
+																			loading="lazy"
+																			decoding="async"
+																			src="https://viptaxipoznan.pl/wp-content/uploads/2025/10/ChIJG2ww4MB5M2wRvgaBdLz1z9A_61a782577aa899255bd15dbfc365a544.jpg"
+																			loading="lazy"
+																			class="grw-review-avatar"
+																			alt=""
+																			width="50"
+																			height="50"
+																			onerror="
+																				if (
+																					this
+																						.src !=
+																					'https://viptaxipoznan.pl/wp-content/plugins/widget-google-reviews/assets/img/guest.png'
+																				)
+																					this.src =
+																						'https://viptaxipoznan.pl/wp-content/plugins/widget-google-reviews/assets/img/guest.png';
+																			"
+																		/><a
+																			href="https://www.google.com/maps/contrib/112987651603802708772/reviews"
+																			class="wp-google-name"
+																			target="_blank"
+																			rel="nofollow noopener"
+																			>Przemyslaw
+																			S.</a
+																		>
+																		<div
+																			class="wp-google-time"
+																			data-time="1735711861"
+																		>
+																			06:11
+																			01
+																			Jan
+																			25
+																		</div>
+																	</div>
+																	<div
+																		class="wp-google-stars"
+																	>
+																		<span
+																			class="wp-stars"
+																			><span
+																				class="wp-star"
+																				><svg
+																					height="18"
+																					width="18"
+																					role="none"
+																				>
+																					<use
+																						href="#grw-star"
+																					/></svg></span
+																			><span
+																				class="wp-star"
+																				><svg
+																					height="18"
+																					width="18"
+																					role="none"
+																				>
+																					<use
+																						href="#grw-star"
+																					/></svg></span
+																			><span
+																				class="wp-star"
+																				><svg
+																					height="18"
+																					width="18"
+																					role="none"
+																				>
+																					<use
+																						href="#grw-star"
+																					/></svg></span
+																			><span
+																				class="wp-star"
+																				><svg
+																					height="18"
+																					width="18"
+																					role="none"
+																				>
+																					<use
+																						href="#grw-star"
+																					/></svg></span
+																			><span
+																				class="wp-star"
+																				><svg
+																					height="18"
+																					width="18"
+																					role="none"
+																				>
+																					<use
+																						href="#grw-star"
+																					/></svg></span
+																		></span>
+																	</div>
+																	<div
+																		class="wp-google-wrap"
+																	>
+																		<div
+																			class="wp-google-feedback grw-scroll"
+																		>
+																			<span
+																				class="wp-google-text"
+																				>Rewelacja,
+																				gorąco
+																				polecam.
+																				Taxi
+																				czekało
+																				już
+																				na
+																				nas
+																				15min
+																				przed
+																				czasem.
+																				Cena
+																				taka
+																				jak
+																				ustalono
+																				przy
+																				zamawianiu.
+																				Bardzo
+																				kulturalny
+																				i
+																				miły
+																				kierowca.</span
+																			>
+																		</div>
+																	</div>
+																	<div
+																		class="wp-google-reply grw-scroll"
+																	>
+																		<div>
+																			<span
+																				class="grw-b"
+																				>Odpowiedź
+																				od
+																				właściciela</span
+																			><span
+																				class="wp-google-time"
+																				data-time="1735712568"
+																			>
+																				06:22
+																				01
+																				Jan
+																				25
+																			</span>
+																		</div>
+																		Bardzo
+																		dziękuję
+																		Panie
+																		Przemku
+																		za miłe
+																		słowa.
+																		Polecamy
+																		się na
+																		przyszłość
+																		😉
+																	</div>
+																	<svg
+																		height="18"
+																		width="18"
+																		role="none"
+																	>
+																		<use
+																			href="#grw-google"
+																		/>
+																	</svg>
+																</div>
+															</div>
+															<div
+																class="grw-review"
+															>
+																<div
+																	class="grw-review-inner grw-backgnd"
+																>
+																	<div
+																		class="wp-google-left"
+																	>
+																		<img
+																			loading="lazy"
+																			decoding="async"
+																			src="https://viptaxipoznan.pl/wp-content/uploads/2025/10/ChIJG2ww4MB5M2wRvgaBdLz1z9A_716a1696453957c5f3337b121178f174.jpg"
+																			loading="lazy"
+																			class="grw-review-avatar"
+																			alt=""
+																			width="50"
+																			height="50"
+																			onerror="
+																				if (
+																					this
+																						.src !=
+																					'https://viptaxipoznan.pl/wp-content/plugins/widget-google-reviews/assets/img/guest.png'
+																				)
+																					this.src =
+																						'https://viptaxipoznan.pl/wp-content/plugins/widget-google-reviews/assets/img/guest.png';
+																			"
+																		/><a
+																			href="https://www.google.com/maps/contrib/110738724457990188797/reviews"
+																			class="wp-google-name"
+																			target="_blank"
+																			rel="nofollow noopener"
+																			>Daria
+																			K.</a
+																		>
+																		<div
+																			class="wp-google-time"
+																			data-time="1729068832"
+																		>
+																			08:53
+																			16
+																			Oct
+																			24
+																		</div>
+																	</div>
+																	<div
+																		class="wp-google-stars"
+																	>
+																		<span
+																			class="wp-stars"
+																			><span
+																				class="wp-star"
+																				><svg
+																					height="18"
+																					width="18"
+																					role="none"
+																				>
+																					<use
+																						href="#grw-star"
+																					/></svg></span
+																			><span
+																				class="wp-star"
+																				><svg
+																					height="18"
+																					width="18"
+																					role="none"
+																				>
+																					<use
+																						href="#grw-star"
+																					/></svg></span
+																			><span
+																				class="wp-star"
+																				><svg
+																					height="18"
+																					width="18"
+																					role="none"
+																				>
+																					<use
+																						href="#grw-star"
+																					/></svg></span
+																			><span
+																				class="wp-star"
+																				><svg
+																					height="18"
+																					width="18"
+																					role="none"
+																				>
+																					<use
+																						href="#grw-star"
+																					/></svg></span
+																			><span
+																				class="wp-star"
+																				><svg
+																					height="18"
+																					width="18"
+																					role="none"
+																				>
+																					<use
+																						href="#grw-star"
+																					/></svg></span
+																		></span>
+																	</div>
+																	<div
+																		class="wp-google-wrap"
+																	>
+																		<div
+																			class="wp-google-feedback grw-scroll"
+																		>
+																			<span
+																				class="wp-google-text"
+																				>Serdecznie
+																				polecam
+																				współpracę
+																				z
+																				Panem
+																				Jakubem.
+																				Realizowaliśmy
+																				kilkanaście
+																				transferów
+																				dla
+																				ważnych
+																				gości
+																				z
+																				zagranicy
+																				i
+																				współpraca
+																				przebiegła
+																				bezbłędnie.
+																				Bezproblemowy
+																				kontakt,
+																				elastyczność
+																				i
+																				atrakcyjna
+																				cena
+																				usług.
+																				Na
+																				pewno
+																				będziemy
+																				dalej
+																				współpracować
+																				🙂</span
+																			>
+																		</div>
+																	</div>
+																	<div
+																		class="wp-google-reply grw-scroll"
+																	>
+																		<div>
+																			<span
+																				class="grw-b"
+																				>Odpowiedź
+																				od
+																				właściciela</span
+																			><span
+																				class="wp-google-time"
+																				data-time="1729069606"
+																			>
+																				09:06
+																				16
+																				Oct
+																				24
+																			</span>
+																		</div>
+																		Pani
+																		Dario
+																		bardzo
+																		dziękuję
+																		za miłe
+																		słowa i
+																		okazane
+																		zaufanie
+																		👍💪
+																	</div>
+																	<svg
+																		height="18"
+																		width="18"
+																		role="none"
+																	>
+																		<use
+																			href="#grw-google"
+																		/>
+																	</svg>
+																</div>
+															</div>
+															<div
+																class="grw-review"
+															>
+																<div
+																	class="grw-review-inner grw-backgnd"
+																>
+																	<div
+																		class="wp-google-left"
+																	>
+																		<img
+																			loading="lazy"
+																			decoding="async"
+																			src="https://viptaxipoznan.pl/wp-content/uploads/2025/10/ChIJG2ww4MB5M2wRvgaBdLz1z9A_d51e72c6858f45226f005ddcd2ee8b9c.jpg"
+																			loading="lazy"
+																			class="grw-review-avatar"
+																			alt=""
+																			width="50"
+																			height="50"
+																			onerror="
+																				if (
+																					this
+																						.src !=
+																					'https://viptaxipoznan.pl/wp-content/plugins/widget-google-reviews/assets/img/guest.png'
+																				)
+																					this.src =
+																						'https://viptaxipoznan.pl/wp-content/plugins/widget-google-reviews/assets/img/guest.png';
+																			"
+																		/><a
+																			href="https://www.google.com/maps/contrib/108682105177934426419/reviews"
+																			class="wp-google-name"
+																			target="_blank"
+																			rel="nofollow noopener"
+																			>Magdalena
+																			C.</a
+																		>
+																		<div
+																			class="wp-google-time"
+																			data-time="1727179593"
+																		>
+																			12:06
+																			24
+																			Sep
+																			24
+																		</div>
+																	</div>
+																	<div
+																		class="wp-google-stars"
+																	>
+																		<span
+																			class="wp-stars"
+																			><span
+																				class="wp-star"
+																				><svg
+																					height="18"
+																					width="18"
+																					role="none"
+																				>
+																					<use
+																						href="#grw-star"
+																					/></svg></span
+																			><span
+																				class="wp-star"
+																				><svg
+																					height="18"
+																					width="18"
+																					role="none"
+																				>
+																					<use
+																						href="#grw-star"
+																					/></svg></span
+																			><span
+																				class="wp-star"
+																				><svg
+																					height="18"
+																					width="18"
+																					role="none"
+																				>
+																					<use
+																						href="#grw-star"
+																					/></svg></span
+																			><span
+																				class="wp-star"
+																				><svg
+																					height="18"
+																					width="18"
+																					role="none"
+																				>
+																					<use
+																						href="#grw-star"
+																					/></svg></span
+																			><span
+																				class="wp-star"
+																				><svg
+																					height="18"
+																					width="18"
+																					role="none"
+																				>
+																					<use
+																						href="#grw-star"
+																					/></svg></span
+																		></span>
+																	</div>
+																	<div
+																		class="wp-google-wrap"
+																	>
+																		<div
+																			class="wp-google-feedback grw-scroll"
+																		>
+																			<span
+																				class="wp-google-text"
+																				>Pełen
+																				profesjonalizm,
+																				elastyczne
+																				i
+																				życzliwe
+																				podejście,
+																				polecamy!</span
+																			>
+																		</div>
+																	</div>
+																	<div
+																		class="wp-google-reply grw-scroll"
+																	>
+																		<div>
+																			<span
+																				class="grw-b"
+																				>Odpowiedź
+																				od
+																				właściciela</span
+																			><span
+																				class="wp-google-time"
+																				data-time="1727181599"
+																			>
+																				12:39
+																				24
+																				Sep
+																				24
+																			</span>
+																		</div>
+																		Wielkie
+																		dzięki
+																		za miłe
+																		słowo
+																		💪🚕
+																	</div>
+																	<svg
+																		height="18"
+																		width="18"
+																		role="none"
+																	>
+																		<use
+																			href="#grw-google"
+																		/>
+																	</svg>
+																</div>
+															</div>
+														</div>
+														<div
+															class="grw-btns grw-next"
+															tabindex="0"
+														>
+															<svg
+																viewBox="0 0 24 24"
+																role="none"
+															>
+																<path
+																	d="M9.4,18.4l-0.7-0.7l5.6-5.6L8.6,6.4l0.7-0.7l6.4,6.4L9.4,18.4z"
+																></path>
+															</svg>
+														</div>
+														<div
+															class="rpi-dots-wrap"
+														>
+															<div
+																class="rpi-dots"
+															></div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<img
+												loading="lazy"
+												decoding="async"
+												src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+												alt=""
+												onload="
+													(function (el, data) {
+														var f = function () {
+															window.grw_init
+																? grw_init(
+																		el,
+																		data,
+																	)
+																: setTimeout(
+																		f,
+																		400,
+																	);
+														};
+														f();
+													})(this, 'slider')
+												"
+												width="1"
+												height="1"
+												style="display: none"
+											/>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -5036,19 +7058,23 @@
 				class="elementor-screen-only"
 			></span>
 		</div>
-	<script defer="defer" src="https://viptaxipoznan.pl/wp-content/plugins/widget-google-reviews/assets/js/public-main.js?ver=6.5" id="grw-public-main-js-js"></script>
-<style>
-    /* Fix for Google Reviews Stars */
-    .wp-star svg {
-        fill: #FFD700 !important; /* Gold color for stars */
-        width: 18px;
-        height: 18px;
-    }
-    
-    /* Increase spacing between reviews and map */
-    .elementor-element-f656d13 {
-        margin-top: 80px !important;
-    }
-</style>
-</body>
+		<script
+			defer="defer"
+			src="https://viptaxipoznan.pl/wp-content/plugins/widget-google-reviews/assets/js/public-main.js?ver=6.5"
+			id="grw-public-main-js-js"
+		></script>
+		<style>
+			/* Fix for Google Reviews Stars */
+			.wp-star svg {
+				fill: #ffd700 !important; /* Gold color for stars */
+				width: 18px;
+				height: 18px;
+			}
+
+			/* Increase spacing between reviews and map */
+			.elementor-element-f656d13 {
+				margin-top: 80px !important;
+			}
+		</style>
+	</body>
 </html>

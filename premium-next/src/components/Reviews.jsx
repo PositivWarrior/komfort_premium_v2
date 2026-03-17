@@ -1,96 +1,104 @@
 "use client";
 
 import { useLanguage } from "../context/LanguageContext";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
+import googleReviewsData from "../data/google-reviews.json";
+
+// ─── Fallback reviews (used when API data is not yet available) ────────
+const FALLBACK_REVIEWS = [
+  {
+    name: "Dominika B.",
+    time: "4 miesięcy temu",
+    text: "Świetna obsługa, szybki kontakt. Wszystko na czas i bezproblemowo. Gorąco polecam!",
+    reply: "Pani Dominiko bardzo dziękuję za miłe słowa i polecamy się na przyszłość 😉😎🚖",
+    initial: "D",
+    color: "#8e44ad",
+    rating: 5,
+  },
+  {
+    name: "Adam K.",
+    time: "rok temu",
+    text: "Miałem wyznaczone badanie tomograficzne zadzwoniłem dzień prędzej po taxi wszystko umówione przez sms..",
+    reply: "Panie Adamie ogromnie dziękuję za",
+    initial: "A",
+    color: "#c0392b",
+    rating: 5,
+  },
+  {
+    name: "Przemysław S.",
+    time: "rok temu",
+    text: "Rewelacja, gorąco polecam. Taxi czekało już na nas 15min przed czasem. Cena taka jak ustalono przy zamawianiu. Bardzo kulturalny",
+    reply: "Bardzo dziękuję Panie Przemku za",
+    initial: "P",
+    color: "#27ae60",
+    rating: 5,
+  },
+  {
+    name: "Daria K.",
+    time: "rok temu",
+    text: "Serdecznie polecam współpracę z Panem Jakubem. Realizowaliśmy kilkanaście transferów dla ważnych gości z zagranicy i współpraca",
+    reply: "Pani Dario bardzo dziękuję za miłe",
+    initial: "D",
+    color: "#16a085",
+    rating: 5,
+  },
+  {
+    name: "Tomek P.",
+    time: "6 miesięcy temu",
+    text: "Wszystko super, bardzo dobry kontakt, transport na lotnisko jak i odbiór świetnie dograny!",
+    reply: "Panie Tomku wielkie dzięki! 😎💪🚖",
+    initial: "T",
+    color: "#16a085",
+    rating: 5,
+  },
+];
 
 export default function Reviews() {
   const { t } = useLanguage();
 
-  const reviews = [
-    {
-      name: "Dominika B.",
-      time: "4 miesięcy temu",
-      text: "Świetna obsługa, szybki kontakt. Wszystko na czas i bezproblemowo. Gorąco polecam!",
-      reply: "Pani Dominiko bardzo dziękuję za miłe słowa i polecamy się na przyszłość 😉😎🚖",
-      initial: "D",
-      color: "#8e44ad",
-    },
-    {
-      name: "Adam K.",
-      time: "rok temu",
-      text: "Miałem wyznaczone badanie tomograficzne zadzwoniłem dzień prędzej po taxi wszystko umówione przez sms..",
-      reply: "Panie Adamie ogromnie dziękuję za",
-      initial: "A",
-      color: "#c0392b",
-    },
-    {
-      name: "Przemysław S.",
-      time: "rok temu",
-      text: "Rewelacja, gorąco polecam. Taxi czekało już na nas 15min przed czasem. Cena taka jak ustalono przy zamawianiu. Bardzo kulturalny",
-      reply: "Bardzo dziękuję Panie Przemku za",
-      initial: "P",
-      color: "#27ae60",
-    },
-    {
-      name: "Daria K.",
-      time: "rok temu",
-      text: "Serdecznie polecam współpracę z Panem Jakubem. Realizowaliśmy kilkanaście transferów dla ważnych gości z zagranicy i współpraca",
-      reply: "Pani Dario bardzo dziękuję za miłe",
-      initial: "D",
-      color: "#16a085",
-    },
-    {
-      name: "Tomek P.",
-      time: "6 miesięcy temu",
-      text: "Wszystko super, bardzo dobry kontakt, transport na lotnisko jak i odbiór świetnie dograny!",
-      reply: "Panie Tomku wielkie dzięki! 😎💪🚖",
-      initial: "T",
-      color: "#16a085",
-    },
-    {
-      name: "Kuba K.",
-      time: "8 miesięcy temu",
-      text: "Pełen profesjonalizm. Super człowiek z humorem. Nigdy nie zostałem tak dobrze obsłużony. Perfekto",
-      reply: "Panie Jakubie wielkie dzięki. Staramy się dalej 😉😎🚖",
-      initial: "K",
-      color: "#27ae60",
-    },
-    {
-      name: "Michał Tomasz G.",
-      time: "7 miesięcy temu",
-      text: "Nowa, czysta, bardzo wygodna i sprawna limuzyna z pojemnym bagażnikiem. Właściciel, pan Jakub, jest uprzejmy i kulturalny...",
-      reply: "Panie Michale bardzo dziękuję za miłe słowa...",
-      initial: "M",
-      color: "#2980b9",
-    },
-    {
-      name: "Magdalena C.",
-      time: "rok temu",
-      text: "Pełen profesjonalizm, elastyczne i życzliwe podejście, polecamy!",
-      reply: "Wielkie dzięki za miłe słowo 💪🚕",
-      initial: "M",
-      color: "#009688",
-    },
-  ];
+  // Use Google reviews if available (5 newest), otherwise fallback
+  const reviews = useMemo(() => {
+    const googleReviews = googleReviewsData?.reviews || [];
+    if (googleReviews.length > 0) {
+      return googleReviews.slice(0, 5);
+    }
+    return FALLBACK_REVIEWS;
+  }, []);
+
+  const overallRating = googleReviewsData?.overallRating || 5.0;
+  const totalReviews = googleReviewsData?.totalReviews || 0;
 
   const [startIndex, setStartIndex] = useState(0);
-  const visibleCount = 4;
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  const visibleCount = isMobile ? 1 : Math.min(reviews.length, 4);
   const totalCount = reviews.length;
+  const canSlide = totalCount > visibleCount;
 
   const nextSlide = () => {
+    if (!canSlide) return;
     setStartIndex((prev) => (prev + 1) % totalCount);
   };
 
   const prevSlide = () => {
+    if (!canSlide) return;
     setStartIndex((prev) => (prev - 1 + totalCount) % totalCount);
   };
 
   useEffect(() => {
+    if (!canSlide) return;
     const interval = setInterval(() => {
       nextSlide();
     }, 4000);
     return () => clearInterval(interval);
-  }, []);
+  }, [canSlide]);
 
   const getVisibleReviews = () => {
     let items = [];
@@ -123,42 +131,69 @@ export default function Reviews() {
             Opinie <strong>o nas</strong>
           </h2>
           <div className="gold-divider" style={{ margin: "15px auto" }} />
+
+          {/* Overall rating summary */}
+          {totalReviews > 0 && (
+            <div style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "8px",
+              marginTop: "15px",
+              fontSize: "14px",
+              color: "#aaa",
+            }}>
+              <div style={{ display: "flex", gap: "2px", color: "#e7711b" }}>
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="14" height="14" fill="currentColor"
+                    style={{ opacity: i < Math.round(overallRating) ? 1 : 0.3 }}>
+                    <path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/>
+                  </svg>
+                ))}
+              </div>
+              <span style={{ fontWeight: "600", color: "#fff" }}>{overallRating.toFixed(1)}</span>
+              <span>na podstawie {totalReviews} opinii w Google</span>
+            </div>
+          )}
         </div>
 
         {/* Carousel Container */}
         <div style={{ position: "relative" }}>
           {/* Left Arrow */}
-          <button
-            type="button"
-            onClick={prevSlide}
-            style={{
-              position: "absolute",
-              left: "-40px",
-              top: "50%",
-              transform: "translateY(-50%)",
-              background: "none",
-              border: "none",
-              color: "white",
-              fontSize: "24px",
-              cursor: "pointer",
-              zIndex: 10,
-            }}
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="14" height="14" fill="currentColor"><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/></svg>
-          </button>
+          {canSlide && (
+            <button
+              type="button"
+              onClick={prevSlide}
+              aria-label="Poprzednia opinia"
+              style={{
+                position: "absolute",
+                left: "-40px",
+                top: "50%",
+                transform: "translateY(-50%)",
+                background: "none",
+                border: "none",
+                color: "white",
+                fontSize: "24px",
+                cursor: "pointer",
+                zIndex: 10,
+              }}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="14" height="14" fill="currentColor"><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/></svg>
+            </button>
+          )}
 
           {/* Reviews Grid */}
           <div
             className="reviews-grid"
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(4, 1fr)",
+              gridTemplateColumns: isMobile ? "1fr" : `repeat(${visibleCount}, 1fr)`,
               gap: "20px",
             }}
           >
             {visibleReviews.map((review, index) => (
               <div
-                key={index}
+                key={`${review.name}-${startIndex}-${index}`}
                 style={{
                   backgroundColor: "#1e1e1e",
                   padding: "20px",
@@ -220,7 +255,7 @@ export default function Reviews() {
 
                 {/* Stars */}
                 <div style={{ display: "flex", gap: "2px", color: "#e7711b" }}>
-                  {[...Array(5)].map((_, i) => (
+                  {[...Array(review.rating || 5)].map((_, i) => (
                     <svg key={i} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="12" height="12" fill="currentColor" style={{ fontSize: "12px" }}><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/></svg>
                   ))}
                 </div>
@@ -269,60 +304,55 @@ export default function Reviews() {
           </div>
 
           {/* Right Arrow */}
-          <button
-            type="button"
-            onClick={nextSlide}
-            style={{
-              position: "absolute",
-              right: "-40px",
-              top: "50%",
-              transform: "translateY(-50%)",
-              background: "none",
-              border: "none",
-              color: "white",
-              fontSize: "24px",
-              cursor: "pointer",
-              zIndex: 10,
-            }}
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="14" height="14" fill="currentColor"><path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/></svg>
-          </button>
+          {canSlide && (
+            <button
+              type="button"
+              onClick={nextSlide}
+              aria-label="Następna opinia"
+              style={{
+                position: "absolute",
+                right: "-40px",
+                top: "50%",
+                transform: "translateY(-50%)",
+                background: "none",
+                border: "none",
+                color: "white",
+                fontSize: "24px",
+                cursor: "pointer",
+                zIndex: 10,
+              }}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="14" height="14" fill="currentColor"><path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/></svg>
+            </button>
+          )}
 
           {/* Dots Pagination */}
-          <div
-            style={{
-              textAlign: "center",
-              marginTop: "20px",
-              display: "flex",
-              justifyContent: "center",
-              gap: "5px",
-            }}
-          >
+          {canSlide && (
             <div
               style={{
-                width: "8px",
-                height: "8px",
-                borderRadius: "50%",
-                backgroundColor: "#3498db",
+                textAlign: "center",
+                marginTop: "20px",
+                display: "flex",
+                justifyContent: "center",
+                gap: "5px",
               }}
-            />
-            <div
-              style={{
-                width: "8px",
-                height: "8px",
-                borderRadius: "50%",
-                backgroundColor: "#444",
-              }}
-            />
-            <div
-              style={{
-                width: "8px",
-                height: "8px",
-                borderRadius: "50%",
-                backgroundColor: "#444",
-              }}
-            />
-          </div>
+            >
+              {reviews.map((_, i) => (
+                <div
+                  key={i}
+                  onClick={() => setStartIndex(i)}
+                  style={{
+                    width: "8px",
+                    height: "8px",
+                    borderRadius: "50%",
+                    backgroundColor: i === startIndex ? "#3498db" : "#444",
+                    cursor: "pointer",
+                    transition: "background-color 0.3s ease",
+                  }}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </section>

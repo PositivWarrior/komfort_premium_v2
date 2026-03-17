@@ -24,8 +24,8 @@ export default function About() {
 
           {/* Section Title */}
           <h2 className="section-title" style={{ textAlign: "center" }}>
-            {t("why-clients-choose-us")}
-            <strong>{t("why-clients-choose-us-text")}</strong>
+            <strong>{t("why-clients-choose-us")}</strong>
+            {t("why-clients-choose-us-text")}
           </h2>
 
           {/* Gold Divider */}
