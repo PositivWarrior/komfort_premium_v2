@@ -1,0 +1,377 @@
+/* ================================================================
+   GLOBALS.CSS — Single source of truth for all site styles
+   (inline-styles.css WordPress junk removed — not needed)
+   ================================================================ */
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: var(--font-inter-tight), "Inter Tight", sans-serif;
+  background-color: #0e0e0e;
+  color: #ffffff;
+}
+
+/* ===== Global Design Tokens ===== */
+:root {
+  --color-bg: #0e0e0e;
+  --color-bg-section: #0c0c0c;
+  --color-gold: rgb(197, 163, 92);
+  --color-gold-hex: #c5a35c;
+  --color-gold-hover: #d2c673;
+  --color-white: #ffffff;
+  --color-text: #ffffff;
+  --color-text-muted: #5c5c5c;
+  --color-text-light: #cccccc;
+  --color-card-bg: rgba(255, 255, 255, 0.06);
+  --color-border-subtle: rgba(255, 255, 255, 0.15);
+  --color-border-dark: #222222;
+  --font-primary: var(--font-inter-tight), "Inter Tight", sans-serif;
+}
+
+/* ===== Reset links (replaces old WP underline rule) ===== */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ===== Section Headers ===== */
+.section-label {
+  font-size: 14px;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.section-title {
+  font-family: var(--font-primary);
+  font-size: 40px;
+  font-weight: 100;
+  color: var(--color-white);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.section-title strong,
+.section-title b {
+  font-weight: 500;
+}
+
+/* ===== Gold Divider ===== */
+.gold-divider {
+  width: 60px;
+  height: 2px;
+  background-color: var(--color-gold);
+  margin: 15px auto;
+}
+
+.gold-divider--left {
+  margin-left: 0;
+}
+
+/* ===== Buttons ===== */
+.btn-gold {
+  display: inline-block;
+  font-family: var(--font-primary);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.9px;
+  color: var(--color-white);
+  background-color: transparent;
+  border: 2px solid var(--color-gold);
+  border-radius: 0;
+  padding: 15px 65px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-gold:hover,
+.btn-gold:focus {
+  border-color: var(--color-gold-hover);
+  color: var(--color-white);
+  background-color: transparent;
+}
+
+/* ===== Body Text ===== */
+.body-text {
+  font-family: var(--font-primary);
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--color-white);
+  line-height: 1.6;
+}
+
+/* ===== Cards ===== */
+.card-bg {
+  background-color: var(--color-card-bg);
+  padding: 35px;
+}
+
+.card-title {
+  font-family: var(--font-primary);
+  font-size: 25px;
+  font-weight: 400;
+  color: var(--color-white);
+}
+
+.card-description {
+  font-family: var(--font-primary);
+  font-weight: 400;
+  color: var(--color-white);
+}
+
+/* ===== Hero Slideshow ===== */
+.hero-slideshow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.hero-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+}
+
+.hero-slide.active {
+  opacity: 1;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+
+/* ===== FAQ Accordion ===== */
+.faq-answer-wrap {
+  display: grid;
+  transition: grid-template-rows 0.4s ease-out;
+}
+
+.faq-answer-wrap[data-open="true"] {
+  grid-template-rows: 1fr;
+}
+
+.faq-answer-wrap[data-open="false"] {
+  grid-template-rows: 0fr;
+}
+
+.faq-answer-inner {
+  overflow: hidden;
+}
+
+/* ===== Reviews Grid ===== */
+@media (max-width: 1024px) {
+  .reviews-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* ===== Marquee Animation ===== */
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  width: max-content;
+  display: inline-block;
+  animation: scroll 20s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* ================================================================
+   HEADER — Desktop/Mobile Toggle
+   ================================================================ */
+.mobile-toggle {
+  display: none !important;
+}
+
+.desktop-nav {
+  display: flex !important;
+}
+
+/* ================================================================
+   RESPONSIVE — Mobile (<768px)
+   ================================================================ */
+@media (max-width: 767px) {
+
+  /* Header: show hamburger, hide desktop nav */
+  .mobile-toggle {
+    display: block !important;
+  }
+  .desktop-nav {
+    display: none !important;
+  }
+
+  /* Hero */
+  .hero-title-span {
+    font-size: 32px !important;
+  }
+  .hero-description {
+    padding: 0 15px !important;
+  }
+  .hero-container {
+    min-height: 500px !important;
+  }
+
+  /* Section Titles & Text */
+  .section-title {
+    font-size: 26px !important;
+  }
+  .section-label {
+    font-size: 12px;
+  }
+  .body-text {
+    font-size: 14px;
+  }
+  .btn-gold {
+    font-size: 13px;
+    padding: 12px 35px;
+  }
+
+  /* Offer Section */
+  .offer-row {
+    flex-direction: column !important;
+  }
+  .offer-row-reverse {
+    flex-direction: column !important;
+  }
+  .offer-col {
+    width: 100% !important;
+    flex: 1 1 100% !important;
+    min-width: 0 !important;
+  }
+  .offer-text-col {
+    padding: 25px 20px !important;
+  }
+
+  /* About Cards Grid */
+  .about-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .about-card-wrap {
+    padding: 15px !important;
+  }
+
+  /* FAQ Section */
+  .faq-layout {
+    flex-direction: column !important;
+  }
+  .faq-image-col,
+  .faq-content-col {
+    flex: 1 1 100% !important;
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+  .faq-content-col {
+    padding: 25px 0 0 0 !important;
+  }
+
+  /* Contact Section */
+  .contact-layout {
+    flex-direction: column !important;
+  }
+  .contact-image-col,
+  .contact-info-col {
+    flex: 1 1 100% !important;
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+  .contact-image-col img {
+    width: 100% !important;
+  }
+
+  /* PremiumTransport Section */
+  .premium-transport-title {
+    font-size: 28px !important;
+  }
+  .premium-transport-desc {
+    padding: 0 15px !important;
+    font-size: 16px !important;
+  }
+  .premium-transport-section {
+    min-height: 450px !important;
+    margin-top: 60px !important;
+  }
+
+  /* Reviews */
+  .reviews-outer {
+    padding: 0 15px !important;
+  }
+  .reviews-grid {
+    grid-template-columns: 1fr !important;
+    gap: 15px !important;
+  }
+
+  /* Fleet Marquee */
+  .fleet-marquee-item {
+    width: 250px !important;
+    height: 175px !important;
+  }
+
+  /* Footer */
+  .footer-content {
+    flex-direction: column !important;
+    gap: 30px !important;
+    text-align: center;
+  }
+  .footer-left {
+    flex: 1 1 100% !important;
+  }
+  .footer-right {
+    flex: 1 1 100% !important;
+  }
+  .footer-row-container {
+    flex-direction: column !important;
+    text-align: center !important;
+    align-items: center !important;
+  }
+}
+
+/* ================================================================
+   RESPONSIVE — Tablet (768px–1024px)
+   ================================================================ */
+@media (max-width: 1024px) and (min-width: 768px) {
+  .hero-title-span {
+    font-size: 54px !important;
+  }
+  .section-title {
+    font-size: 34px !important;
+  }
+  .about-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* Desktop: hide mobile menu */
+@media (min-width: 768px) {
+  .mobile-menu {
+    display: none !important;
+  }
+}
