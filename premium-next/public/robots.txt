@@ -1,0 +1,12 @@
+# Robots.txt for premiumtopservice.com
+# Komfort Premium - VIP Transport Poznań
+
+User-agent: *
+Allow: /
+
+# Block internal/development paths
+Disallow: /_next/
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://premiumtopservice.com/sitemap.xml

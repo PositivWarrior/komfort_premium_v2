@@ -1,0 +1,17 @@
+{
+  "name": "Komfort Premium - Przewozy VIP Poznań | VIP Transport Poznań",
+  "short_name": "Komfort Premium",
+  "description": "Luksusowy transport osobowy Poznań. Wynajem limuzyn z kierowcą, transfery lotniskowe, przewozy VIP. | Luxury personal transport Poznań. Limousine hire with driver, airport transfers, VIP rides.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0e0e0e",
+  "theme_color": "#c5a35c",
+  "lang": "pl",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ]
+}

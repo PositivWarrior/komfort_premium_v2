@@ -78,11 +78,13 @@ const htaccess = `# Ensure JS files are served with correct MIME type
   AddType font/woff2 .woff2
   AddType font/woff .woff
   AddType application/json .json
+  AddType application/xml .xml
+  AddType text/plain .txt
 </IfModule>
 
 # Enable gzip compression
 <IfModule mod_deflate.c>
-  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json font/woff2
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json font/woff2 application/xml text/xml
 </IfModule>
 
 # Cache static assets
@@ -93,14 +95,20 @@ const htaccess = `# Ensure JS files are served with correct MIME type
   ExpiresByType font/woff2 "access plus 1 year"
   ExpiresByType image/png "access plus 1 month"
   ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType application/xml "access plus 1 day"
+  ExpiresByType text/plain "access plus 1 day"
 </IfModule>
 
-# Allow serving files from _next directory
+# SEO: Ensure sitemap.xml and robots.txt are directly accessible
 <IfModule mod_rewrite.c>
   RewriteEngine On
+  
+  # Don't rewrite actual files (robots.txt, sitemap.xml, manifest.json, etc.)
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+  
   # SPA fallback: serve index.html for non-file requests
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule ^ index.html [L]
 </IfModule>
 `;

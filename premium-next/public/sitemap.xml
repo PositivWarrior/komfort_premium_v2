@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <!-- Main page (Polish - default) -->
+  <url>
+    <loc>https://premiumtopservice.com/</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://premiumtopservice.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://premiumtopservice.com/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://premiumtopservice.com/" />
+  </url>
+
+  <!-- Section anchors for better crawling -->
+  <url>
+    <loc>https://premiumtopservice.com/#o-nas</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://premiumtopservice.com/#oferta</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://premiumtopservice.com/#flota</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://premiumtopservice.com/#kontakt</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://premiumtopservice.com/#faq</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+</urlset>

@@ -6,6 +6,7 @@
     "dev": "next dev",
     "prebuild": "node scripts/fetch-google-reviews.js",
     "build": "next build",
+    "postbuild": "node postbuild.js",
     "start": "next start",
     "lint": "eslint",
     "fetch-reviews": "node scripts/fetch-google-reviews.js"
