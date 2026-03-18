@@ -116,7 +116,19 @@ const htaccess = `# Ensure JS files are served with correct MIME type
 fs.writeFileSync(path.join(outDir, '.htaccess'), htaccess);
 console.log('\n  Created .htaccess (MIME types, gzip, caching)');
 
-// ── 5. Summary ───────────────────────────────────────────────────────
+// ── 5. Clean up debug files ──────────────────────────────────────────
+const cleanTxtFiles = () => {
+  fs.readdirSync(outDir).forEach(file => {
+    if (file.endsWith('.txt') && file !== 'robots.txt') {
+      fs.unlinkSync(path.join(outDir, file));
+      console.log(`  Deleted debug file: ${file}`);
+    }
+  });
+};
+console.log('\nCleaning up debug files...');
+cleanTxtFiles();
+
+// ── 6. Summary ───────────────────────────────────────────────────────
 const jsFiles = fs.readdirSync(chunksDir).filter(f => f.endsWith('.js'));
 const totalJs = jsFiles.reduce((sum, f) => sum + fs.statSync(path.join(chunksDir, f)).length, 0);
 
