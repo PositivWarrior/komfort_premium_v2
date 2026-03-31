@@ -1,4 +1,4 @@
-# Robots.txt for premiumtopservice.com
+# Robots.txt for komfortpremium.eu
 # Komfort Premium - VIP Transport Poznań
 
 User-agent: *
@@ -8,5 +8,11 @@ Allow: /
 Disallow: /_next/
 Disallow: /api/
 
+# Block assets directory from direct indexing (images are discoverable via page)
+Disallow: /fonts/
+
 # Sitemap location
-Sitemap: https://premiumtopservice.com/sitemap.xml
+Sitemap: https://komfortpremium.eu/sitemap.xml
+
+# Host directive (for Yandex and others)
+Host: https://komfortpremium.eu

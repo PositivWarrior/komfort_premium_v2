@@ -70,13 +70,13 @@ export const metadata = {
   },
 
   // ── Canonical & Alternates (hreflang) ─────────
-  metadataBase: new URL("https://premiumtopservice.com"),
+  metadataBase: new URL("https://komfortpremium.eu"),
   alternates: {
-    canonical: "https://premiumtopservice.com",
+    canonical: "/",
     languages: {
-      "pl-PL": "https://premiumtopservice.com",
-      "en-US": "https://premiumtopservice.com",
-      "x-default": "https://premiumtopservice.com",
+      "pl-PL": "/",
+      "en-US": "/",
+      "x-default": "/",
     },
   },
 
@@ -85,7 +85,7 @@ export const metadata = {
     type: "website",
     locale: "pl_PL",
     alternateLocale: "en_US",
-    url: "https://premiumtopservice.com",
+    url: "https://komfortpremium.eu",
     siteName: "Komfort Premium",
     title: "Komfort Premium – Przewozy VIP Poznań | Luxury VIP Transport",
     description:
@@ -113,7 +113,7 @@ export const metadata = {
   // ── Verification (Google Search Console) ──────
   // WAŻNE: Wklej tu swój kod weryfikacyjny z Google Search Console
   // Instrukcja: Przejdź na https://search.google.com/search-console →
-  //   Dodaj usługę → Wpisz "premiumtopservice.com" → Wybierz "Tag HTML" →
+  //   Dodaj usługę → Wpisz "komfortpremium.eu" → Wybierz "Tag HTML" →
   //   Skopiuj wartość content z tagu meta
   verification: {
     google: "googlef388205ed475e502",
@@ -145,16 +145,16 @@ const jsonLd = {
     // ── 1. Local Business ───────────────────────
     {
       "@type": "LocalBusiness",
-      "@id": "https://premiumtopservice.com/#business",
+      "@id": "https://komfortpremium.eu/#business",
       name: "Komfort Premium",
       alternateName: "Komfort Premium - Przewozy VIP Poznań",
       description:
         "Luksusowy transport osobowy Poznań. Wynajem limuzyn z kierowcą, transfery lotniskowe, przewozy VIP i transport biznesowy. Luxury personal transport in Poznań. Limousine hire with driver, airport transfers, VIP rides and business transport.",
-      url: "https://premiumtopservice.com",
+      url: "https://komfortpremium.eu",
       telephone: "+48533515202",
       email: "rezerwacjepremium@gmail.com",
-      image: "https://premiumtopservice.com/assets/Projekt-bez-nazwy-2025-05-17T162727.238-1536x864.png",
-      logo: "https://premiumtopservice.com/assets/logo-komofrt.png",
+      image: "https://komfortpremium.eu/assets/Projekt-bez-nazwy-2025-05-17T162727.238-1536x864.png",
+      logo: "https://komfortpremium.eu/assets/logo-komofrt.png",
       priceRange: "$$$",
       currenciesAccepted: "PLN, EUR",
       paymentAccepted: "Cash, Bank Transfer",
@@ -259,12 +259,12 @@ const jsonLd = {
     // ── 2. Website ──────────────────────────────
     {
       "@type": "WebSite",
-      "@id": "https://premiumtopservice.com/#website",
-      url: "https://premiumtopservice.com",
+      "@id": "https://komfortpremium.eu/#website",
+      url: "https://komfortpremium.eu",
       name: "Komfort Premium",
       description: "Luksusowy transport VIP Poznań | Luxury VIP Transport Poznań",
       publisher: {
-        "@id": "https://premiumtopservice.com/#business",
+        "@id": "https://komfortpremium.eu/#business",
       },
       inLanguage: ["pl-PL", "en-US"],
     },
@@ -272,14 +272,14 @@ const jsonLd = {
     // ── 3. WebPage ──────────────────────────────
     {
       "@type": "WebPage",
-      "@id": "https://premiumtopservice.com/#webpage",
-      url: "https://premiumtopservice.com",
+      "@id": "https://komfortpremium.eu/#webpage",
+      url: "https://komfortpremium.eu",
       name: "Komfort Premium – Przewozy VIP Poznań | VIP Transport Poznań",
       isPartOf: {
-        "@id": "https://premiumtopservice.com/#website",
+        "@id": "https://komfortpremium.eu/#website",
       },
       about: {
-        "@id": "https://premiumtopservice.com/#business",
+        "@id": "https://komfortpremium.eu/#business",
       },
       description:
         "Komfort Premium oferuje luksusowy transport osobowy w Poznaniu i okolicach. Wynajem limuzyn z kierowcą, transfery lotniskowe, przewozy VIP. | Komfort Premium offers luxury personal transport in Poznań. Limousine hire with driver, airport transfers, VIP rides.",
@@ -289,7 +289,7 @@ const jsonLd = {
     // ── 4. FAQ Schema ───────────────────────────
     {
       "@type": "FAQPage",
-      "@id": "https://premiumtopservice.com/#faq",
+      "@id": "https://komfortpremium.eu/#faq",
       mainEntity: [
         {
           "@type": "Question",
@@ -348,13 +348,9 @@ export default function RootLayout({ children }) {
         <meta name="distribution" content="global" />
         <meta name="revisit-after" content="7 days" />
 
-        {/* Canonical */}
-        <link rel="canonical" href="https://premiumtopservice.com" />
-
-        {/* Hreflang tags */}
-        <link rel="alternate" hrefLang="pl" href="https://premiumtopservice.com" />
-        <link rel="alternate" hrefLang="en" href="https://premiumtopservice.com" />
-        <link rel="alternate" hrefLang="x-default" href="https://premiumtopservice.com" />
+        {/* Canonical — Next.js generates this from metadata.alternates.canonical */}
+        {/* Removed manual canonical and hreflang — Next.js handles these via metadata export */}
+        {/* Duplicate canonical/hreflang tags confuse Google. The metadata export above is the single source of truth. */}
 
         {/* FontAwesome CDN */}
         <link
