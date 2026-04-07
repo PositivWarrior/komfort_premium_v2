@@ -70,45 +70,92 @@ function walk(dir) {
 console.log('\nProcessing HTML files...');
 walk(outDir);
 
-// ── 4. Create .htaccess for proper MIME types and caching ────────────
-const htaccess = `# Ensure JS files are served with correct MIME type
+const htaccess = `# ── SEO: Canonical domain redirects ──────────────────────────────────
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  
+  # Redirect HTTP to HTTPS
+  RewriteCond %{HTTPS} off
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+  
+  # Redirect www to non-www (canonical domain)
+  RewriteCond %{HTTP_HOST} ^www\\.komfortpremium\\.eu [NC]
+  RewriteRule ^ https://komfortpremium.eu%{REQUEST_URI} [R=301,L]
+  
+  # Add trailing slash to URLs without file extension (for canonical consistency)
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_URI} !\\.[a-zA-Z0-9]+$
+  RewriteCond %{REQUEST_URI} !(.*)/$
+  RewriteRule ^(.*)$ /$1/ [R=301,L]
+  
+  # Don't rewrite actual files (robots.txt, sitemap.xml, manifest.json, etc.)
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+  
+  # SPA fallback: serve index.html for non-file requests
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+# ── MIME types ───────────────────────────────────────────────────────
 <IfModule mod_mime.c>
   AddType application/javascript .js
   AddType text/css .css
   AddType font/woff2 .woff2
   AddType font/woff .woff
   AddType application/json .json
+  AddType application/xml .xml
+  AddType text/plain .txt
+  AddType image/webp .webp
+  AddType image/avif .avif
 </IfModule>
 
-# Enable gzip compression
+# ── Gzip compression ────────────────────────────────────────────────
 <IfModule mod_deflate.c>
-  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json font/woff2
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json font/woff2 application/xml text/xml image/svg+xml
 </IfModule>
 
-# Cache static assets
+# ── Cache control ────────────────────────────────────────────────────
 <IfModule mod_expires.c>
   ExpiresActive On
   ExpiresByType application/javascript "access plus 1 year"
   ExpiresByType text/css "access plus 1 year"
   ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType font/woff "access plus 1 year"
   ExpiresByType image/png "access plus 1 month"
   ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/webp "access plus 1 month"
+  ExpiresByType image/avif "access plus 1 month"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType application/xml "access plus 1 day"
+  ExpiresByType text/plain "access plus 1 day"
 </IfModule>
 
-# Allow serving files from _next directory
-<IfModule mod_rewrite.c>
-  RewriteEngine On
-  # SPA fallback: serve index.html for non-file requests
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule ^ index.html [L]
+# ── Security headers ────────────────────────────────────────────────
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
 </IfModule>
 `;
+
 
 fs.writeFileSync(path.join(outDir, '.htaccess'), htaccess);
 console.log('\n  Created .htaccess (MIME types, gzip, caching)');
 
-// ── 5. Summary ───────────────────────────────────────────────────────
+// ── 5. Clean up debug files ──────────────────────────────────────────
+const cleanTxtFiles = () => {
+  fs.readdirSync(outDir).forEach(file => {
+    if (file.endsWith('.txt') && file !== 'robots.txt') {
+      fs.unlinkSync(path.join(outDir, file));
+      console.log(`  Deleted debug file: ${file}`);
+    }
+  });
+};
+console.log('\nCleaning up debug files...');
+cleanTxtFiles();
+
+// ── 6. Summary ───────────────────────────────────────────────────────
 const jsFiles = fs.readdirSync(chunksDir).filter(f => f.endsWith('.js'));
 const totalJs = jsFiles.reduce((sum, f) => sum + fs.statSync(path.join(chunksDir, f)).length, 0);
 

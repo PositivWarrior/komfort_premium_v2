@@ -3,41 +3,57 @@ name: Update Google Reviews
 # Runs every day at 6:00 AM UTC (7:00 AM CET / 8:00 AM CEST)
 on:
   schedule:
-    - cron: '0 6 * * *'
-  workflow_dispatch: # Allow manual trigger from GitHub UI
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-google-reviews
+  cancel-in-progress: true
 
 jobs:
   fetch-reviews:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: premium-next
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          # Use github.token so push has write perms (matches permissions.contents: write)
+          token: ${{ github.token }}
+          fetch-depth: 1
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: "22"
 
       - name: Fetch Google Reviews
+        working-directory: premium-next
         env:
           GOOGLE_PLACES_API_KEY: ${{ secrets.GOOGLE_PLACES_API_KEY }}
           GOOGLE_PLACE_ID: ${{ secrets.GOOGLE_PLACE_ID }}
         run: node scripts/fetch-google-reviews.js
 
-      - name: Check for changes
-        id: changes
+      - name: Commit and push if reviews changed
         run: |
-          git diff --quiet src/data/google-reviews.json || echo "changed=true" >> $GITHUB_OUTPUT
+          set -e
+          REPO_ROOT="${GITHUB_WORKSPACE}"
+          FILE="${REPO_ROOT}/premium-next/src/data/google-reviews.json"
 
-      - name: Commit and push updated reviews
-        if: steps.changes.outputs.changed == 'true'
-        run: |
+          cd "${REPO_ROOT}"
           git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add src/data/google-reviews.json
-          git commit -m "chore: update Google reviews [automated]"
-          git push
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          if ! git diff --quiet HEAD -- "${FILE}"; then
+            git add "${FILE}"
+            git commit -m "chore: update Google reviews [automated]"
+            # Explicit remote URL avoids auth edge-cases that yield git exit 128
+            git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          else
+            echo "No changes to google-reviews.json; skipping commit."
+          fi
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
