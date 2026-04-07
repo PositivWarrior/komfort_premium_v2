@@ -1,13 +1,13 @@
 {
-  "fetchedAt": "2026-03-17T12:31:17.351Z",
+  "fetchedAt": "2026-04-07T09:06:06.862Z",
   "placeId": "ChIJG2ww4MCTMkcRvgaBdLz1z9A",
-  "placeName": "Komfort Taxi",
+  "placeName": "Komfort Premium. Taxi",
   "overallRating": 5,
   "totalReviews": 55,
   "reviews": [
     {
       "name": "Maciej B.",
-      "time": "3 tygodnie temu",
+      "time": "miesiąc temu",
       "publishTimestamp": 1771416434,
       "text": "Ocena nie może być inna niż 5/5. Kontakt wzorowy, duża elastyczność i nastawienie na rozwiązanie problemu Klienta. Samochody w świetnym stanie i bardzo czyste. Szczerze polecam!",
       "reply": "",
@@ -31,7 +31,7 @@
     },
     {
       "name": "Wojciech P.",
-      "time": "3 miesiące temu",
+      "time": "4 miesiące temu",
       "publishTimestamp": 1764880267,
       "text": "Świetny kontakt i profesjonalnie zrealizowana usługa. Tak trzymać! 💪",
       "reply": "",
