@@ -1,10 +1,22 @@
 {
-  "fetchedAt": "2026-04-22T07:43:45.744Z",
+  "fetchedAt": "2026-04-23T07:49:15.566Z",
   "placeId": "ChIJG2ww4MCTMkcRvgaBdLz1z9A",
-  "placeName": "Komfort Premium. Taxi",
+  "placeName": "Komfort Taxi",
   "overallRating": 5,
-  "totalReviews": 55,
+  "totalReviews": 56,
   "reviews": [
+    {
+      "name": "Kamila",
+      "time": "w ostatnim tygodniu",
+      "publishTimestamp": 1776856312,
+      "text": "Kurs umówiony dzień wcześniej. Kierowca był na czas, dostałam sms-a, z wiadomością gdzie czeka, obsługa na najwyższym poziomie, jak bym była klientem  vip :) bardzo sympatyczny i uprzejmy Pan. Polecam na 100%",
+      "reply": "",
+      "initial": "K",
+      "color": "#8e44ad",
+      "rating": 5,
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocKJ2yejObM3rN8l_m84GcXOazkDoj8pCH4mGNcDZRQ8TUyT8Q=s128-c0x00000000-cc-rp-mo",
+      "source": "google"
+    },
     {
       "name": "Maciej B.",
       "time": "2 miesiące temu",
@@ -12,7 +24,7 @@
       "text": "Ocena nie może być inna niż 5/5. Kontakt wzorowy, duża elastyczność i nastawienie na rozwiązanie problemu Klienta. Samochody w świetnym stanie i bardzo czyste. Szczerze polecam!",
       "reply": "",
       "initial": "M",
-      "color": "#8e44ad",
+      "color": "#c0392b",
       "rating": 5,
       "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocKk1Nj8LUf-RsdQfsOC7agIKTbOcSR0gceSksOdsiee4y8N1g=s128-c0x00000000-cc-rp-mo",
       "source": "google"
@@ -24,7 +36,7 @@
       "text": "",
       "reply": "",
       "initial": "S",
-      "color": "#c0392b",
+      "color": "#27ae60",
       "rating": 5,
       "profilePhoto": "https://lh3.googleusercontent.com/a-/ALV-UjVjaUuOfcKyNESMCsjxQ9ogfYlPujCjkZhh2ewPKGUqiIk8Cnam8w=s128-c0x00000000-cc-rp-mo",
       "source": "google"
@@ -36,7 +48,7 @@
       "text": "Świetny kontakt i profesjonalnie zrealizowana usługa. Tak trzymać! 💪",
       "reply": "",
       "initial": "W",
-      "color": "#27ae60",
+      "color": "#16a085",
       "rating": 5,
       "profilePhoto": "https://lh3.googleusercontent.com/a-/ALV-UjWm8xNVhECKEff6ynM5uyEp40OXcOobqefFBAxNYLVxzxxHSXCp=s128-c0x00000000-cc-rp-mo",
       "source": "google"
@@ -48,21 +60,9 @@
       "text": "Was able to book a taxi by email, which was helpful as I don't speak Polish  I got a prompt reply with price & options how to pay. When I agreed, I got a confirmation.\nOur taxi was booked for 4am & the driver was outside 20mins beforehand & texted me to let me know. He put our cases in the boot for us. Lovely car & very nice driver.\nWould highly recommend.",
       "reply": "",
       "initial": "L",
-      "color": "#16a085",
-      "rating": 5,
-      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocJUoTSitK3FEM39uUFEItRM_yZ4h-AX8hv8zZ0D8MJPaB4Haw=s128-c0x00000000-cc-rp-mo",
-      "source": "google"
-    },
-    {
-      "name": "eliza b.",
-      "time": "6 miesięcy temu",
-      "publishTimestamp": 1760544243,
-      "text": "Bardzo miły pan kierowca, samochód bardzo zadbany ,doskonała organizacja przejazdu, serdecznie polecam!",
-      "reply": "",
-      "initial": "E",
       "color": "#2980b9",
       "rating": 5,
-      "profilePhoto": "https://lh3.googleusercontent.com/a-/ALV-UjVvQz7LM70QOU6bVYzWuAPD2G5oNR2fsS0enJeL8G1132Axfm8=s128-c0x00000000-cc-rp-mo",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocJUoTSitK3FEM39uUFEItRM_yZ4h-AX8hv8zZ0D8MJPaB4Haw=s128-c0x00000000-cc-rp-mo",
       "source": "google"
     }
   ]
