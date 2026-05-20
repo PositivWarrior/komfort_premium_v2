@@ -82,6 +82,19 @@ jobs:
           cp premium-next/public/google-reviews.json deploy-reviews/
           ls -la deploy-reviews/
 
+      - name: Normalize FTP server directory
+        if: steps.deploy_gate.outputs.deploy == 'true'
+        id: ftp_dir
+        run: |
+          DIR="${{ secrets.HOSTINGER_FTP_REMOTE_DIR }}"
+          if [ -z "$DIR" ]; then
+            DIR="public_html/"
+          elif [ "${DIR: -1}" != "/" ]; then
+            DIR="${DIR}/"
+          fi
+          echo "dir=${DIR}" >> "$GITHUB_OUTPUT"
+          echo "FTP server-dir: ${DIR}"
+
       - name: Upload google-reviews.json to Hostinger (FTP)
         if: steps.deploy_gate.outputs.deploy == 'true'
         uses: SamKirkland/FTP-Deploy-Action@v4.3.6
@@ -92,5 +105,5 @@ jobs:
           port: 21
           protocol: ftp
           local-dir: ./deploy-reviews/
-          server-dir: ${{ secrets.HOSTINGER_FTP_REMOTE_DIR }}
+          server-dir: ${{ steps.ftp_dir.outputs.dir }}
           dangerous-clean-slate: false
