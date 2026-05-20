@@ -5,6 +5,7 @@ const path = require("path");
 const GOOGLE_API_KEY = process.env.GOOGLE_PLACES_API_KEY;
 const PLACE_ID = process.env.GOOGLE_PLACE_ID || "ChIJG2ww4MCTMkcRvgaBdLz1z9A";
 const OUTPUT_PATH = path.join(__dirname, "..", "src", "data", "google-reviews.json");
+const PUBLIC_OUTPUT_PATH = path.join(__dirname, "..", "public", "google-reviews.json");
 const MAX_REVIEWS = 5; // Show the 5 newest reviews
 
 // ─── Avatar color palette ───────────────────────────────────────
@@ -136,8 +137,12 @@ async function fetchReviews() {
       reviews,
     };
 
-    fs.writeFileSync(OUTPUT_PATH, JSON.stringify(output, null, 2), "utf-8");
-    console.log(`[fetch-reviews] ✔ Saved ${reviews.length} reviews to ${OUTPUT_PATH}`);
+    const json = JSON.stringify(output, null, 2);
+    fs.writeFileSync(OUTPUT_PATH, json, "utf-8");
+    fs.writeFileSync(PUBLIC_OUTPUT_PATH, json, "utf-8");
+    console.log(`[fetch-reviews] ✔ Saved ${reviews.length} reviews to:`);
+    console.log(`    ${OUTPUT_PATH}`);
+    console.log(`    ${PUBLIC_OUTPUT_PATH}`);
   } catch (err) {
     console.error("[fetch-reviews] Error fetching reviews:", err.message);
   }

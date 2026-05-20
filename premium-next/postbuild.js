@@ -129,6 +129,7 @@ const htaccess = `# ── SEO: Canonical domain redirects ───────
   ExpiresByType image/svg+xml "access plus 1 month"
   ExpiresByType application/xml "access plus 1 day"
   ExpiresByType text/plain "access plus 1 day"
+  ExpiresByType application/json "access plus 0 seconds"
 </IfModule>
 
 # ── Security headers ────────────────────────────────────────────────
@@ -136,6 +137,10 @@ const htaccess = `# ── SEO: Canonical domain redirects ───────
   Header set X-Content-Type-Options "nosniff"
   Header set X-Frame-Options "SAMEORIGIN"
   Header set Referrer-Policy "strict-origin-when-cross-origin"
+  # Opinie z Google — zawsze świeże (aktualizowane przez GitHub Actions)
+  <Files "google-reviews.json">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+  </Files>
 </IfModule>
 `;
 

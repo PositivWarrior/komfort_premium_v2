@@ -53,20 +53,47 @@ const FALLBACK_REVIEWS = [
   },
 ];
 
+function pickReviews(data) {
+  const googleReviews = data?.reviews || [];
+  if (googleReviews.length > 0) {
+    return googleReviews.slice(0, 5);
+  }
+  const bundled = googleReviewsData?.reviews || [];
+  if (bundled.length > 0) {
+    return bundled.slice(0, 5);
+  }
+  return FALLBACK_REVIEWS;
+}
+
 export default function Reviews() {
   const { t } = useLanguage();
+  const [liveReviewsData, setLiveReviewsData] = useState(null);
 
-  // Use Google reviews if available (5 newest), otherwise fallback
-  const reviews = useMemo(() => {
-    const googleReviews = googleReviewsData?.reviews || [];
-    if (googleReviews.length > 0) {
-      return googleReviews.slice(0, 5);
-    }
-    return FALLBACK_REVIEWS;
+  // Load newest reviews from /google-reviews.json (updated on Hostinger via GitHub Actions)
+  useEffect(() => {
+    const controller = new AbortController();
+
+    fetch("/google-reviews.json", {
+      cache: "no-store",
+      signal: controller.signal,
+    })
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (data?.reviews?.length) {
+          setLiveReviewsData(data);
+        }
+      })
+      .catch(() => {});
+
+    return () => controller.abort();
   }, []);
 
-  const overallRating = googleReviewsData?.overallRating || 5.0;
-  const totalReviews = googleReviewsData?.totalReviews || 0;
+  const activeData = liveReviewsData ?? googleReviewsData;
+
+  const reviews = useMemo(() => pickReviews(activeData), [activeData]);
+
+  const overallRating = activeData?.overallRating || 5.0;
+  const totalReviews = activeData?.totalReviews || 0;
 
   const [startIndex, setStartIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);

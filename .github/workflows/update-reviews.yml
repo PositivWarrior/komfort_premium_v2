@@ -40,14 +40,19 @@ jobs:
         run: |
           set -e
           REPO_ROOT="${GITHUB_WORKSPACE}"
-          FILE="${REPO_ROOT}/premium-next/src/data/google-reviews.json"
+          FILE_DATA="${REPO_ROOT}/premium-next/src/data/google-reviews.json"
+          FILE_PUBLIC="${REPO_ROOT}/premium-next/public/google-reviews.json"
 
           cd "${REPO_ROOT}"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          if ! git diff --quiet HEAD -- "${FILE}"; then
-            git add "${FILE}"
+          CHANGED=0
+          git diff --quiet HEAD -- "${FILE_DATA}" || CHANGED=1
+          git diff --quiet HEAD -- "${FILE_PUBLIC}" || CHANGED=1
+
+          if [ "$CHANGED" -eq 1 ]; then
+            git add "${FILE_DATA}" "${FILE_PUBLIC}"
             git commit -m "chore: update Google reviews [automated]"
             # Explicit remote URL avoids auth edge-cases that yield git exit 128
             git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
@@ -57,3 +62,35 @@ jobs:
           fi
         env:
           GITHUB_TOKEN: ${{ github.token }}
+
+      # Wgrywa google-reviews.json na Hostinger: w poniedziałki + przy ręcznym "Run workflow"
+      - name: Check if Hostinger deploy should run
+        id: deploy_gate
+        run: |
+          if [ "$(date -u +%u)" = "1" ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "deploy=true" >> $GITHUB_OUTPUT
+            echo "Deploy: tak (poniedziałek lub ręczne uruchomienie)"
+          else
+            echo "deploy=false" >> $GITHUB_OUTPUT
+            echo "Deploy: pominięty (tylko poniedziałek lub Run workflow)"
+          fi
+
+      - name: Prepare FTP payload
+        if: steps.deploy_gate.outputs.deploy == 'true'
+        run: |
+          mkdir -p deploy-reviews
+          cp premium-next/public/google-reviews.json deploy-reviews/
+          ls -la deploy-reviews/
+
+      - name: Upload google-reviews.json to Hostinger (FTP)
+        if: steps.deploy_gate.outputs.deploy == 'true'
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+        with:
+          server: ${{ secrets.HOSTINGER_FTP_HOST }}
+          username: ${{ secrets.HOSTINGER_FTP_USER }}
+          password: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
+          port: 21
+          protocol: ftp
+          local-dir: ./deploy-reviews/
+          server-dir: ${{ secrets.HOSTINGER_FTP_REMOTE_DIR }}
+          dangerous-clean-slate: false
