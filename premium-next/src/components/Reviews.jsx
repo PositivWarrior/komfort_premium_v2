@@ -54,13 +54,17 @@ const FALLBACK_REVIEWS = [
 ];
 
 function pickReviews(data) {
-  const googleReviews = data?.reviews || [];
-  if (googleReviews.length > 0) {
-    return googleReviews.slice(0, 5);
+  const raw = data?.reviews || [];
+  const sortByNewest = (list) =>
+    [...list].sort((a, b) => (b.publishTimestamp || 0) - (a.publishTimestamp || 0));
+
+  if (raw.length > 0) {
+    const withText = sortByNewest(raw).filter((r) => r.text?.trim());
+    return (withText.length > 0 ? withText : sortByNewest(raw)).slice(0, 5);
   }
   const bundled = googleReviewsData?.reviews || [];
   if (bundled.length > 0) {
-    return bundled.slice(0, 5);
+    return sortByNewest(bundled).slice(0, 5);
   }
   return FALLBACK_REVIEWS;
 }
@@ -73,17 +77,35 @@ export default function Reviews() {
   useEffect(() => {
     const controller = new AbortController();
 
-    fetch("/google-reviews.json", {
-      cache: "no-store",
-      signal: controller.signal,
-    })
-      .then((res) => (res.ok ? res.json() : null))
-      .then((data) => {
-        if (data?.reviews?.length) {
-          setLiveReviewsData(data);
-        }
+    const loadReviews = () => {
+      const url = `/google-reviews.json?ts=${Date.now()}`;
+
+      fetch(url, {
+        cache: "no-store",
+        signal: controller.signal,
+        headers: { "Cache-Control": "no-cache" },
       })
-      .catch(() => {});
+        .then((res) => {
+          if (!res.ok) {
+            console.warn("[Reviews] Nie można pobrać", url, "status:", res.status);
+            return null;
+          }
+          const contentType = res.headers.get("content-type") || "";
+          if (!contentType.includes("application/json")) {
+            console.warn("[Reviews] Odpowiedź nie jest JSON (sprawdź czy plik jest na serwerze)");
+            return null;
+          }
+          return res.json();
+        })
+        .then((data) => {
+          if (data?.reviews?.length) {
+            setLiveReviewsData(data);
+          }
+        })
+        .catch(() => {});
+    };
+
+    loadReviews();
 
     return () => controller.abort();
   }, []);
@@ -97,6 +119,11 @@ export default function Reviews() {
 
   const [startIndex, setStartIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+
+  // Zawsze zaczynaj od najnowszej opinii (po załadowaniu danych z JSON)
+  useEffect(() => {
+    setStartIndex(0);
+  }, [activeData?.fetchedAt, reviews.length]);
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
