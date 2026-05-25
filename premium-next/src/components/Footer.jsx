@@ -250,19 +250,19 @@ export default function Footer() {
         style={{
           borderTop: "1px solid #333",
           marginTop: "60px",
-          paddingTop: "20px",
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
+          gap: "16px",
           maxWidth: "1140px",
           margin: "60px auto 0 auto",
           padding: "20px 20px 0 20px",
-          flexWrap: "wrap",
+          flexWrap: "nowrap",
           fontSize: "14px",
           color: "#777",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center" }}>
+        <div style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
           <img
             src={assets("logo-komofrt.png")}
             alt="Komfort Premium"
@@ -270,7 +270,32 @@ export default function Footer() {
             style={{ opacity: 0.7 }}
           />
         </div>
-        <div>NIP 8411626366</div>
+
+        <div
+          style={{
+            flex: "1 1 auto",
+            textAlign: "center",
+            fontSize: "13px",
+            color: "#888",
+            lineHeight: "1.4",
+            whiteSpace: "nowrap",
+          }}
+        >
+          Stworzone i wdrożone przez:{" "}
+          <span style={{ color: "#bbb" }}>Kacper Margol</span>
+          {" · "}
+          Portfolio:{" "}
+          <a
+            href="https://kacpermargol.eu"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "rgb(197, 163, 92)", textDecoration: "none" }}
+          >
+            kacpermargol.eu
+          </a>
+        </div>
+
+        <div style={{ flexShrink: 0, whiteSpace: "nowrap" }}>NIP 8411626366</div>
       </div>
     </footer>
   );

@@ -348,9 +348,18 @@ a {
     flex: 1 1 100% !important;
   }
   .footer-row-container {
-    flex-direction: column !important;
-    text-align: center !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    justify-content: space-between !important;
     align-items: center !important;
+    gap: 8px !important;
+    font-size: 11px !important;
+  }
+  .footer-row-container img {
+    width: 70px !important;
+  }
+  .footer-row-container a {
+    font-size: 11px !important;
   }
 }
 
