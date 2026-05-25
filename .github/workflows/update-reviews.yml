@@ -1,10 +1,19 @@
 name: Update Google Reviews
 
-# Runs every day at 6:00 AM UTC (7:00 AM CET / 8:00 AM CEST)
+# Codzienne uruchomienie o 6:00 UTC (7:00 CET / 8:00 CEST)
 on:
   schedule:
     - cron: "0 6 * * *"
   workflow_dispatch:
+    inputs:
+      force_deploy:
+        description: "Wymuś pełny build + deploy na Hostinger (nawet jeśli opinie się nie zmieniły)"
+        required: false
+        default: "true"
+        type: choice
+        options:
+          - "true"
+          - "false"
 
 permissions:
   contents: write
@@ -14,13 +23,12 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  fetch-reviews:
+  fetch-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          # Use github.token so push has write perms (matches permissions.contents: write)
           token: ${{ github.token }}
           fetch-depth: 1
 
@@ -28,7 +36,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "22"
+          cache: "npm"
+          cache-dependency-path: premium-next/package-lock.json
 
+      # ── 1. Pobranie opinii z Google ─────────────────────────────────
       - name: Fetch Google Reviews
         working-directory: premium-next
         env:
@@ -36,54 +47,92 @@ jobs:
           GOOGLE_PLACE_ID: ${{ secrets.GOOGLE_PLACE_ID }}
         run: node scripts/fetch-google-reviews.js
 
-      - name: Commit and push if reviews changed
+      # ── 2. Wykrycie czy opinie faktycznie się zmieniły ──────────────
+      #    Ignorujemy pole "fetchedAt" (zmienia się przy każdym uruchomieniu).
+      - name: Detect real changes in reviews
+        id: detect_changes
         run: |
           set -e
-          REPO_ROOT="${GITHUB_WORKSPACE}"
-          FILE_DATA="${REPO_ROOT}/premium-next/src/data/google-reviews.json"
-          FILE_PUBLIC="${REPO_ROOT}/premium-next/public/google-reviews.json"
+          FILE_DATA="premium-next/src/data/google-reviews.json"
+          FILE_PUBLIC="premium-next/public/google-reviews.json"
 
-          cd "${REPO_ROOT}"
+          # Wyciągamy tylko właściwą treść opinii (bez fetchedAt) i porównujemy z HEAD.
+          CURRENT_HASH=$(jq -S 'del(.fetchedAt)' "${FILE_DATA}" | sha256sum | cut -d' ' -f1)
+          PREVIOUS_HASH=$(git show "HEAD:${FILE_DATA}" 2>/dev/null | jq -S 'del(.fetchedAt)' | sha256sum | cut -d' ' -f1 || echo "none")
+
+          echo "Current  hash: ${CURRENT_HASH}"
+          echo "Previous hash: ${PREVIOUS_HASH}"
+
+          if [ "${CURRENT_HASH}" != "${PREVIOUS_HASH}" ]; then
+            echo "reviews_changed=true" >> $GITHUB_OUTPUT
+            echo "Zmiana opinii wykryta - uruchomimy build i deploy."
+          else
+            echo "reviews_changed=false" >> $GITHUB_OUTPUT
+            echo "Brak rzeczywistych zmian w opiniach."
+          fi
+
+      # ── 3. Decyzja: czy robić pełny build + deploy ──────────────────
+      - name: Decide if we should build & deploy
+        id: should_deploy
+        run: |
+          FORCE="${{ github.event.inputs.force_deploy }}"
+          CHANGED="${{ steps.detect_changes.outputs.reviews_changed }}"
+
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${FORCE}" = "true" ]; then
+            echo "deploy=true" >> $GITHUB_OUTPUT
+            echo "Deploy: TAK (ręczne uruchomienie z force_deploy=true)"
+          elif [ "${CHANGED}" = "true" ]; then
+            echo "deploy=true" >> $GITHUB_OUTPUT
+            echo "Deploy: TAK (są nowe opinie)"
+          else
+            echo "deploy=false" >> $GITHUB_OUTPUT
+            echo "Deploy: NIE (brak zmian i brak wymuszenia)"
+          fi
+
+      # ── 4. Commit zaktualizowanych opinii (jeśli się zmieniły) ──────
+      - name: Commit and push updated reviews
+        if: steps.detect_changes.outputs.reviews_changed == 'true'
+        run: |
+          set -e
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          CHANGED=0
-          git diff --quiet HEAD -- "${FILE_DATA}" || CHANGED=1
-          git diff --quiet HEAD -- "${FILE_PUBLIC}" || CHANGED=1
-
-          if [ "$CHANGED" -eq 1 ]; then
-            git add "${FILE_DATA}" "${FILE_PUBLIC}"
-            git commit -m "chore: update Google reviews [automated]"
-            # Explicit remote URL avoids auth edge-cases that yield git exit 128
-            git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-            git push origin "HEAD:${GITHUB_REF_NAME}"
-          else
-            echo "No changes to google-reviews.json; skipping commit."
-          fi
+          git add premium-next/src/data/google-reviews.json premium-next/public/google-reviews.json
+          git commit -m "chore: update Google reviews [automated]"
+          git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
         env:
           GITHUB_TOKEN: ${{ github.token }}
 
-      # Wgrywa google-reviews.json na Hostinger: w poniedziałki + przy ręcznym "Run workflow"
-      - name: Check if Hostinger deploy should run
-        id: deploy_gate
+      # ── 5. Pełny build strony Next.js ───────────────────────────────
+      - name: Install dependencies
+        if: steps.should_deploy.outputs.deploy == 'true'
+        working-directory: premium-next
+        run: npm ci
+
+      - name: Build static site
+        if: steps.should_deploy.outputs.deploy == 'true'
+        working-directory: premium-next
+        env:
+          GOOGLE_PLACES_API_KEY: ${{ secrets.GOOGLE_PLACES_API_KEY }}
+          GOOGLE_PLACE_ID: ${{ secrets.GOOGLE_PLACE_ID }}
+        run: npm run build
+
+      - name: Verify build output
+        if: steps.should_deploy.outputs.deploy == 'true'
         run: |
-          if [ "$(date -u +%u)" = "1" ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo "deploy=true" >> $GITHUB_OUTPUT
-            echo "Deploy: tak (poniedziałek lub ręczne uruchomienie)"
-          else
-            echo "deploy=false" >> $GITHUB_OUTPUT
-            echo "Deploy: pominięty (tylko poniedziałek lub Run workflow)"
+          if [ ! -d "premium-next/out" ]; then
+            echo "ERROR: premium-next/out/ nie zostało wygenerowane przez build!"
+            exit 1
           fi
+          echo "Rozmiar wygenerowanej strony:"
+          du -sh premium-next/out/
+          echo "Pliki w out/:"
+          ls -la premium-next/out/ | head -30
 
-      - name: Prepare FTP payload
-        if: steps.deploy_gate.outputs.deploy == 'true'
-        run: |
-          mkdir -p deploy-reviews
-          cp premium-next/public/google-reviews.json deploy-reviews/
-          ls -la deploy-reviews/
-
-      - name: Upload google-reviews.json to Hostinger (FTP)
-        if: steps.deploy_gate.outputs.deploy == 'true'
+      # ── 6. Deploy całej strony na Hostinger (FTP) ───────────────────
+      - name: Deploy full site to Hostinger (FTP)
+        if: steps.should_deploy.outputs.deploy == 'true'
         uses: SamKirkland/FTP-Deploy-Action@v4.3.6
         with:
           server: ${{ secrets.HOSTINGER_FTP_HOST }}
@@ -91,6 +140,21 @@ jobs:
           password: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
           port: 21
           protocol: ftp
-          local-dir: ./deploy-reviews/
+          local-dir: ./premium-next/out/
           server-dir: ${{ secrets.HOSTINGER_FTP_REMOTE_DIR }}
+          # Nie czyścimy całego public_html - mogą tam być inne pliki Hostingera.
           dangerous-clean-slate: false
+          # Pomijamy pliki, które nie powinny lądować na produkcji.
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/.DS_Store
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "## Podsumowanie" >> $GITHUB_STEP_SUMMARY
+          echo "- Opinie zmienione: \`${{ steps.detect_changes.outputs.reviews_changed }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- Pełny build + deploy: \`${{ steps.should_deploy.outputs.deploy }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- Trigger: \`${{ github.event_name }}\`" >> $GITHUB_STEP_SUMMARY
