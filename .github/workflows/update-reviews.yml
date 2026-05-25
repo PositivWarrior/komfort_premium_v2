@@ -130,7 +130,35 @@ jobs:
           echo "Pliki w out/:"
           ls -la premium-next/out/ | head -30
 
-      # ── 6. Deploy całej strony na Hostinger (FTP) ───────────────────
+      # ── 6a. Diagnostyka FTP (PRZED deployem) ────────────────────────
+      #     Pokazuje:
+      #     - aktualny katalog roboczy po zalogowaniu
+      #     - listing roota
+      #     - listing katalogu, do którego planujemy deploy
+      #     - daty modyfikacji index.html i google-reviews.json przed deployem
+      - name: Diagnose Hostinger FTP (before deploy)
+        if: steps.should_deploy.outputs.deploy == 'true'
+        env:
+          FTP_HOST: ${{ secrets.HOSTINGER_FTP_HOST }}
+          FTP_USER: ${{ secrets.HOSTINGER_FTP_USER }}
+          FTP_PASS: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
+          FTP_DIR: ${{ secrets.HOSTINGER_FTP_REMOTE_DIR }}
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq lftp
+          echo "=== Cel deployu: '${FTP_DIR}' ==="
+          lftp -u "${FTP_USER},${FTP_PASS}" -p 21 "${FTP_HOST}" <<EOF
+          set ssl:verify-certificate no
+          set ftp:passive-mode on
+          echo "--- pwd (po zalogowaniu): ---"
+          pwd
+          echo "--- ls / (root FTP): ---"
+          cls -la /
+          echo "--- ls ${FTP_DIR} (docelowy katalog): ---"
+          cls -la "${FTP_DIR}" || echo "[BLAD] Katalog ${FTP_DIR} nieosiagalny!"
+          bye
+          EOF
+
+      # ── 6b. Deploy całej strony na Hostinger (FTP) ───────────────────
       - name: Deploy full site to Hostinger (FTP)
         if: steps.should_deploy.outputs.deploy == 'true'
         uses: SamKirkland/FTP-Deploy-Action@v4.3.6
@@ -142,6 +170,8 @@ jobs:
           protocol: ftp
           local-dir: ./premium-next/out/
           server-dir: ${{ secrets.HOSTINGER_FTP_REMOTE_DIR }}
+          # Verbose - pokaze kazdy upload w logach
+          log-level: verbose
           # Nie czyścimy całego public_html - mogą tam być inne pliki Hostingera.
           dangerous-clean-slate: false
           # Pomijamy pliki, które nie powinny lądować na produkcji.
@@ -150,6 +180,28 @@ jobs:
             **/.git*/**
             **/node_modules/**
             **/.DS_Store
+
+      # ── 6c. Diagnostyka FTP (PO deployu) ────────────────────────────
+      #     Potwierdzenie, ze pliki rzeczywiscie sa w docelowym katalogu.
+      - name: Diagnose Hostinger FTP (after deploy)
+        if: steps.should_deploy.outputs.deploy == 'true'
+        env:
+          FTP_HOST: ${{ secrets.HOSTINGER_FTP_HOST }}
+          FTP_USER: ${{ secrets.HOSTINGER_FTP_USER }}
+          FTP_PASS: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
+          FTP_DIR: ${{ secrets.HOSTINGER_FTP_REMOTE_DIR }}
+        run: |
+          echo "=== Stan ${FTP_DIR} po deployu ==="
+          lftp -u "${FTP_USER},${FTP_PASS}" -p 21 "${FTP_HOST}" <<EOF
+          set ssl:verify-certificate no
+          set ftp:passive-mode on
+          cls -la "${FTP_DIR}" || echo "[BLAD] Katalog ${FTP_DIR} nieosiagalny!"
+          echo "--- index.html: ---"
+          cls -la "${FTP_DIR}/index.html" || echo "BRAK index.html"
+          echo "--- google-reviews.json: ---"
+          cls -la "${FTP_DIR}/google-reviews.json" || echo "BRAK google-reviews.json"
+          bye
+          EOF
 
       - name: Summary
         if: always()
