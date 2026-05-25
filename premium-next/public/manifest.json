@@ -9,9 +9,9 @@
   "lang": "pl",
   "icons": [
     {
-      "src": "/favicon.ico",
-      "sizes": "any",
-      "type": "image/x-icon"
+      "src": "/assets/logo-komofrt.png",
+      "sizes": "500x214",
+      "type": "image/png"
     }
   ]
 }

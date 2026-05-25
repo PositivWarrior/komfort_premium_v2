@@ -24,7 +24,7 @@ This project is a completely rewritten, modern, and multilingual (PL / EN) busin
 premium-next/
 ├── public/                     # Static assets copied 1:1 to the server
 │   ├── assets/                 # Background images, logo, fleet graphics
-│   ├── favicon.ico             # Global icon
+│   ├── favicon.ico             # (legacy) — ikona zastąpiona logo w src/app/icon.png
 │   ├── sitemap.xml             # Sitemap (static for SEO)
 │   ├── robots.txt              # Rules for SEO crawlers
 │   └── manifest.json           # Basic PWA parameters

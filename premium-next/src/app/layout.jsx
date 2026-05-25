@@ -124,8 +124,10 @@ export const metadata = {
 
   // ── Icons ─────────────────────────────────────
   icons: {
-    icon: "/favicon.ico",
-    apple: "/favicon.ico",
+    icon: [
+      { url: "/assets/logo-komofrt.png", type: "image/png" },
+    ],
+    apple: "/assets/logo-komofrt.png",
   },
 
   // ── Manifest ──────────────────────────────────
