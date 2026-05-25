@@ -131,11 +131,9 @@ jobs:
           ls -la premium-next/out/ | head -30
 
       # ── 6a. Diagnostyka FTP (PRZED deployem) ────────────────────────
-      #     Pokazuje:
-      #     - aktualny katalog roboczy po zalogowaniu
-      #     - listing roota
-      #     - listing katalogu, do którego planujemy deploy
-      #     - daty modyfikacji index.html i google-reviews.json przed deployem
+      #     Szukamy WSZYSTKICH lokalizacji 'index.html' na koncie FTP -
+      #     ta z najnowszą datą NIE jest tą, której uzywa komfortpremium.eu
+      #     (bo na live nadal jest stara wersja).
       - name: Diagnose Hostinger FTP (before deploy)
         if: steps.should_deploy.outputs.deploy == 'true'
         env:
@@ -144,19 +142,46 @@ jobs:
           FTP_PASS: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
           FTP_DIR: ${{ secrets.HOSTINGER_FTP_REMOTE_DIR }}
         run: |
+          set +e
           sudo apt-get update -qq && sudo apt-get install -y -qq lftp
           echo "=== Cel deployu: '${FTP_DIR}' ==="
-          lftp -u "${FTP_USER},${FTP_PASS}" -p 21 "${FTP_HOST}" <<EOF
-          set ssl:verify-certificate no
-          set ftp:passive-mode on
-          echo "--- pwd (po zalogowaniu): ---"
-          pwd
-          echo "--- ls / (root FTP): ---"
-          cls -la /
-          echo "--- ls ${FTP_DIR} (docelowy katalog): ---"
-          cls -la "${FTP_DIR}" || echo "[BLAD] Katalog ${FTP_DIR} nieosiagalny!"
-          bye
-          EOF
+
+          echo ""
+          echo "============================================================"
+          echo " Probujemy typowych sciezek Hostingera dla index.html"
+          echo "============================================================"
+          for p in \
+            "/public_html/index.html" \
+            "/public_html/komfortpremium.eu/index.html" \
+            "/domains/komfortpremium.eu/public_html/index.html" \
+            "/komfortpremium.eu/public_html/index.html" \
+            "/komfortpremium.eu/index.html" \
+            "/home/u${FTP_USER}/domains/komfortpremium.eu/public_html/index.html" \
+            "/htdocs/index.html"
+          do
+            echo ">>> ${p}"
+            lftp -u "${FTP_USER},${FTP_PASS}" -p 21 "${FTP_HOST}" \
+              -e "set ssl:verify-certificate no; set ftp:passive-mode on; cls -la \"${p}\"; bye" 2>&1 \
+              | sed 's/^/    /'
+          done
+
+          echo ""
+          echo "============================================================"
+          echo " Rekursywny listing 4 poziomy w glab (filtrowany)"
+          echo "============================================================"
+          lftp -u "${FTP_USER},${FTP_PASS}" -p 21 "${FTP_HOST}" \
+            -e "set ssl:verify-certificate no; set ftp:passive-mode on; find / -maxdepth 4; bye" 2>&1 \
+            | grep -iE 'index\.html$|google-reviews\.json$|public_html|domains|komfortpremium' \
+            | head -60
+
+          echo ""
+          echo "============================================================"
+          echo " Listing katalogu docelowego (${FTP_DIR})"
+          echo "============================================================"
+          lftp -u "${FTP_USER},${FTP_PASS}" -p 21 "${FTP_HOST}" \
+            -e "set ssl:verify-certificate no; set ftp:passive-mode on; cls -la \"${FTP_DIR}\"; bye" 2>&1 \
+            | sed 's/^/    /'
+          true
 
       # ── 6b. Deploy całej strony na Hostinger (FTP) ───────────────────
       - name: Deploy full site to Hostinger (FTP)
