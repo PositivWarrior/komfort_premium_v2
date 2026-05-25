@@ -75,15 +75,12 @@ const SITE_URL = "https://komfortpremium.eu";
 const lastmod = new Date().toISOString().slice(0, 10);
 
 const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>${SITE_URL}/</loc>
     <lastmod>${lastmod}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="pl-PL" href="${SITE_URL}/" />
-    <xhtml:link rel="alternate" hreflang="en-US" href="${SITE_URL}/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="${SITE_URL}/" />
   </url>
 </urlset>
 `;
@@ -93,10 +90,53 @@ const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
   console.log(`  Sitemap: ${fileName} (lastmod: ${lastmod})`);
 });
 
-const htaccess = `# ── SEO: Sitemap & robots (serve as static XML, never SPA fallback) ─
+// ── 4b. Block indexing of static error/duplicate HTML files ───────────────
+const notFoundPath = path.join(outDir, "404.html");
+if (fs.existsSync(notFoundPath)) {
+  let notFoundHtml = fs.readFileSync(notFoundPath, "utf8");
+  if (!/name="robots"/i.test(notFoundHtml)) {
+    notFoundHtml = notFoundHtml.replace(
+      "<head>",
+      '<head><meta name="robots" content="noindex, nofollow" />'
+    );
+    fs.writeFileSync(notFoundPath, notFoundHtml, "utf8");
+    console.log("  404.html: added noindex meta");
+  }
+}
+
+const htaccess = `# ── SEO / routing for static Next.js export on Apache ───────────────
 <IfModule mod_rewrite.c>
   RewriteEngine On
+  RewriteBase /
+
+  # Always serve SEO files as real static files (never SPA HTML fallback)
   RewriteRule ^(robots\\.txt|sitemap\\.xml|sitemap2\\.xml)$ - [L]
+
+  # Force HTTPS
+  RewriteCond %{HTTPS} off
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+  # Canonical host: non-www
+  RewriteCond %{HTTP_HOST} ^www\\.komfortpremium\\.eu [NC]
+  RewriteRule ^ https://komfortpremium.eu%{REQUEST_URI} [R=301,L]
+
+  # Duplicate homepage URLs -> single canonical /
+  RewriteRule ^index\\.html$ https://komfortpremium.eu/ [R=301,L,NC]
+  RewriteRule ^index/?$ https://komfortpremium.eu/ [R=301,L,NC]
+
+  # Trailing slash for directory-like URLs only (not .xml/.json/.html files)
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_URI} !\\.[a-zA-Z0-9]+$
+  RewriteCond %{REQUEST_URI} !(.*)/$
+  RewriteRule ^(.*)$ /$1/ [R=301,L]
+
+  # Serve existing files/directories as-is
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # SPA fallback
+  RewriteRule ^ index.html [L]
 </IfModule>
 
 <Files "sitemap.xml">
@@ -120,32 +160,11 @@ const htaccess = `# ── SEO: Sitemap & robots (serve as static XML, never SPA
   </IfModule>
 </Files>
 
-# ── SEO: Canonical domain redirects ──────────────────────────────────
-<IfModule mod_rewrite.c>
-  RewriteEngine On
-  
-  # Redirect HTTP to HTTPS
-  RewriteCond %{HTTPS} off
-  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
-  
-  # Redirect www to non-www (canonical domain)
-  RewriteCond %{HTTP_HOST} ^www\\.komfortpremium\\.eu [NC]
-  RewriteRule ^ https://komfortpremium.eu%{REQUEST_URI} [R=301,L]
-  
-  # Add trailing slash to URLs without file extension (for canonical consistency)
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_URI} !\\.[a-zA-Z0-9]+$
-  RewriteCond %{REQUEST_URI} !(.*)/$
-  RewriteRule ^(.*)$ /$1/ [R=301,L]
-  
-  # Don't rewrite actual files (robots.txt, sitemap.xml, manifest.json, etc.)
-  RewriteCond %{REQUEST_FILENAME} -f [OR]
-  RewriteCond %{REQUEST_FILENAME} -d
-  RewriteRule ^ - [L]
-  
-  # SPA fallback: serve index.html for non-file requests
-  RewriteRule ^ index.html [L]
-</IfModule>
+<Files "404.html">
+  <IfModule mod_headers.c>
+    Header set X-Robots-Tag "noindex, nofollow"
+  </IfModule>
+</Files>
 
 # ── MIME types ───────────────────────────────────────────────────────
 <IfModule mod_mime.c>

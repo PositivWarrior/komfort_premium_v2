@@ -1,12 +1,12 @@
-# Robots.txt for komfortpremium.eu
-# Komfort Premium - VIP Transport Poznan
-
 User-agent: *
 Allow: /
 
 Disallow: /_next/
 Disallow: /api/
 Disallow: /fonts/
+Disallow: /index.html
+Disallow: /index/
+Disallow: /404.html
 
 Sitemap: https://komfortpremium.eu/sitemap.xml
 Sitemap: https://komfortpremium.eu/sitemap2.xml

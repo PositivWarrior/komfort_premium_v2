@@ -69,15 +69,10 @@ export const metadata = {
     },
   },
 
-  // ── Canonical & Alternates (hreflang) ─────────
+  // ── Canonical (single homepage URL, no duplicate hreflang variants) ──
   metadataBase: new URL("https://komfortpremium.eu"),
   alternates: {
-    canonical: "/",
-    languages: {
-      "pl-PL": "/",
-      "en-US": "/",
-      "x-default": "/",
-    },
+    canonical: "https://komfortpremium.eu/",
   },
 
   // ── Open Graph (Facebook / social sharing) ────
@@ -152,7 +147,7 @@ const jsonLd = {
       alternateName: "Komfort Premium - Przewozy VIP Poznań",
       description:
         "Luksusowy transport osobowy Poznań. Wynajem limuzyn z kierowcą, transfery lotniskowe, przewozy VIP i transport biznesowy. Luxury personal transport in Poznań. Limousine hire with driver, airport transfers, VIP rides and business transport.",
-      url: "https://komfortpremium.eu",
+      url: "https://komfortpremium.eu/",
       telephone: "+48533515202",
       email: "rezerwacjepremium@gmail.com",
       image: "https://komfortpremium.eu/assets/Projekt-bez-nazwy-2025-05-17T162727.238-1536x864.png",
@@ -262,7 +257,7 @@ const jsonLd = {
     {
       "@type": "WebSite",
       "@id": "https://komfortpremium.eu/#website",
-      url: "https://komfortpremium.eu",
+      url: "https://komfortpremium.eu/",
       name: "Komfort Premium",
       description: "Luksusowy transport VIP Poznań | Luxury VIP Transport Poznań",
       publisher: {
@@ -275,7 +270,7 @@ const jsonLd = {
     {
       "@type": "WebPage",
       "@id": "https://komfortpremium.eu/#webpage",
-      url: "https://komfortpremium.eu",
+      url: "https://komfortpremium.eu/",
       name: "Komfort Premium – Przewozy VIP Poznań | VIP Transport Poznań",
       isPartOf: {
         "@id": "https://komfortpremium.eu/#website",
@@ -334,8 +329,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="pl-PL">
       <head>
-        <meta name="google-site-verification" content="LA3U03MmvkgiD_eFtLfxLJcxgTYxPVXSFjydrFP6v6c" />
-
         {/* Geo meta tags for local SEO */}
         <meta name="geo.region" content="PL-WP" />
         <meta name="geo.placename" content="Poznań" />
