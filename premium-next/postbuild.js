@@ -70,7 +70,57 @@ function walk(dir) {
 console.log('\nProcessing HTML files...');
 walk(outDir);
 
-const htaccess = `# ── SEO: Canonical domain redirects ──────────────────────────────────
+// ── 4. Generate sitemap.xml + sitemap2.xml (fresh lastmod on every deploy) ──
+const SITE_URL = "https://komfortpremium.eu";
+const lastmod = new Date().toISOString().slice(0, 10);
+
+const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>${SITE_URL}/</loc>
+    <lastmod>${lastmod}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="pl-PL" href="${SITE_URL}/" />
+    <xhtml:link rel="alternate" hreflang="en-US" href="${SITE_URL}/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="${SITE_URL}/" />
+  </url>
+</urlset>
+`;
+
+["sitemap.xml", "sitemap2.xml"].forEach((fileName) => {
+  fs.writeFileSync(path.join(outDir, fileName), sitemapXml, "utf8");
+  console.log(`  Sitemap: ${fileName} (lastmod: ${lastmod})`);
+});
+
+const htaccess = `# ── SEO: Sitemap & robots (serve as static XML, never SPA fallback) ─
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^(robots\\.txt|sitemap\\.xml|sitemap2\\.xml)$ - [L]
+</IfModule>
+
+<Files "sitemap.xml">
+  <IfModule mod_headers.c>
+    Header set Content-Type "application/xml; charset=UTF-8"
+    Header set Cache-Control "public, max-age=3600"
+  </IfModule>
+</Files>
+
+<Files "sitemap2.xml">
+  <IfModule mod_headers.c>
+    Header set Content-Type "application/xml; charset=UTF-8"
+    Header set Cache-Control "public, max-age=3600"
+  </IfModule>
+</Files>
+
+<Files "robots.txt">
+  <IfModule mod_headers.c>
+    Header set Content-Type "text/plain; charset=UTF-8"
+    Header set Cache-Control "public, max-age=3600"
+  </IfModule>
+</Files>
+
+# ── SEO: Canonical domain redirects ──────────────────────────────────
 <IfModule mod_rewrite.c>
   RewriteEngine On
   
@@ -105,6 +155,7 @@ const htaccess = `# ── SEO: Canonical domain redirects ───────
   AddType font/woff .woff
   AddType application/json .json
   AddType application/xml .xml
+  AddType text/xml .xml
   AddType text/plain .txt
   AddType image/webp .webp
   AddType image/avif .avif
@@ -169,4 +220,5 @@ console.log(`   HTML: CSS inlined, font paths fixed`);
 console.log(`   JS:   ${jsFiles.length} chunks in _next/ (${(totalJs / 1024).toFixed(0)} KB) — untouched`);
 console.log(`   Fonts: copied to /fonts/`);
 console.log(`   .htaccess: MIME types + gzip + caching`);
+console.log(`   Sitemaps: sitemap.xml + sitemap2.xml (lastmod: ${lastmod})`);
 console.log('\n📁 Upload entire contents of out/ to Hostinger public_html/');
