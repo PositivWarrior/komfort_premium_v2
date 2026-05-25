@@ -51,18 +51,66 @@ const FALLBACK_REVIEWS = [
     color: "#16a085",
     rating: 5,
   },
+  {
+    name: "Justyna D.",
+    time: "11 miesięcy temu",
+    text: "Bardzo bardzo polecam! Grupa zaopiekowana zdalnie z imprezy firmowej, byłam pod telefonem i spodziewałam się komplikacji zupełnie niepotrzebnie, bo wszystko zadziało się profesjonalnie. Dziękuję bardzo!",
+    reply: "Pani Justyno dziękujemy za miłe słowo 👍😎🚕",
+    initial: "J",
+    color: "#e67e22",
+    rating: 5,
+  },
+  {
+    name: "Kuba K.",
+    time: "10 miesięcy temu",
+    text: "Pełen profesjonalizm. Super człowiek z humorem. Nigdy nie zostałem tak dobrze obsłużony. Perfekto!",
+    reply: "Panie Jakubie wielkie dzięki. Staramy się dalej 😉😎🚖",
+    initial: "K",
+    color: "#2980b9",
+    rating: 5,
+  },
 ];
 
-function pickReviews(data) {
-  const googleReviews = data?.reviews || [];
-  if (googleReviews.length > 0) {
-    return googleReviews.slice(0, 5);
+const SLIDE_COUNT = 3;
+
+function getGoogleReviews(data) {
+  const live = data?.reviews || [];
+  if (live.length > 0) {
+    return live.slice(0, 5);
   }
   const bundled = googleReviewsData?.reviews || [];
-  if (bundled.length > 0) {
-    return bundled.slice(0, 5);
+  return bundled.slice(0, 5);
+}
+
+function mergeReviews(data) {
+  const googleReviews = getGoogleReviews(data);
+  const seen = new Set(
+    googleReviews.map((review) => review.name.trim().toLowerCase())
+  );
+
+  const merged = [...googleReviews];
+
+  for (const fallbackReview of FALLBACK_REVIEWS) {
+    const key = fallbackReview.name.trim().toLowerCase();
+    if (!seen.has(key)) {
+      merged.push(fallbackReview);
+      seen.add(key);
+    }
   }
-  return FALLBACK_REVIEWS;
+
+  return merged.length > 0 ? merged : FALLBACK_REVIEWS;
+}
+
+function splitIntoSlides(reviews, slideCount = SLIDE_COUNT) {
+  if (reviews.length === 0) {
+    return Array.from({ length: slideCount }, () => []);
+  }
+
+  const chunkSize = Math.ceil(reviews.length / slideCount);
+
+  return Array.from({ length: slideCount }, (_, index) =>
+    reviews.slice(index * chunkSize, (index + 1) * chunkSize)
+  );
 }
 
 export default function Reviews() {
@@ -90,12 +138,13 @@ export default function Reviews() {
 
   const activeData = liveReviewsData ?? googleReviewsData;
 
-  const reviews = useMemo(() => pickReviews(activeData), [activeData]);
+  const reviews = useMemo(() => mergeReviews(activeData), [activeData]);
+  const slides = useMemo(() => splitIntoSlides(reviews), [reviews]);
 
   const overallRating = activeData?.overallRating || 5.0;
   const totalReviews = activeData?.totalReviews || 0;
 
-  const [startIndex, setStartIndex] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -105,37 +154,32 @@ export default function Reviews() {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  const visibleCount = isMobile ? 1 : Math.min(reviews.length, 4);
-  const totalCount = reviews.length;
-  const canSlide = totalCount > visibleCount;
+  const visibleReviews = slides[currentSlide]?.length
+    ? slides[currentSlide]
+    : slides.find((slide) => slide.length > 0) || [];
+  const visibleCount = isMobile
+    ? visibleReviews.length
+    : Math.min(visibleReviews.length, 4);
+  const displayedReviews = visibleReviews.slice(0, visibleCount);
+  const canSlide = slides.filter((slide) => slide.length > 0).length > 1;
 
   const nextSlide = () => {
-    if (!canSlide) return;
-    setStartIndex((prev) => (prev + 1) % totalCount);
+    setCurrentSlide((prev) => (prev + 1) % SLIDE_COUNT);
   };
 
   const prevSlide = () => {
-    if (!canSlide) return;
-    setStartIndex((prev) => (prev - 1 + totalCount) % totalCount);
+    setCurrentSlide((prev) => (prev - 1 + SLIDE_COUNT) % SLIDE_COUNT);
   };
 
   useEffect(() => {
     if (!canSlide) return;
+
     const interval = setInterval(() => {
-      nextSlide();
+      setCurrentSlide((prev) => (prev + 1) % SLIDE_COUNT);
     }, 4000);
+
     return () => clearInterval(interval);
-  }, [canSlide]);
-
-  const getVisibleReviews = () => {
-    let items = [];
-    for (let i = 0; i < visibleCount; i++) {
-      items.push(reviews[(startIndex + i) % totalCount]);
-    }
-    return items;
-  };
-
-  const visibleReviews = getVisibleReviews();
+  }, [canSlide, reviews.length]);
 
   return (
     <section
@@ -218,9 +262,9 @@ export default function Reviews() {
               gap: "20px",
             }}
           >
-            {visibleReviews.map((review, index) => (
+            {displayedReviews.map((review, index) => (
               <div
-                key={`${review.name}-${startIndex}-${index}`}
+                key={`${review.name}-${currentSlide}-${index}`}
                 style={{
                   backgroundColor: "#1e1e1e",
                   padding: "20px",
@@ -364,15 +408,16 @@ export default function Reviews() {
                 gap: "5px",
               }}
             >
-              {reviews.map((_, i) => (
+              {slides.map((slide, i) => (
                 <div
                   key={i}
-                  onClick={() => setStartIndex(i)}
+                  onClick={() => setCurrentSlide(i)}
                   style={{
                     width: "8px",
                     height: "8px",
                     borderRadius: "50%",
-                    backgroundColor: i === startIndex ? "#3498db" : "#444",
+                    backgroundColor: i === currentSlide ? "#3498db" : "#444",
+                    opacity: slide.length > 0 ? 1 : 0.35,
                     cursor: "pointer",
                     transition: "background-color 0.3s ease",
                   }}
