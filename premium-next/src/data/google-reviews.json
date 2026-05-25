@@ -1,10 +1,34 @@
 {
-  "fetchedAt": "2026-05-24T08:26:53.079Z",
+  "fetchedAt": "2026-05-25T05:40:04.229Z",
   "placeId": "ChIJG2ww4MCTMkcRvgaBdLz1z9A",
   "placeName": "Komfort Taxi",
   "overallRating": 5,
-  "totalReviews": 57,
+  "totalReviews": 59,
   "reviews": [
+    {
+      "name": "Toby S.",
+      "time": "w ostatnim tygodniu",
+      "publishTimestamp": 1779627648,
+      "text": "We had a great experience with this company! Their communication was great, clear and very quick (and easy to do everything in English), and the taxi was punctual and comfortable. They were also really friendly, and flexible when I wanted to change the pickup time at short notice. I'd definitely choose them again!",
+      "reply": "",
+      "initial": "T",
+      "color": "#8e44ad",
+      "rating": 5,
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocJu4EhkNg6eswKM6eWmVdmrbdw6epkbUNOOpKI77KvR4w6o7A=s128-c0x00000000-cc-rp-mo",
+      "source": "google"
+    },
+    {
+      "name": "Tasha M.",
+      "time": "w ostatnim tygodniu",
+      "publishTimestamp": 1779622187,
+      "text": "Great taxi service, very laid back and professional. Efficient service and clear and friendly communication, totally recommend!",
+      "reply": "",
+      "initial": "T",
+      "color": "#c0392b",
+      "rating": 5,
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocI6cP2cloSlXW6OeBqMsFJ_a2IZl6Nby6vhhi2K7SCmzCN4Ng=s128-c0x00000000-cc-rp-mo",
+      "source": "google"
+    },
     {
       "name": "George T.",
       "time": "w ostatnim tygodniu",
@@ -12,7 +36,7 @@
       "text": "A friendly and professional driver with an excellent luxury service.",
       "reply": "",
       "initial": "G",
-      "color": "#8e44ad",
+      "color": "#27ae60",
       "rating": 5,
       "profilePhoto": "https://lh3.googleusercontent.com/a-/ALV-UjXF2jw7yrKEiSfwXwaQljjv-orwpdHSerXT83jBSzPPOSAieC0W=s128-c0x00000000-cc-rp-mo",
       "source": "google"
@@ -24,7 +48,7 @@
       "text": "Kurs umówiony dzień wcześniej. Kierowca był na czas, dostałam sms-a, z wiadomością gdzie czeka, obsługa na najwyższym poziomie, jak bym była klientem  vip :) bardzo sympatyczny i uprzejmy Pan. Polecam na 100%",
       "reply": "",
       "initial": "K",
-      "color": "#c0392b",
+      "color": "#16a085",
       "rating": 5,
       "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocKJ2yejObM3rN8l_m84GcXOazkDoj8pCH4mGNcDZRQ8TUyT8Q=s128-c0x00000000-cc-rp-mo",
       "source": "google"
@@ -36,33 +60,9 @@
       "text": "Ocena nie może być inna niż 5/5. Kontakt wzorowy, duża elastyczność i nastawienie na rozwiązanie problemu Klienta. Samochody w świetnym stanie i bardzo czyste. Szczerze polecam!",
       "reply": "",
       "initial": "M",
-      "color": "#27ae60",
-      "rating": 5,
-      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocKk1Nj8LUf-RsdQfsOC7agIKTbOcSR0gceSksOdsiee4y8N1g=s128-c0x00000000-cc-rp-mo",
-      "source": "google"
-    },
-    {
-      "name": "Shaun G.",
-      "time": "5 miesięcy temu",
-      "publishTimestamp": 1765858537,
-      "text": "",
-      "reply": "",
-      "initial": "S",
-      "color": "#16a085",
-      "rating": 5,
-      "profilePhoto": "https://lh3.googleusercontent.com/a-/ALV-UjV9FXc87DDspxlbjeePjW-iY3VfDCHNiWvILq4dZX4q8C48lDEqDQ=s128-c0x00000000-cc-rp-mo",
-      "source": "google"
-    },
-    {
-      "name": "Wojciech P.",
-      "time": "5 miesięcy temu",
-      "publishTimestamp": 1764880267,
-      "text": "Świetny kontakt i profesjonalnie zrealizowana usługa. Tak trzymać! 💪",
-      "reply": "",
-      "initial": "W",
       "color": "#2980b9",
       "rating": 5,
-      "profilePhoto": "https://lh3.googleusercontent.com/a-/ALV-UjWm8xNVhECKEff6ynM5uyEp40OXcOobqefFBAxNYLVxzxxHSXCp=s128-c0x00000000-cc-rp-mo",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocKk1Nj8LUf-RsdQfsOC7agIKTbOcSR0gceSksOdsiee4y8N1g=s128-c0x00000000-cc-rp-mo",
       "source": "google"
     }
   ]
