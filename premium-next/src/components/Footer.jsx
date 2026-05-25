@@ -257,45 +257,41 @@ export default function Footer() {
           maxWidth: "1140px",
           margin: "60px auto 0 auto",
           padding: "20px 20px 0 20px",
-          flexWrap: "nowrap",
           fontSize: "14px",
           color: "#777",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
+        <div className="footer-bar-logo" style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
           <img
             src={assets("logo-komofrt.png")}
             alt="Komfort Premium"
             width="100"
-            style={{ opacity: 0.7 }}
+            style={{ opacity: 0.7, maxWidth: "100%", height: "auto" }}
           />
         </div>
 
-        <div
-          style={{
-            flex: "1 1 auto",
-            textAlign: "center",
-            fontSize: "13px",
-            color: "#888",
-            lineHeight: "1.4",
-            whiteSpace: "nowrap",
-          }}
-        >
-          Stworzone i wdrożone przez:{" "}
-          <span style={{ color: "#bbb" }}>Kacper Margol</span>
-          {" · "}
-          Portfolio:{" "}
-          <a
-            href="https://kacpermargol.eu"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ color: "rgb(197, 163, 92)", textDecoration: "none" }}
-          >
-            kacpermargol.eu
-          </a>
+        <div className="footer-bar-credits">
+          <span>
+            Stworzone i wdrożone przez:{" "}
+            <span style={{ color: "#bbb" }}>Kacper Margol</span>
+          </span>
+          <span className="footer-credits-sep" aria-hidden="true">
+            {" · "}
+          </span>
+          <span>
+            Portfolio:{" "}
+            <a
+              href="https://kacpermargol.eu"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: "rgb(197, 163, 92)", textDecoration: "none" }}
+            >
+              kacpermargol.eu
+            </a>
+          </span>
         </div>
 
-        <div style={{ flexShrink: 0, whiteSpace: "nowrap" }}>NIP 8411626366</div>
+        <div className="footer-bar-nip">NIP 8411626366</div>
       </div>
     </footer>
   );
