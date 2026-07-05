@@ -9,6 +9,10 @@ import Contact from "../components/Contact";
 import Reviews from "../components/Reviews";
 import Footer from "../components/Footer";
 import { LanguageProvider } from "../context/LanguageContext";
+import { PrivacyProvider } from "../context/PrivacyContext";
+import CookieBanner from "../components/CookieBanner";
+import PrivacyPolicyModal from "../components/PrivacyPolicyModal";
+import ConsentAwareAnalytics from "../components/ConsentAwareAnalytics";
 
 import FAQ from "../components/FAQ";
 import PremiumTransport from "../components/PremiumTransport";
@@ -16,18 +20,23 @@ import PremiumTransport from "../components/PremiumTransport";
 export default function Home() {
   return (
     <LanguageProvider>
-      <div id="page" className="hfeed site">
-        <Header />
-        <Hero />
-        <About />
-        <Offer />
-        <PremiumTransport />
-        <FAQ />
-        <Fleet />
-        <Contact />
-        <Reviews />
-        <Footer />
-      </div>
+      <PrivacyProvider>
+        <ConsentAwareAnalytics />
+        <CookieBanner />
+        <PrivacyPolicyModal />
+        <div id="page" className="hfeed site">
+          <Header />
+          <Hero />
+          <About />
+          <Offer />
+          <PremiumTransport />
+          <FAQ />
+          <Fleet />
+          <Contact />
+          <Reviews />
+          <Footer />
+        </div>
+      </PrivacyProvider>
     </LanguageProvider>
   );
 }

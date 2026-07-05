@@ -1,0 +1,33 @@
+# Dependencies (root live-server + premium-next)
+node_modules/
+**/node_modules/
+
+# Next.js build output
+premium-next/.next/
+premium-next/out/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Logs & debug
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Build artifacts
+dist/
+build/
+*.tsbuildinfo
+
+# Vercel (unused, but safe to ignore)
+.vercel/

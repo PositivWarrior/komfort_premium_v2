@@ -1,10 +1,33 @@
 "use client";
 
+import { useState } from "react";
 import { useLanguage } from "../context/LanguageContext";
+import PrivacyFormNotice from "./PrivacyFormNotice";
 
 export default function Contact() {
   const { t } = useLanguage();
   const assets = (path) => `/assets/${path}`;
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const subject = encodeURIComponent(`Komfort Premium – ${formData.name}`);
+    const body = encodeURIComponent(
+      `Imię i nazwisko / Name: ${formData.name}\nE-mail: ${formData.email}\n\n${formData.message}`
+    );
+
+    window.location.href = `mailto:rezerwacjepremium@gmail.com?subject=${subject}&body=${body}`;
+  };
 
   return (
     <section
@@ -191,6 +214,53 @@ export default function Contact() {
                 </div>
               </div>
             </div>
+
+            <form className="contact-form" onSubmit={handleSubmit}>
+              <div className="contact-form__field">
+                <label htmlFor="contact-name">{t("contact-form-name")}</label>
+                <input
+                  id="contact-name"
+                  name="name"
+                  type="text"
+                  required
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder={t("contact-form-name-placeholder")}
+                />
+              </div>
+
+              <div className="contact-form__field">
+                <label htmlFor="contact-email">{t("contact-form-email")}</label>
+                <input
+                  id="contact-email"
+                  name="email"
+                  type="email"
+                  required
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder={t("contact-form-email-placeholder")}
+                />
+              </div>
+
+              <div className="contact-form__field">
+                <label htmlFor="contact-message">{t("contact-form-message")}</label>
+                <textarea
+                  id="contact-message"
+                  name="message"
+                  required
+                  rows={4}
+                  value={formData.message}
+                  onChange={handleChange}
+                  placeholder={t("contact-form-message-placeholder")}
+                />
+              </div>
+
+              <PrivacyFormNotice className="contact-form__notice" />
+
+              <button type="submit" className="btn-gold contact-form__submit">
+                {t("contact-form-submit")}
+              </button>
+            </form>
           </div>
         </div>
       </div>

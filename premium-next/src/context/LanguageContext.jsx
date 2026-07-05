@@ -215,6 +215,142 @@ const translations = {
 		pl: 'Odnośniki',
 		en: 'Links',
 	},
+	'footer-privacy-policy': {
+		pl: 'Polityka prywatności',
+		en: 'Privacy Policy',
+	},
+	'cookie-banner-title': {
+		pl: 'Pliki cookies i prywatność',
+		en: 'Cookies and privacy',
+	},
+	'cookie-banner-text': {
+		pl: 'Używamy plików cookies, w tym Google Analytics (przez Google Tag Manager), aby analizować ruch na stronie, zachowania użytkowników oraz optymalizować indeksowanie witryny. Klikając „Akceptuję”, wyrażasz zgodę na ich użycie. Więcej informacji znajdziesz w naszej Polityce prywatności.',
+		en: 'We use cookies, including Google Analytics (via Google Tag Manager), to analyze site traffic, user behavior, and optimize website indexing. By clicking "Accept", you consent to their use. You can find more information in our Privacy Policy.',
+	},
+	'cookie-banner-accept': {
+		pl: 'Akceptuję',
+		en: 'Accept',
+	},
+	'cookie-banner-privacy-link': {
+		pl: 'Polityka prywatności',
+		en: 'Privacy Policy',
+	},
+	'privacy-modal-close': {
+		pl: 'Zamknij',
+		en: 'Close',
+	},
+	'privacy-policy-title': {
+		pl: 'Polityka prywatności (RODO)',
+		en: 'Privacy Policy (GDPR)',
+	},
+	'privacy-policy-updated': {
+		pl: 'Ostatnia aktualizacja: 5 lipca 2026 r.',
+		en: 'Last updated: July 5, 2026',
+	},
+	'privacy-policy-section-1-title': {
+		pl: '1. Administrator danych',
+		en: '1. Data Controller',
+	},
+	'privacy-policy-section-1-text': {
+		pl: 'Administratorem Twoich danych osobowych jest Komfort Premium (NIP: 8411626366), z siedzibą w Poznaniu, Polska. W sprawach związanych z ochroną danych osobowych możesz skontaktować się z nami pod adresem e-mail: rezerwacjepremium@gmail.com lub telefonicznie: +48 533 515 202.',
+		en: 'The controller of your personal data is Komfort Premium (Tax ID: 8411626366), based in Poznań, Poland. For matters related to personal data protection, you can contact us at rezerwacjepremium@gmail.com or by phone at +48 533 515 202.',
+	},
+	'privacy-policy-section-2-title': {
+		pl: '2. Jakie dane przetwarzamy',
+		en: '2. What Data We Process',
+	},
+	'privacy-policy-section-2-text': {
+		pl: 'W zależności od sposobu korzystania ze strony możemy przetwarzać: dane podane w formularzu kontaktowym (imię, adres e-mail, treść wiadomości), dane techniczne (adres IP, typ przeglądarki, system operacyjny, czas wizyty), dane z plików cookies oraz dane analityczne dotyczące sposobu korzystania ze strony.',
+		en: 'Depending on how you use the website, we may process: data provided in the contact form (name, email address, message content), technical data (IP address, browser type, operating system, visit time), cookie data, and analytics data related to how the website is used.',
+	},
+	'privacy-policy-section-3-title': {
+		pl: '3. Google Analytics i Google Tag Manager',
+		en: '3. Google Analytics and Google Tag Manager',
+	},
+	'privacy-policy-section-3-text': {
+		pl: 'Strona korzysta z Google Tag Manager oraz Google Analytics (usługi Google LLC) w celu analizy wyszukiwań użytkowników, zachowań na stronie oraz optymalizacji indeksowania witryny w wyszukiwarkach. Narzędzia te mogą gromadzić m.in. informacje o odwiedzanych podstronach, czasie spędzonym na stronie, źródle ruchu oraz urządzeniu użytkownika. Dane te są przetwarzane w formie zanonimizowanej lub pseudonimizowanej. Google może przekazywać dane do państw trzecich, w tym do USA, na podstawie odpowiednich mechanizmów prawnych. Więcej informacji: https://policies.google.com/privacy',
+		en: 'This website uses Google Tag Manager and Google Analytics (Google LLC services) to analyze user searches, on-site behavior, and optimize website indexing in search engines. These tools may collect information such as visited pages, time spent on the site, traffic source, and user device. This data is processed in anonymized or pseudonymized form. Google may transfer data to third countries, including the USA, based on appropriate legal mechanisms. More information: https://policies.google.com/privacy',
+	},
+	'privacy-policy-section-4-title': {
+		pl: '4. Cele i podstawy prawne przetwarzania',
+		en: '4. Purposes and Legal Bases for Processing',
+	},
+	'privacy-policy-section-4-text': {
+		pl: 'Dane przetwarzamy w celu: obsługi zapytań i rezerwacji (art. 6 ust. 1 lit. b RODO – działania przed zawarciem umowy), marketingu bezpośredniego własnych usług (art. 6 ust. 1 lit. f RODO – prawnie uzasadniony interes), analizy ruchu i statystyk strony (art. 6 ust. 1 lit. a RODO – zgoda na cookies analityczne), zapewnienia bezpieczeństwa i prawidłowego działania strony (art. 6 ust. 1 lit. f RODO).',
+		en: 'We process data for the following purposes: handling inquiries and reservations (Art. 6(1)(b) GDPR – steps prior to entering a contract), direct marketing of our own services (Art. 6(1)(f) GDPR – legitimate interest), traffic analysis and website statistics (Art. 6(1)(a) GDPR – consent for analytics cookies), ensuring security and proper website operation (Art. 6(1)(f) GDPR).',
+	},
+	'privacy-policy-section-5-title': {
+		pl: '5. Pliki cookies',
+		en: '5. Cookies',
+	},
+	'privacy-policy-section-5-text': {
+		pl: 'Pliki cookies to niewielkie pliki tekstowe zapisywane na Twoim urządzeniu. Używamy cookies niezbędnych do działania strony oraz cookies analitycznych (Google Analytics), które uruchamiamy wyłącznie po wyrażeniu przez Ciebie zgody za pomocą banera cookies. Zgodę możesz w każdej chwili wycofać, usuwając cookies w ustawieniach przeglądarki.',
+		en: 'Cookies are small text files stored on your device. We use cookies necessary for the website to function and analytics cookies (Google Analytics), which we activate only after you give consent via the cookie banner. You can withdraw consent at any time by deleting cookies in your browser settings.',
+	},
+	'privacy-policy-section-6-title': {
+		pl: '6. Okres przechowywania danych',
+		en: '6. Data Retention Period',
+	},
+	'privacy-policy-section-6-text': {
+		pl: 'Dane z formularza kontaktowego przechowujemy przez okres niezbędny do udzielenia odpowiedzi i realizacji usługi, nie dłużej niż 3 lata od ostatniego kontaktu. Dane analityczne są przechowywane zgodnie z polityką Google Analytics (domyślnie do 14 miesięcy). Zapis zgody na cookies przechowujemy lokalnie w przeglądarce do momentu jego usunięcia.',
+		en: 'Contact form data is stored for the period necessary to respond and provide the service, no longer than 3 years from the last contact. Analytics data is stored according to Google Analytics policy (by default up to 14 months). Cookie consent is stored locally in your browser until it is deleted.',
+	},
+	'privacy-policy-section-7-title': {
+		pl: '7. Twoje prawa',
+		en: '7. Your Rights',
+	},
+	'privacy-policy-section-7-text': {
+		pl: 'Przysługuje Ci prawo do: dostępu do danych, sprostowania, usunięcia, ograniczenia przetwarzania, przenoszenia danych, wniesienia sprzeciwu wobec przetwarzania oraz wycofania zgody w dowolnym momencie (bez wpływu na zgodność z prawem przetwarzania przed wycofaniem). Masz również prawo wniesienia skargi do Prezesa Urzędu Ochrony Danych Osobowych (PUODO), ul. Stawki 2, 00-193 Warszawa.',
+		en: 'You have the right to: access your data, rectification, erasure, restriction of processing, data portability, object to processing, and withdraw consent at any time (without affecting the lawfulness of processing before withdrawal). You also have the right to lodge a complaint with the President of the Personal Data Protection Office (PUODO), ul. Stawki 2, 00-193 Warsaw, Poland.',
+	},
+	'privacy-policy-section-8-title': {
+		pl: '8. Odbiorcy danych',
+		en: '8. Data Recipients',
+	},
+	'privacy-policy-section-8-text': {
+		pl: 'Twoje dane mogą być przekazywane podmiotom świadczącym usługi hostingowe, poczty elektronicznej oraz Google LLC w związku z korzystaniem z Google Analytics. Podmioty te przetwarzają dane wyłącznie na nasze zlecenie i zgodnie z obowiązującymi umowami powierzenia przetwarzania danych.',
+		en: 'Your data may be transferred to entities providing hosting, email services, and Google LLC in connection with the use of Google Analytics. These entities process data only on our behalf and under applicable data processing agreements.',
+	},
+	'privacy-form-notice-before': {
+		pl: 'Wysyłając formularz, akceptujesz naszą',
+		en: 'By submitting this form, you accept our',
+	},
+	'privacy-form-notice-link': {
+		pl: 'Politykę prywatności',
+		en: 'Privacy Policy',
+	},
+	'privacy-form-notice-after': {
+		pl: '.',
+		en: '.',
+	},
+	'contact-form-name': {
+		pl: 'Imię i nazwisko',
+		en: 'Full name',
+	},
+	'contact-form-email': {
+		pl: 'Adres e-mail',
+		en: 'Email address',
+	},
+	'contact-form-message': {
+		pl: 'Wiadomość',
+		en: 'Message',
+	},
+	'contact-form-submit': {
+		pl: 'Wyślij wiadomość',
+		en: 'Send message',
+	},
+	'contact-form-name-placeholder': {
+		pl: 'Jan Kowalski',
+		en: 'John Smith',
+	},
+	'contact-form-email-placeholder': {
+		pl: 'jan@example.com',
+		en: 'john@example.com',
+	},
+	'contact-form-message-placeholder': {
+		pl: 'Opisz swoje zapytanie...',
+		en: 'Describe your inquiry...',
+	},
 };
 
 const LanguageContext = createContext();

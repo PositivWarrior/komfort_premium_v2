@@ -1,9 +1,11 @@
 "use client";
 
 import { useLanguage } from "../context/LanguageContext";
+import { usePrivacy } from "../context/PrivacyContext";
 
 export default function Footer() {
   const { t } = useLanguage();
+  const { openPrivacyModal } = usePrivacy();
   const assets = (path) => `/assets/${path}`;
 
   return (
@@ -190,6 +192,15 @@ export default function Footer() {
                 <a href="#kontakt" style={{ textDecoration: "none", color: "white" }}>
                   {t("header-kontakt")}
                 </a>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  className="footer-privacy-link"
+                  onClick={openPrivacyModal}
+                >
+                  {t("footer-privacy-policy")}
+                </button>
               </li>
             </ul>
           </div>
