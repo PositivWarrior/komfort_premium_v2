@@ -110,7 +110,7 @@ export const metadata = {
   //   Dodaj usługę → Wpisz "komfortpremium.eu" → Wybierz "Tag HTML" →
   //   Skopiuj wartość content z tagu meta
   verification: {
-    google: "googlef388205ed475e502",
+    google: "LA3U03MmvkgiD_eFtLfxLJcxgTYxPVXSFjydrFP6v6c",
     // Opcjonalnie inne weryfikacje:
     // yandex: "YANDEX_CODE",
     // bing: "BING_CODE",
