@@ -326,6 +326,37 @@ a {
   .contact-image-col img {
     width: 100% !important;
   }
+  .contact-row {
+    gap: 16px;
+  }
+  .contact-row__label,
+  .contact-row__link,
+  .contact-row__text {
+    font-size: 15px;
+  }
+
+  /* Slogan banner — full-bleed cropped strip */
+  .slogan-banner {
+    height: auto;
+    padding: 14px 12px;
+  }
+  .slogan-banner__img {
+    width: 100%;
+    max-width: none;
+  }
+
+  /* WhatsApp FAB — smaller on mobile, clear of browser chrome */
+  .whatsapp-fab {
+    --whatsapp-fab-size: 48px;
+    --whatsapp-fab-offset: 16px;
+  }
+  .whatsapp-fab__icon {
+    width: 24px;
+    height: 24px;
+  }
+  .whatsapp-fab--cookies-visible {
+    bottom: calc(220px + var(--whatsapp-fab-safe-bottom));
+  }
 
   /* PremiumTransport Section */
   .premium-transport-title {
@@ -632,6 +663,135 @@ a {
 
 .footer-privacy-link:hover,
 .footer-privacy-link:focus {
+  color: var(--color-gold);
+}
+
+/* ================================================================
+   SLOGAN BANNER — "Zamów sobie spokój."
+   ================================================================ */
+.slogan-banner {
+  background: #000;
+  width: 100%;
+  max-width: 100vw;
+  height: auto;
+  padding: 18px 20px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slogan-banner__link {
+  display: block;
+  width: 100%;
+  max-width: 900px;
+  line-height: 0;
+}
+
+.slogan-banner__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+/* ================================================================
+   WHATSAPP FAB
+   ================================================================ */
+.whatsapp-fab {
+  --whatsapp-fab-size: 56px;
+  --whatsapp-fab-offset: 20px;
+  --whatsapp-fab-safe-bottom: env(safe-area-inset-bottom, 0px);
+  --whatsapp-fab-safe-right: env(safe-area-inset-right, 0px);
+
+  position: fixed;
+  right: calc(var(--whatsapp-fab-offset) + var(--whatsapp-fab-safe-right));
+  bottom: calc(var(--whatsapp-fab-offset) + var(--whatsapp-fab-safe-bottom));
+  z-index: 9990;
+  width: var(--whatsapp-fab-size);
+  height: var(--whatsapp-fab-size);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #25d366;
+  color: #ffffff;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, bottom 0.25s ease;
+}
+
+.whatsapp-fab:hover,
+.whatsapp-fab:focus-visible {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4);
+  color: #ffffff;
+}
+
+.whatsapp-fab:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+}
+
+.whatsapp-fab__icon {
+  width: 28px;
+  height: 28px;
+  display: block;
+}
+
+/* Lift above cookie banner when visible */
+.whatsapp-fab--cookies-visible {
+  bottom: calc(140px + var(--whatsapp-fab-safe-bottom));
+}
+
+/* ================================================================
+   CONTACT ROWS
+   ================================================================ */
+.contact-row {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.contact-row__icon {
+  color: rgb(197, 163, 92);
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 28px;
+}
+
+.contact-row__body {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.contact-row__label {
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 1px;
+  color: #ffffff;
+}
+
+.contact-row__link {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  word-break: break-word;
+}
+
+.contact-row__text {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #ffffff;
+  word-break: break-word;
+}
+
+.contact-row__link:hover,
+.contact-row__link:focus {
   color: var(--color-gold);
 }
 

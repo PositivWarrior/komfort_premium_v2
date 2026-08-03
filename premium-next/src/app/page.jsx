@@ -16,6 +16,7 @@ import ConsentAwareAnalytics from "../components/ConsentAwareAnalytics";
 
 import FAQ from "../components/FAQ";
 import PremiumTransport from "../components/PremiumTransport";
+import WhatsAppButton from "../components/WhatsAppButton";
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
         <ConsentAwareAnalytics />
         <CookieBanner />
         <PrivacyPolicyModal />
+        <WhatsAppButton />
         <div id="page" className="hfeed site">
           <Header />
           <Hero />

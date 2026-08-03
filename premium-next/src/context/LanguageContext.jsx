@@ -195,6 +195,18 @@ const translations = {
 		pl: 'Zadzwoń lub wyślij sms',
 		en: 'Call or send an SMS',
 	},
+	'whatsapp-contact-label': {
+		pl: 'WhatsApp',
+		en: 'WhatsApp',
+	},
+	'whatsapp-contact-cta': {
+		pl: 'Napisz na WhatsApp',
+		en: 'Message us on WhatsApp',
+	},
+	'whatsapp-fab-label': {
+		pl: 'Napisz do nas na WhatsApp',
+		en: 'Message us on WhatsApp',
+	},
 	Obsługujemy: {
 		pl: 'Obsługujemy:',
 		en: 'We serve:',

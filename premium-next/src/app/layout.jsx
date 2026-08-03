@@ -131,6 +131,12 @@ export const metadata = {
   category: "transport",
 };
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
+
 /* ───────────────────────────────────────────────
    JSON-LD Structured Data (Schema.org)
    Helps Google understand the business
