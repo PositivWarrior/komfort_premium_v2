@@ -1,10 +1,22 @@
 {
-  "fetchedAt": "2026-09-01T11:05:17.203Z",
+  "fetchedAt": "2026-09-02T10:37:31.603Z",
   "placeId": "ChIJG2ww4MCTMkcRvgaBdLz1z9A",
   "placeName": "⭐Komfort Premium. Taxi✨",
   "overallRating": 5,
-  "totalReviews": 62,
+  "totalReviews": 63,
   "reviews": [
+    {
+      "name": "madhup m.",
+      "time": "w ostatnim tygodniu",
+      "publishTimestamp": 1788323322,
+      "text": "Superb and reliable service! Yakub will sort everything for you ! Highly recommend.",
+      "reply": "",
+      "initial": "M",
+      "color": "#8e44ad",
+      "rating": 5,
+      "profilePhoto": "https://lh3.googleusercontent.com/a-/ALV-UjVv03x8GeGrJawnnQ48Fug2EWb1azTstaYv76Lpc5AJRmHxfkaP=s128-c0x00000000-cc-rp-mo-ba3",
+      "source": "google"
+    },
     {
       "name": "Gosia M.",
       "time": "4 tygodnie temu",
@@ -12,19 +24,19 @@
       "text": "Bardzo polecam! Wszystko przebiegło bez problemu – kierowca był bardzo miły i sympatyczny, przyjechał punktualnie, a podróż minęła w komfortowych warunkach. Samochód czysty i wygodny, a cała usługa zrealizowana sprawnie i na wysokim poziomie. Na pewno skorzystam ponownie!",
       "reply": "",
       "initial": "G",
-      "color": "#8e44ad",
+      "color": "#c0392b",
       "rating": 5,
       "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocKbdau4PHmoHDWNnzum9xBoGumG1aPwRKfuHR_rrGOV7kLoCw=s128-c0x00000000-cc-rp-mo",
       "source": "google"
     },
     {
       "name": "Piotr X.",
-      "time": "miesiąc temu",
+      "time": "2 miesiące temu",
       "publishTimestamp": 1783156050,
       "text": "Punktualność,  kultura na najwyższym poziomie, profesjonalizm, a także wysokiej klasy bus dla kilku osób które były przewożene w ramach trasferu  na terenie Poznania na lotnisko Poznań -  Ławica , a następnie odbiór . Jeszcze raz dziękujemy.",
       "reply": "",
       "initial": "P",
-      "color": "#c0392b",
+      "color": "#27ae60",
       "rating": 5,
       "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocJgui2OFVyeSRSWdYeStafQg1m_ck9nNLFn8J1MMwowB1aZcw=s128-c0x00000000-cc-rp-mo",
       "source": "google"
@@ -36,7 +48,7 @@
       "text": "Bardzo profesjonalne podejście do obsługi delegacji firmowej. Świetny kontakt, duża elastyczność, wysoka kultura osobista. Bardzo polecam.",
       "reply": "",
       "initial": "D",
-      "color": "#27ae60",
+      "color": "#16a085",
       "rating": 5,
       "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocJA1PFqp3AnDltSm6SoFgZnWP12QXxlq4SzF2A_WnmFPzGoTA=s128-c0x00000000-cc-rp-mo",
       "source": "google"
@@ -48,21 +60,9 @@
       "text": "We had a great experience with this company! Their communication was great, clear and very quick (and easy to do everything in English), and the taxi was punctual and comfortable. They were also really friendly, and flexible when I wanted to change the pickup time at short notice. I'd definitely choose them again!",
       "reply": "",
       "initial": "T",
-      "color": "#16a085",
-      "rating": 5,
-      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocJu4EhkNg6eswKM6eWmVdmrbdw6epkbUNOOpKI77KvR4w6o7A=s128-c0x00000000-cc-rp-mo",
-      "source": "google"
-    },
-    {
-      "name": "Tasha M.",
-      "time": "3 miesiące temu",
-      "publishTimestamp": 1779622187,
-      "text": "Great taxi service, very laid back and professional. Efficient service and clear and friendly communication, totally recommend!",
-      "reply": "",
-      "initial": "T",
       "color": "#2980b9",
       "rating": 5,
-      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocI6cP2cloSlXW6OeBqMsFJ_a2IZl6Nby6vhhi2K7SCmzCN4Ng=s128-c0x00000000-cc-rp-mo",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocJu4EhkNg6eswKM6eWmVdmrbdw6epkbUNOOpKI77KvR4w6o7A=s128-c0x00000000-cc-rp-mo",
       "source": "google"
     }
   ]
