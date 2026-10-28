@@ -1,10 +1,22 @@
 {
-  "fetchedAt": "2026-10-27T11:35:38.632Z",
+  "fetchedAt": "2026-10-28T12:06:21.948Z",
   "placeId": "ChIJG2ww4MCTMkcRvgaBdLz1z9A",
   "placeName": "⭐Komfort Premium. Taxi✨",
   "overallRating": 5,
-  "totalReviews": 65,
+  "totalReviews": 66,
   "reviews": [
+    {
+      "name": "Łukasz K.",
+      "time": "w ostatnim tygodniu",
+      "publishTimestamp": 1793183898,
+      "text": "Współpracowaliśmy przy okazji Poznań Game Arena i transportu dla gości VIP, Jakub stanął na głowie żeby spełnić wszystkie oczekiwania naszych partnerów, łącznie z niezapowiedzianym transportem z Poznania do Gdańska. Nie ma tak wysokiej oceny jak wypadałoby wystawić. Takich ludzi ze świecą szukać. Gorąco polecam! Na zdjęciu ja i VIP ;)",
+      "reply": "",
+      "initial": "Ł",
+      "color": "#8e44ad",
+      "rating": 5,
+      "profilePhoto": "https://lh3.googleusercontent.com/a-/ALV-UjWVPZkm5cP1pwtBUsupgoZ5OQ9SxO73yRIruIKHRsgkk79qWQ=s128-c0x00000000-cc-rp-mo",
+      "source": "google"
+    },
     {
       "name": "Tomasz M.",
       "time": "2 tygodnie temu",
@@ -12,7 +24,7 @@
       "text": "Wszystko szybko i sprawnie przebiegło. Transfer na lotnisko, odbył się o 4.00 rano. Komfort podróżowania super!!! Gorąco polecam!!! Nawet mieliśmy eskortę policji 😄",
       "reply": "",
       "initial": "T",
-      "color": "#8e44ad",
+      "color": "#c0392b",
       "rating": 5,
       "profilePhoto": "https://lh3.googleusercontent.com/a-/ALV-UjVGMxnZbmK9gudDenH_MyqJcRlpEoVLFsUbd3kVWmAFfxxC05Wj1Q=s128-c0x00000000-cc-rp-mo",
       "source": "google"
@@ -24,7 +36,7 @@
       "text": "Polecam!! Pełen profesjonalizm, punktualność i super kontakt. Bardzo dziękuję ☺️",
       "reply": "",
       "initial": "M",
-      "color": "#c0392b",
+      "color": "#27ae60",
       "rating": 5,
       "profilePhoto": "https://lh3.googleusercontent.com/a-/ALV-UjV46E3cNPapkbr4SxChC8g6X5y3yr4kjYt7RLdv_ATakzdQGmacuw=s128-c0x00000000-cc-rp-mo",
       "source": "google"
@@ -36,7 +48,7 @@
       "text": "Superb and reliable service! Yakub will sort everything for you ! Highly recommend.",
       "reply": "",
       "initial": "M",
-      "color": "#27ae60",
+      "color": "#16a085",
       "rating": 5,
       "profilePhoto": "https://lh3.googleusercontent.com/a-/ALV-UjVv03x8GeGrJawnnQ48Fug2EWb1azTstaYv76Lpc5AJRmHxfkaP=s128-c0x00000000-cc-rp-mo-ba3",
       "source": "google"
@@ -48,21 +60,9 @@
       "text": "Bardzo polecam! Wszystko przebiegło bez problemu – kierowca był bardzo miły i sympatyczny, przyjechał punktualnie, a podróż minęła w komfortowych warunkach. Samochód czysty i wygodny, a cała usługa zrealizowana sprawnie i na wysokim poziomie. Na pewno skorzystam ponownie!",
       "reply": "",
       "initial": "G",
-      "color": "#16a085",
-      "rating": 5,
-      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocKbdau4PHmoHDWNnzum9xBoGumG1aPwRKfuHR_rrGOV7kLoCw=s128-c0x00000000-cc-rp-mo",
-      "source": "google"
-    },
-    {
-      "name": "Piotr X.",
-      "time": "3 miesiące temu",
-      "publishTimestamp": 1783156050,
-      "text": "Punktualność,  kultura na najwyższym poziomie, profesjonalizm, a także wysokiej klasy bus dla kilku osób które były przewożene w ramach trasferu  na terenie Poznania na lotnisko Poznań -  Ławica , a następnie odbiór . Jeszcze raz dziękujemy.",
-      "reply": "",
-      "initial": "P",
       "color": "#2980b9",
       "rating": 5,
-      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocJgui2OFVyeSRSWdYeStafQg1m_ck9nNLFn8J1MMwowB1aZcw=s128-c0x00000000-cc-rp-mo",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocKbdau4PHmoHDWNnzum9xBoGumG1aPwRKfuHR_rrGOV7kLoCw=s128-c0x00000000-cc-rp-mo",
       "source": "google"
     }
   ]
