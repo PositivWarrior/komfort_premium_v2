@@ -1,10 +1,22 @@
 {
-  "fetchedAt": "2026-11-18T15:05:16.583Z",
+  "fetchedAt": "2026-11-22T14:01:23.344Z",
   "placeId": "ChIJG2ww4MCTMkcRvgaBdLz1z9A",
   "placeName": "⭐Komfort Premium. Taxi✨",
   "overallRating": 5,
-  "totalReviews": 67,
+  "totalReviews": 68,
   "reviews": [
+    {
+      "name": "Lisa S.",
+      "time": "w ostatnim tygodniu",
+      "publishTimestamp": 1795334588,
+      "text": "The transfer was perfect, Jakub was very reliable, communication was excellent. Highly recommended.",
+      "reply": "",
+      "initial": "L",
+      "color": "#8e44ad",
+      "rating": 5,
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocJF_d9pKHb4CEhCz5JcWXK82ozXuyBEjbfJz5t0SIrpKlMoGg=s128-c0x00000000-cc-rp-mo-ba2",
+      "source": "google"
+    },
     {
       "name": "Ambulanzflug Z.",
       "time": "2 tygodnie temu",
@@ -12,7 +24,7 @@
       "text": "Thank you! We really appreciate working with you. Excellent service!",
       "reply": "",
       "initial": "A",
-      "color": "#8e44ad",
+      "color": "#c0392b",
       "rating": 5,
       "profilePhoto": "https://lh3.googleusercontent.com/a-/ALV-UjXS4hMqbJhiQbYYNGmageKenjkQTUTbG_-lz557001WFkr6-kg=s128-c0x00000000-cc-rp-mo",
       "source": "google"
@@ -24,7 +36,7 @@
       "text": "Współpracowaliśmy przy okazji Poznań Game Arena i transportu dla gości VIP, Jakub stanął na głowie żeby spełnić wszystkie oczekiwania naszych partnerów, łącznie z niezapowiedzianym transportem z Poznania do Gdańska. Nie ma tak wysokiej oceny jak wypadałoby wystawić. Takich ludzi ze świecą szukać. Gorąco polecam! Na zdjęciu ja i VIP ;)",
       "reply": "",
       "initial": "Ł",
-      "color": "#c0392b",
+      "color": "#27ae60",
       "rating": 5,
       "profilePhoto": "https://lh3.googleusercontent.com/a-/ALV-UjWVPZkm5cP1pwtBUsupgoZ5OQ9SxO73yRIruIKHRsgkk79qWQ=s128-c0x00000000-cc-rp-mo",
       "source": "google"
@@ -36,7 +48,7 @@
       "text": "Wszystko szybko i sprawnie przebiegło. Transfer na lotnisko, odbył się o 4.00 rano. Komfort podróżowania super!!! Gorąco polecam!!! Nawet mieliśmy eskortę policji 😄",
       "reply": "",
       "initial": "T",
-      "color": "#27ae60",
+      "color": "#16a085",
       "rating": 5,
       "profilePhoto": "https://lh3.googleusercontent.com/a-/ALV-UjVGMxnZbmK9gudDenH_MyqJcRlpEoVLFsUbd3kVWmAFfxxC05Wj1Q=s128-c0x00000000-cc-rp-mo",
       "source": "google"
@@ -48,21 +60,9 @@
       "text": "Polecam!! Pełen profesjonalizm, punktualność i super kontakt. Bardzo dziękuję ☺️",
       "reply": "",
       "initial": "M",
-      "color": "#16a085",
-      "rating": 5,
-      "profilePhoto": "https://lh3.googleusercontent.com/a-/ALV-UjV46E3cNPapkbr4SxChC8g6X5y3yr4kjYt7RLdv_ATakzdQGmacuw=s128-c0x00000000-cc-rp-mo",
-      "source": "google"
-    },
-    {
-      "name": "madhup m.",
-      "time": "2 miesiące temu",
-      "publishTimestamp": 1788323322,
-      "text": "Superb and reliable service! Yakub will sort everything for you ! Highly recommend.",
-      "reply": "",
-      "initial": "M",
       "color": "#2980b9",
       "rating": 5,
-      "profilePhoto": "https://lh3.googleusercontent.com/a-/ALV-UjVv03x8GeGrJawnnQ48Fug2EWb1azTstaYv76Lpc5AJRmHxfkaP=s128-c0x00000000-cc-rp-mo-ba3",
+      "profilePhoto": "https://lh3.googleusercontent.com/a-/ALV-UjV46E3cNPapkbr4SxChC8g6X5y3yr4kjYt7RLdv_ATakzdQGmacuw=s128-c0x00000000-cc-rp-mo",
       "source": "google"
     }
   ]
